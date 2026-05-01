@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="light">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="icon" type="image/x-icon" href="favicon.ico"/>
+  <title>Sidy — Portfolio Data Science</title>
+  <meta name="description" content="Portfolio de Sidy Babacar Diop — Étudiant en BUT Science des Données, spécialité Visualisation & Outils décisionnels."/>
+  <meta property="og:title" content="Sidy Babacar Diop — Portfolio Data Science"/>
+  <meta property="og:description" content="Projets de data science, machine learning, visualisation et BI réalisés en formation."/>
+  <meta property="og:image" content="photo-profil.jpg"/>
+  <meta property="og:type" content="website"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+
+<div id="loader">
+  <div class="loader-inner">
+    <div class="loader-dot"></div>
+    <div class="loader-dot"></div>
+    <div class="loader-dot"></div>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#">Sidy Babacar Diop <span>•</span></a>
+  <ul class="nav-links">
+    <li><a href="#vedette">Vedette</a></li>
+    <li><a href="#projets">Projets</a></li>
+    <li><a href="#parcours">Parcours</a></li>
+    <li><a href="#certifications">Certifs</a></li>
+    <li><a href="#cv">CV</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <span class="avail-badge"><span class="avail-dot"></span> Disponible</span>
+    <div class="theme-wrap">
+      <span class="theme-emoji" id="themeEmoji">☀️</span>
+      <button class="theme-toggle" id="themeToggle" aria-label="Changer de thème"></button>
+    </div>
+    <a href="#contact" class="btn btn-primary" style="padding:.5rem 1.1rem;font-size:.81rem;">Contact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="orb orb1"></div><div class="orb orb2"></div>
+  <div class="hero-grid">
+    <div style="opacity:0;animation:fadeUp .55s ease .05s forwards">
+      <div class="hero-eyebrow"><span class="dot"></span> Portfolio Science des Données</div>
+      <h1>Données, <em>insights,</em><br>décisions éclairées.</h1>
+      <p class="hero-sub">Étudiant en BUT Science des Données — spécialité Visualisation & Outils décisionnels. Je transforme des données brutes en valeur concrète.</p>
+      <div class="hero-ctas">
+        <a href="#vedette" class="btn btn-primary">Voir mes projets →</a>
+        <a href="#cv" class="btn btn-glass">📄 Mon CV</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="stat-card glass"><div class="stat-num">7+</div><div class="stat-lbl">Projets réalisés en formation</div><div class="stat-bar" style="width:85%"></div></div>
+      <div class="stat-card glass"><div class="stat-num">3</div><div class="stat-lbl">Ans de formation</div><div class="chart-mini"><div class="bc" style="height:40%"></div><div class="bc" style="height:65%"></div><div class="bc on" style="height:90%"></div><div class="bc" style="height:50%"></div><div class="bc on" style="height:100%"></div></div></div>
+      <div class="stat-card glass"><div class="stat-num">10+</div><div class="stat-lbl">Technologies maîtrisées</div><div class="stat-bar" style="width:72%"></div></div>
+      <div class="stat-card glass" style="text-align:center"><div style="font-size:1.6rem">🎓</div><div class="stat-lbl" style="margin-top:.3rem">IUT Grand Ouest Normandie<br><strong style="color:var(--green)">Disponible dès maintenant</strong></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJET VEDETTE -->
+<section id="vedette">
+  <div class="si">
+    <div class="shd">
+      <div class="slbl">⭐ À la une</div>
+      <h2 class="stitle">Projet mis en avant</h2>
+      <div class="divider"></div>
+      <p class="sdesc">Le projet phare de ma formation — démarche complète, résultats concrets.</p>
+    </div>
+    <div class="vedette-grid glass" style="padding:2.5rem">
+      <div class="vedette-content">
+        <div class="vedette-tag"><span>🤖</span> Machine Learning</div>
+        <div class="vedette-title">Dynamic-EcoDashboard<br><em style="font-family:'Lora',serif;font-size:1rem;color:var(--ink-3);font-weight:400">— Diop Sidy & Lesieur Romain</em></div>
+        <p class="vedette-desc">Dynamic EcoDashboard est un tableau de bord interactif permettant d'analyser l'économie mondiale à travers divers indicateurs clés. Il fournit une interface intuitive pour explorer des données économiques, suivre les tendances et comparer différents pays et régions. 
+
+        </p>
+        <div class="vedette-stats">
+          <div class="vstat"><div class="vstat-num">87%</div><div class="vstat-lbl">Précision du modèle</div></div>
+          <div class="vstat"><div class="vstat-num">50k</div><div class="vstat-lbl">Lignes de données</div></div>
+          <div class="vstat"><div class="vstat-num">-40%</div><div class="vstat-lbl">Temps de traitement</div></div>
+        </div>
+        <div class="vedette-techs">
+          <span class="tag">Python</span><span class="tag">scikit-learn</span><span class="tag">Pandas</span><span class="tag">Matplotlib</span><span class="tag">SQL</span>
+        </div>
+        <div class="vedette-ctas">
+          <a href="#" class="btn btn-primary">Voir sur GitHub →</a>
+          <a href="#" class="btn btn-glass">Lire le rapport</a>
+        </div>
+      </div>
+      <div class="vedette-preview glass">
+        <div class="vedette-preview-inner">
+          <div class="vp-bar">
+            <div class="vp-dot" style="background:#f87171"></div>
+            <div class="vp-dot" style="background:#fbbf24"></div>
+            <div class="vp-dot" style="background:#4ade80"></div>
+          </div>
+          <div class="vp-body">
+            <div class="vp-block tall accent"></div>
+            <div class="vp-block"></div>
+            <div class="vp-block b"></div>
+            <div class="vp-block"></div>
+            <div class="vp-block b"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJETS -->
+<section id="projets">
+  <div class="si">
+    <div class="shd">
+      <div class="slbl">Réalisations</div>
+      <h2 class="stitle">Tous mes projets</h2>
+      <div class="divider"></div>
+      <p class="sdesc">Analyse de données, visualisation, machine learning, Business Intelligence.</p>
+    </div>
+    <div class="search-wrap">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input type="text" id="searchInput" placeholder="Rechercher un projet, outil…" oninput="searchProjects()"/>
+    </div>
+    <div class="filters">
+      <button class="filter-btn active" onclick="filterP('all',this)">Tous</button>
+      <button class="filter-btn" onclick="filterP('ml',this)">Machine Learning</button>
+      <button class="filter-btn" onclick="filterP('viz',this)">Visualisation</button>
+      <button class="filter-btn" onclick="filterP('stats',this)">Statistiques</button>
+      <button class="filter-btn" onclick="filterP('bi',this)">Business Intelligence</button>
+      <button class="filter-btn" onclick="filterP('nlp',this)">NLP</button>
+    </div>
+    <div class="no-results" id="noResults">Aucun projet ne correspond à ta recherche.</div>
+    <div class="pgrid" id="pgrid">
+
+      <div class="pcard glass" data-cat="ml" data-search="machine learning python sklearn classification dataset modèle">
+        <div class="cpreview">
+          <div class="cpreview-inner cp2">
+            <div class="cpb a" style="height:100%"></div>
+            <div style="display:flex;flex-direction:column;gap:4px">
+              <div class="cpb" style="flex:1"></div>
+              <div class="cpb b" style="flex:1.5"></div>
+              <div class="cpb" style="flex:.8"></div>
+            </div>
+          </div>
+        </div>
+        <div class="ctop"><div class="cicon">🤖</div><span class="cbadge bml">Machine Learning</span></div>
+        <div class="cbody">
+          <div class="ctitle">Projet 1 — Titre à compléter</div>
+          <div class="cdesc">Description courte de ce projet ML : objectif, dataset utilisé, modèles testés et résultats obtenus.</div>
+        </div>
+        <div class="cstats">
+          <span class="cstat">🎯 Précision <strong>87%</strong></span>
+          <span class="cstat">📦 Dataset <strong>50k lignes</strong></span>
+        </div>
+        <div class="ctags"><span class="tag">Python</span><span class="tag">scikit-learn</span><span class="tag">Pandas</span></div>
+        <div class="cfoot"><a href="#" class="clink">GitHub →</a><a href="#" class="clink" style="margin-left:auto">Rapport →</a></div>
+      </div>
+
+      <div class="pcard glass" data-cat="viz" data-search="power bi dashboard visualisation dax excel données">
+        <div class="cpreview">
+          <div class="cpreview-inner cp3">
+            <div class="cpb a" style="height:60%"></div>
+            <div class="cpb b" style="height:90%"></div>
+            <div class="cpb a" style="height:50%"></div>
+            <div class="cpb" style="height:40%"></div>
+            <div class="cpb b" style="height:70%"></div>
+            <div class="cpb" style="height:55%"></div>
+          </div>
+        </div>
+        <div class="ctop"><div class="cicon">📊</div><span class="cbadge bviz">Visualisation</span></div>
+        <div class="cbody">
+          <div class="ctitle">Projet 2 — Titre à compléter</div>
+          <div class="cdesc">Dashboard interactif : source de données, insights clés mis en avant et choix de design.</div>
+        </div>
+        <div class="cstats">
+          <span class="cstat">📊 <strong>12 KPIs</strong> suivis</span>
+          <span class="cstat">⏱ Mis à jour <strong>quotidien</strong></span>
+        </div>
+        <div class="ctags"><span class="tag">Power BI</span><span class="tag">DAX</span><span class="tag">Excel</span></div>
+        <div class="cfoot"><a href="#" class="clink">Voir le dashboard →</a></div>
+      </div>
+
+      <div class="pcard glass" data-cat="stats" data-search="statistiques R ggplot2 tests analyse régression">
+        <div class="cpreview">
+          <div class="cpreview-inner cp2" style="align-items:flex-end">
+            <div class="cp-line" style="grid-column:span 2">
+              <div class="cp-line-bar" style="height:40%;background:var(--tag-bg)"></div>
+              <div class="cp-line-bar" style="height:55%;background:var(--tag-bg)"></div>
+              <div class="cp-line-bar" style="height:70%;background:var(--accent);opacity:.5"></div>
+              <div class="cp-line-bar" style="height:60%;background:var(--tag-bg)"></div>
+              <div class="cp-line-bar" style="height:90%;background:var(--accent);opacity:.7"></div>
+              <div class="cp-line-bar" style="height:75%;background:var(--tag-bg)"></div>
+              <div class="cp-line-bar" style="height:85%;background:var(--accent);opacity:.9"></div>
+            </div>
+          </div>
+        </div>
+        <div class="ctop"><div class="cicon">📈</div><span class="cbadge bst">Statistiques</span></div>
+        <div class="cbody">
+          <div class="ctitle">Projet 3 — Titre à compléter</div>
+          <div class="cdesc">Analyse statistique approfondie : méthodes utilisées, tests réalisés et conclusions tirées.</div>
+        </div>
+        <div class="cstats">
+          <span class="cstat">p-value <strong>&lt; 0.05</strong></span>
+          <span class="cstat">R² <strong>0.83</strong></span>
+        </div>
+        <div class="ctags"><span class="tag">R</span><span class="tag">ggplot2</span><span class="tag">Tests stat.</span></div>
+        <div class="cfoot"><a href="#" class="clink">GitHub →</a></div>
+      </div>
+
+      <div class="pcard glass" data-cat="bi" data-search="sql etl datawarehouse business intelligence entrepôt">
+        <div class="cpreview">
+          <div class="cpreview-inner cp3">
+            <div class="cpb b" style="height:100%"></div>
+            <div class="cpb a" style="height:100%"></div>
+            <div class="cpb" style="height:100%"></div>
+          </div>
+        </div>
+        <div class="ctop"><div class="cicon">🗄️</div><span class="cbadge bbi">Business Intelligence</span></div>
+        <div class="cbody">
+          <div class="ctitle">Projet 4 — Titre à compléter</div>
+          <div class="cdesc">Conception d'un entrepôt de données ou pipeline ETL : modélisation, alimentation et exploitation.</div>
+        </div>
+        <div class="cstats">
+          <span class="cstat">🗃️ <strong>8 tables</strong></span>
+          <span class="cstat">⚡ Chargement <strong>-60%</strong></span>
+        </div>
+        <div class="ctags"><span class="tag">SQL</span><span class="tag">ETL</span><span class="tag">Datawarehouse</span></div>
+        <div class="cfoot"><a href="#" class="clink">Schéma →</a><a href="#" class="clink" style="margin-left:auto">Rapport →</a></div>
+      </div>
+
+      <div class="pcard glass" data-cat="nlp" data-search="nlp nltk spacy traitement langage sentiment texte">
+        <div class="cpreview">
+          <div class="cpreview-inner cp2">
+            <div class="cpb a"></div><div class="cpb"></div>
+            <div class="cpb"></div><div class="cpb b"></div>
+          </div>
+        </div>
+        <div class="ctop"><div class="cicon">💬</div><span class="cbadge bnlp">NLP</span></div>
+        <div class="cbody">
+          <div class="ctitle">Projet 5 — Titre à compléter</div>
+          <div class="cdesc">Traitement du langage naturel : analyse de sentiments ou classification de texte.</div>
+        </div>
+        <div class="cstats">
+          <span class="cstat">📝 <strong>10k</strong> avis analysés</span>
+          <span class="cstat">✅ F1 score <strong>0.91</strong></span>
+        </div>
+        <div class="ctags"><span class="tag">Python</span><span class="tag">NLTK</span><span class="tag">spaCy</span></div>
+        <div class="cfoot"><a href="#" class="clink">GitHub →</a></div>
+      </div>
+
+      <div class="pcard glass" data-cat="viz" data-search="tableau folium carte géographie spatial données">
+        <div class="cpreview" style="background:linear-gradient(135deg,#e8f4f8,#d1e8f0)">
+          <div style="font-size:3rem;opacity:.4">🗺️</div>
+        </div>
+        <div class="ctop"><div class="cicon">🗺️</div><span class="cbadge bviz">Visualisation</span></div>
+        <div class="cbody">
+          <div class="ctitle">Projet 6 — Titre à compléter</div>
+          <div class="cdesc">Visualisation géographique ou cartographique : représentation spatiale et cartographie thématique.</div>
+        </div>
+        <div class="cstats">
+          <span class="cstat">📍 <strong>150+</strong> points</span>
+          <span class="cstat">🌍 <strong>5</strong> régions</span>
+        </div>
+        <div class="ctags"><span class="tag">Tableau</span><span class="tag">Folium</span><span class="tag">Géodonnées</span></div>
+        <div class="cfoot"><a href="#" class="clink">Voir le projet →</a></div>
+      </div>
+
+      <div class="pcard glass" data-cat="ml" data-search="data science machine learning projet fil rouge rapport">
+        <div class="cpreview">
+          <div class="cpreview-inner cp3">
+            <div class="cpb a" style="height:50%"></div>
+            <div class="cpb b" style="height:80%"></div>
+            <div class="cpb a" style="height:65%"></div>
+            <div class="cpb" style="height:35%"></div>
+            <div class="cpb b" style="height:55%"></div>
+            <div class="cpb" style="height:90%"></div>
+          </div>
+        </div>
+        <div class="ctop"><div class="cicon">🔍</div><span class="cbadge bds">Data Science</span></div>
+        <div class="cbody">
+          <div class="ctitle">Projet 7 — Titre à compléter</div>
+          <div class="cdesc">Projet fil rouge ou fin de formation : problématique métier, démarche complète et livrables finaux.</div>
+        </div>
+        <div class="cstats">
+          <span class="cstat">📅 <strong>3 mois</strong> de travail</span>
+          <span class="cstat">📄 Rapport <strong>40 pages</strong></span>
+        </div>
+        <div class="ctags"><span class="tag">Python</span><span class="tag">Machine Learning</span><span class="tag">Rapport</span></div>
+        <div class="cfoot"><a href="#" class="clink">GitHub →</a><a href="#" class="clink" style="margin-left:auto">Présentation →</a></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- COMPÉTENCES -->
+<section id="competences">
+  <div class="si">
+    <div class="shd">
+      <div class="slbl">Savoir-faire</div>
+      <h2 class="stitle">Compétences techniques</h2>
+      <div class="divider"></div>
+      <p class="sdesc">Un panorama des outils et technologies acquis au fil de la formation.</p>
+    </div>
+    <div class="sgrid">
+      <div class="sgroup glass">
+        <div class="sgtitle">Langages & Scripts</div>
+        <div class="sitem"><div class="srow"><span>Python</span><span class="spct">90%</span></div><div class="strack"><div class="sfill" data-w=".90"></div></div></div>
+        <div class="sitem"><div class="srow"><span>R</span><span class="spct">75%</span></div><div class="strack"><div class="sfill" data-w=".75"></div></div></div>
+        <div class="sitem"><div class="srow"><span>SQL</span><span class="spct">85%</span></div><div class="strack"><div class="sfill" data-w=".85"></div></div></div>
+      </div>
+      <div class="sgroup glass">
+        <div class="sgtitle">Machine Learning</div>
+        <div class="sitem"><div class="srow"><span>scikit-learn</span><span class="spct">80%</span></div><div class="strack"><div class="sfill" data-w=".80"></div></div></div>
+        <div class="sitem"><div class="srow"><span>Pandas / NumPy</span><span class="spct">85%</span></div><div class="strack"><div class="sfill" data-w=".85"></div></div></div>
+        <div class="sitem"><div class="srow"><span>TensorFlow / Keras</span><span class="spct">55%</span></div><div class="strack"><div class="sfill" data-w=".55"></div></div></div>
+      </div>
+      <div class="sgroup glass">
+        <div class="sgtitle">Visualisation & BI</div>
+        <div class="sitem"><div class="srow"><span>Power BI</span><span class="spct">80%</span></div><div class="strack"><div class="sfill" data-w=".80"></div></div></div>
+        <div class="sitem"><div class="srow"><span>Tableau</span><span class="spct">70%</span></div><div class="strack"><div class="sfill" data-w=".70"></div></div></div>
+        <div class="sitem"><div class="srow"><span>Matplotlib / Seaborn</span><span class="spct">85%</span></div><div class="strack"><div class="sfill" data-w=".85"></div></div></div>
+      </div>
+      <div class="sgroup glass">
+        <div class="sgtitle">Bases de données</div>
+        <div class="sitem"><div class="srow"><span>PostgreSQL</span><span class="spct">80%</span></div><div class="strack"><div class="sfill" data-w=".80"></div></div></div>
+        <div class="sitem"><div class="srow"><span>MySQL</span><span class="spct">75%</span></div><div class="strack"><div class="sfill" data-w=".75"></div></div></div>
+        <div class="sitem"><div class="srow"><span>Modélisation (MCD/MLD)</span><span class="spct">70%</span></div><div class="strack"><div class="sfill" data-w=".70"></div></div></div>
+      </div>
+      <div class="sgroup glass">
+        <div class="sgtitle">Langues</div>
+        <div class="sitem">
+          <div class="srow"><span>Français</span><span class="spct">Natif</span></div>
+          <div class="strack"><div class="sfill" data-w="1.0"></div></div>
+        </div>
+        <div class="sitem">
+          <div class="srow"><span>Anglais</span><span class="spct">Professionnel</span></div>
+          <div class="strack"><div class="sfill" data-w=".75"></div></div>
+        </div>
+        <div class="sitem">
+          <div class="srow"><span>Wolof</span><span class="spct">Natif</span></div>
+          <div class="strack"><div class="sfill" data-w="1.0"></div></div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section id="certifications">
+  <div class="si">
+    <div class="shd">
+      <div class="slbl">Formations complémentaires</div>
+      <h2 class="stitle">Certifications</h2>
+      <div class="divider"></div>
+      <p class="sdesc">Certifications obtenues ou en cours pour compléter la formation.</p>
+    </div>
+    <div class="cert-grid">
+      <div class="cert-card glass">
+        <div class="cert-icon">🐍</div>
+        <div class="cert-body">
+          <h4>Python for Data Science</h4>
+          <p>DataCamp · 2024</p>
+          <span class="cert-badge cert-done">✓ Obtenu</span>
+        </div>
+      </div>
+      <div class="cert-card glass">
+        <div class="cert-icon">📊</div>
+        <div class="cert-body">
+          <h4>Google Data Analytics</h4>
+          <p>Coursera · 2024</p>
+          <span class="cert-badge cert-done">✓ Obtenu</span>
+        </div>
+      </div>
+      <div class="cert-card glass">
+        <div class="cert-icon">🤖</div>
+        <div class="cert-body">
+          <h4>Machine Learning Specialization</h4>
+          <p>Coursera — Andrew Ng · En cours</p>
+          <span class="cert-badge cert-wip">⏳ En cours</span>
+        </div>
+      </div>
+      <div class="cert-card glass">
+        <div class="cert-icon">💼</div>
+        <div class="cert-body">
+          <h4>Power BI Data Analyst</h4>
+          <p>Microsoft · À compléter</p>
+          <span class="cert-badge cert-wip">⏳ Prévu</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PARCOURS / TIMELINE -->
+<section id="parcours">
+  <div class="si">
+    <div class="shd">
+      <div class="slbl">Mon parcours</div>
+      <h2 class="stitle">Timeline</h2>
+      <div class="divider"></div>
+      <p class="sdesc">De la découverte de la data science jusqu'à aujourd'hui.</p>
+    </div>
+    <div style="max-width:680px">
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-dot current"></div>
+          <div class="tl-date">2025 — Aujourd'hui</div>
+          <div class="tl-title">Fin de BUT & recherche active</div>
+          <div class="tl-sub">Finalisation du BUT Science des Données. Disponible immédiatement pour un poste à temps plein.</div>
+          <span class="tl-tag">🟢 Disponible</span>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-date">2024</div>
+          <div class="tl-title">Projet fil rouge & spécialisation</div>
+          <div class="tl-sub">Approfondissement en Visualisation et Outils décisionnels. Réalisation des projets les plus complexes de la formation.</div>
+          <span class="tl-tag">Visualisation · BI · ML</span>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-date">2023</div>
+          <div class="tl-title">Stage / projet entreprise</div>
+          <div class="tl-sub">Première expérience professionnelle appliquée à la data. Confrontation aux enjeux réels du terrain.</div>
+          <span class="tl-tag">Expérience terrain</span>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-date">2022</div>
+          <div class="tl-title">Entrée en BUT Science des Données</div>
+          <div class="tl-sub">Intégration de l'IUT Grand Ouest Normandie. Découverte de Python, R, SQL, statistiques et machine learning.</div>
+          <span class="tl-tag">IUT Grand Ouest Normandie</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- À PROPOS -->
+<section id="apropos">
+  <div class="si">
+    <div class="agrid">
+      <div>
+        <div class="aphoto glass">
+          <img src="pdp.png" alt="Sidy Babacar Diop"/>
+          <div class="achips">
+            <span class="chip">Data Science</span>
+            <span class="chip alt">Visualisation</span>
+          </div>
+        </div>
+      </div>
+      <div class="atext">
+        <div class="slbl">À propos</div>
+        <h3>Passionné par la valeur<br>cachée dans les données.</h3>
+        <p>Je m'appelle Sidy Babacar, étudiant en 2ème année de BUT Science des Données à l'IUT Grand Ouest Normandie, spécialité Visualisation et Outils décisionnels.</p>
+        <p>Ce portfolio rassemble les projets réalisés au fil de ma formation : analyses statistiques, modèles prédictifs, dashboards interactifs et bien plus encore.</p>
+        <p>Actuellement disponible, je recherche des opportunités pour mettre mes compétences en pratique dans un environnement professionnel.</p>
+        <div class="fcard glass">
+          <div class="fdot"></div>
+          <div>
+            <h4>BUT Science des Données — Visualisation & Outils décisionnels</h4>
+            <p>IUT Grand Ouest Normandie · 2022 – 2025 · Disponible dès maintenant</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CV -->
+<section id="cv">
+  <div class="si">
+    <div class="shd">
+      <div class="slbl">Mon CV</div>
+      <h2 class="stitle">Curriculum Vitæ</h2>
+      <div class="divider"></div>
+      <p class="sdesc">Consultez mon CV directement ici ou télécharge-le en PDF.</p>
+    </div>
+    <div class="cv-layout">
+
+      <!-- Viewer PDF -->
+      <div class="cv-viewer-wrap">
+        <div class="cv-viewer-bar">
+          <div class="cv-viewer-bar-dots">
+            <span style="background:#f87171"></span>
+            <span style="background:#fbbf24"></span>
+            <span style="background:#4ade80"></span>
+          </div>
+          <span class="cv-filename">📄 DIOP_Sidy_CV.pdf</span>
+          <span style="font-size:.75rem;color:var(--ink-muted)">Viewer PDF</span>
+        </div>
+        <object class="cv-embed" data="DIOP_Sidy_CV.pdf" type="application/pdf">
+          <div class="cv-fallback" style="display:block">
+            <div class="cv-fallback-icon">📄</div>
+            <p style="margin-bottom:1rem;color:var(--ink-2)">Le PDF ne s'affiche pas directement dans ce navigateur.</p>
+            <a href="DIOP_Sidy_CV.pdf" download class="btn btn-primary" style="display:inline-flex;margin:0 auto">
+              📥 Télécharger le CV
+            </a>
+          </div>
+        </object>
+      </div>
+
+      <!-- Panneau actions -->
+      <div class="cv-panel">
+        <div class="cv-action-card glass">
+          <div class="cv-action-title">Télécharger mon CV</div>
+          <div class="cv-action-desc">Disponible en PDF, prêt à être transmis à un recruteur. Dernière mise à jour : 2025.</div>
+          <div class="cv-btns">
+            <a href="DIOP_Sidy_CV.pdf" download class="btn btn-primary">📥 Télécharger le PDF</a>
+            <a href="DIOP_Sidy_CV.pdf" target="_blank" class="btn btn-glass">🔗 Ouvrir dans un nouvel onglet</a>
+          </div>
+        </div>
+        <div class="cv-info-card glass">
+          <div class="cv-info-title">Informations clés</div>
+          <div class="cv-info-item"><span class="cv-info-icon">📞</span> 07 82 12 14 43</div>
+          <div class="cv-info-item"><span class="cv-info-icon">📧</span> sidy2002@hotmail.fr</div>
+          <div class="cv-info-item"><span class="cv-info-icon">🎓</span> BUT Science des Données</div>
+          <div class="cv-info-item"><span class="cv-info-icon">📍</span> IUT Grand Ouest Normandie</div>
+          <div class="cv-info-item"><span class="cv-info-icon">🟢</span> Disponible immédiatement</div>
+          <div class="cv-info-item"><span class="cv-info-icon">💼</span> Ouvert à toute opportunité</div>
+        </div>
+        <div class="cv-info-card glass">
+          <div class="cv-info-title">Me retrouver</div>
+          <div class="cv-info-item"><span class="cv-info-icon">💼</span> <a href="https://linkedin.com/in/sidybdiop" target="_blank" style="color:var(--accent);text-decoration:none;font-size:.84rem">LinkedIn → /sidybdiop</a></div>
+          <div class="cv-info-item"><span class="cv-info-icon">🐙</span> <a href="https://github.com/sidyBD" target="_blank" style="color:var(--accent);text-decoration:none;font-size:.84rem">GitHub → sidyBD</a></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="si">
+    <div class="cwrap">
+  <div class="slbl" style="text-align:center">Contact</div>
+  <h2 class="stitle" style="text-align:center">Travaillons ensemble</h2>
+  <div class="divider" style="margin:.7rem auto 1rem"></div>
+  <p class="sdesc" style="margin:0 auto;text-align:center">Une opportunité ou un projet ? Écris-moi directement.</p>
+
+  <form id="contactForm" class="glass" style="margin-top:2rem;padding:2rem;display:flex;flex-direction:column;gap:1rem;" action="https://formspree.io/f/xkokpkgr" method="POST">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem">
+      <div class="field-wrap">
+        <label class="field-label">Nom</label>
+        <input type="text" class="field-input" placeholder="Votre nom" required/>
+      </div>
+      <div class="field-wrap">
+        <label class="field-label">Email</label>
+        <input type="email" class="field-input" placeholder="votre@email.com" required/>
+      </div>
+    </div>
+    <div class="field-wrap">
+      <label class="field-label">Sujet</label>
+      <input type="text" class="field-input" placeholder="Opportunité, collaboration…" required/>
+    </div>
+    <div class="field-wrap">
+      <label class="field-label">Message</label>
+      <textarea class="field-input" rows="4" placeholder="Votre message…" required style="resize:vertical"></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary" style="align-self:flex-end">Envoyer →</button>
+    <div id="formMsg" style="display:none;font-size:.85rem;text-align:center;padding:.6rem;border-radius:8px;"></div>
+  </form>
+
+  <div class="clinks" style="margin-top:1.5rem">
+    <a href="mailto:sidy2002@hotmail.fr" class="ccard glass"><span class="ci">✉️</span> sidy2002@hotmail.fr</a>
+    <a href="https://linkedin.com/in/sidybdiop" class="ccard glass" target="_blank"><span class="ci">💼</span> LinkedIn</a>
+    <a href="https://github.com/sidyBD" class="ccard glass" target="_blank"><span class="ci">🐙</span> GitHub</a>
+  </div>
+</div>
+  </div>
+</section>
+
+
+<button id="scrollTop" aria-label="Remonter en haut">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 19V5M5 12l7-7 7 7"/>
+  </svg>
+</button>
+
+<footer>
+  <p>© 2025 <strong>Sidy Babacar Diop</strong> — Portfolio Data Science · Fait avec passion</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
