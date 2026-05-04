@@ -246,15 +246,42 @@ section { padding: 5.5rem 5vw; position: relative; z-index: 1; transition: backg
 [data-theme="dark"] .filter-btn:hover { background: linear-gradient(135deg, rgba(70,44,20,.70) 0%, rgba(50,32,12,.82) 100%); border-color: rgba(180,120,55,.45); color: var(--accent); }
 
 .no-results { display: none; text-align: center; padding: 3rem; color: var(--ink-muted); font-size: .95rem; }
-.pgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.4rem; }
-.pcard { display: flex; flex-direction: column; overflow: hidden; transition: transform .22s, box-shadow .22s; }
+
+/* ── Grille projets : align-items stretch pour que toutes les cartes aient la même hauteur ── */
+.pgrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.4rem;
+  align-items: stretch;
+}
+
+/* ── Carte : hauteur 100% pour s'étirer jusqu'au bas de la cellule ── */
+.pcard {
+  display: flex; flex-direction: column;
+  overflow: hidden;
+  height: 100%;
+  transition: transform .22s, box-shadow .22s;
+}
 .pcard:hover { transform: translateY(-5px); }
 
+/* ── Preview : hauteur fixe + min-height pour éviter l'effondrement si image cassée ── */
 .cpreview {
-  height: 140px; background: linear-gradient(135deg, var(--bg-section), var(--bg-alt));
+  height: 160px;
+  min-height: 160px;
+  flex-shrink: 0;
+  background: linear-gradient(135deg, var(--bg-section), var(--bg-alt));
   display: flex; align-items: center; justify-content: center; overflow: hidden;
   border-bottom: 1px solid var(--glass-border); position: relative;
 }
+
+/* ── Image dans preview : couvre tout le bloc ── */
+.cpreview img {
+  width: 100%; height: 100%;
+  object-fit: cover; display: block;
+}
+
+/* ── Image cassée ou manquante → fond de couleur propre ── */
+.cpreview img[src=""], .cpreview img:not([src]) { display: none; }
 .cpreview-inner { width: 85%; height: 75%; border-radius: 6px; overflow: hidden; display: grid; gap: 4px; padding: 4px; background: var(--glass-bg); border: 1px solid var(--glass-border); }
 .cp2 { grid-template-columns: 1fr 1fr; }
 .cp3 { grid-template-columns: 1fr 1fr 1fr; }
