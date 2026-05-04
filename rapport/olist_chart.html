@@ -6,198 +6,95 @@
 <title>Analyse Olist — Préparation & Intégration de données</title>
 <style>
   :root {
-    --bg: #faf8f5;
-    --card: rgba(255,248,240,0.9);
-    --border: rgba(180,140,100,0.25);
-    --accent: #8b5e3c;
-    --accent2: #c4884f;
-    --ink: #1a1208;
-    --ink2: #4a3c2a;
-    --ink3: #7a6650;
-    --muted: #a89278;
+    --bg: #faf8f5; --card: rgba(255,248,240,0.9);
+    --border: rgba(180,140,100,0.25); --accent: #8b5e3c; --accent2: #c4884f;
+    --ink: #1a1208; --ink2: #4a3c2a; --ink3: #7a6650; --muted: #a89278;
     --radius: 14px;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  body {
-    font-family: 'Segoe UI', system-ui, sans-serif;
-    background: var(--bg);
-    color: var(--ink);
-    min-height: 100vh;
-    padding: 2rem;
-  }
-  .header {
-    text-align: center;
-    margin-bottom: 2rem;
-  }
-  .header h1 {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--ink);
-    margin-bottom: .3rem;
-  }
-  .header p {
-    font-size: .88rem;
-    color: var(--ink3);
-  }
-  .badge {
-    display: inline-block;
-    background: rgba(139,94,60,.1);
-    color: var(--accent);
-    font-size: .72rem;
-    font-weight: 600;
-    padding: .25rem .7rem;
-    border-radius: 20px;
-    margin-top: .5rem;
-  }
-
-  /* Tabs */
-  .tabs {
-    display: flex;
-    gap: .5rem;
-    justify-content: center;
-    margin-bottom: 1.5rem;
-    flex-wrap: wrap;
-  }
-  .tab {
-    padding: .45rem 1.1rem;
-    border-radius: 20px;
-    border: 1px solid var(--border);
-    background: var(--card);
-    color: var(--ink3);
-    font-size: .82rem;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all .2s;
-    backdrop-filter: blur(10px);
-  }
-  .tab.active {
-    background: linear-gradient(135deg, rgba(196,136,79,.85), rgba(139,94,60,.95));
-    color: #fff;
-    border-color: transparent;
-  }
-
-  /* Charts */
+  body { font-family: 'Segoe UI', system-ui, sans-serif; background: var(--bg); color: var(--ink); min-height: 100vh; padding: 2rem; }
+  .header { text-align: center; margin-bottom: 2rem; }
+  .header h1 { font-size: 1.5rem; font-weight: 700; color: var(--ink); margin-bottom: .3rem; }
+  .header p { font-size: .88rem; color: var(--ink3); }
+  .badge { display: inline-block; background: rgba(139,94,60,.1); color: var(--accent); font-size: .72rem; font-weight: 600; padding: .25rem .7rem; border-radius: 20px; margin-top: .5rem; }
+  .tabs { display: flex; gap: .5rem; justify-content: center; margin-bottom: 1.5rem; flex-wrap: wrap; }
+  .tab { padding: .45rem 1.1rem; border-radius: 20px; border: 1px solid var(--border); background: var(--card); color: var(--ink3); font-size: .82rem; font-weight: 500; cursor: pointer; transition: all .2s; backdrop-filter: blur(10px); }
+  .tab.active { background: linear-gradient(135deg, rgba(196,136,79,.85), rgba(139,94,60,.95)); color: #fff; border-color: transparent; }
   .chart-panel { display: none; }
   .chart-panel.active { display: block; }
-  .chart-card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 1.5rem;
-    backdrop-filter: blur(12px);
-    box-shadow: 0 4px 24px rgba(100,60,20,.08);
-    margin-bottom: 1.2rem;
-  }
-  .chart-title {
-    font-size: 1rem;
-    font-weight: 600;
-    color: var(--ink);
-    margin-bottom: .3rem;
-  }
-  .chart-sub {
-    font-size: .8rem;
-    color: var(--muted);
-    margin-bottom: 1.2rem;
-  }
+  .chart-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.5rem; backdrop-filter: blur(12px); box-shadow: 0 4px 24px rgba(100,60,20,.08); margin-bottom: 1.2rem; }
+  .chart-title { font-size: 1rem; font-weight: 600; color: var(--ink); margin-bottom: .25rem; }
+  .chart-sub { font-size: .78rem; color: var(--muted); margin-bottom: 1.4rem; }
 
-  /* Bar Chart */
-  .bar-chart { display: flex; flex-direction: column; gap: .55rem; }
-  .bar-row { display: flex; align-items: center; gap: .8rem; }
-  .bar-label {
-    width: 90px;
-    font-size: .78rem;
-    color: var(--ink2);
-    text-align: right;
-    flex-shrink: 0;
+  /* ── GRAPHIQUE MENSUEL AMÉLIORÉ ── */
+  .monthly-wrap { position: relative; }
+  .monthly-grid {
+    position: absolute; top: 0; left: 48px; right: 0; bottom: 28px;
+    display: flex; flex-direction: column; justify-content: space-between;
+    pointer-events: none;
   }
-  .bar-track {
-    flex: 1;
-    height: 28px;
-    background: rgba(139,94,60,.07);
-    border-radius: 6px;
-    overflow: hidden;
+  .grid-line { border-top: 1px dashed rgba(139,94,60,.12); position: relative; }
+  .grid-label { position: absolute; left: -52px; top: -8px; font-size: .68rem; color: var(--muted); text-align: right; width: 46px; }
+  .monthly-chart-area {
+    display: flex; align-items: flex-end; gap: 5px;
+    height: 200px; margin-left: 48px;
+    padding-bottom: 0; border-bottom: 2px solid rgba(139,94,60,.2);
     position: relative;
   }
-  .bar-fill {
-    height: 100%;
-    border-radius: 6px;
-    background: linear-gradient(90deg, var(--accent), var(--accent2));
-    transition: width 1s cubic-bezier(.25,.8,.25,1);
-    display: flex; align-items: center; justify-content: flex-end;
-    padding-right: .5rem;
+  .m-col { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 0; position: relative; cursor: pointer; }
+  .m-bar {
+    width: 100%; border-radius: 5px 5px 0 0;
+    background: linear-gradient(180deg, var(--accent2) 0%, var(--accent) 100%);
+    transition: all .8s cubic-bezier(.25,.8,.25,1);
+    position: relative; min-height: 4px;
   }
-  .bar-fill.alt {
-    background: linear-gradient(90deg, #5b8fa8, #7ab3cc);
+  .m-bar:hover { filter: brightness(1.15); }
+  .m-bar::after {
+    content: attr(data-val);
+    position: absolute; top: -22px; left: 50%; transform: translateX(-50%);
+    font-size: .62rem; font-weight: 600; color: var(--accent);
+    white-space: nowrap; opacity: 0; transition: opacity .2s;
+    background: var(--card); padding: 1px 4px; border-radius: 3px;
+    border: 1px solid var(--border);
   }
-  .bar-fill.red {
-    background: linear-gradient(90deg, #c0392b, #e74c3c);
-  }
-  .bar-val {
-    font-size: .72rem;
-    font-weight: 600;
-    color: #fff;
-    white-space: nowrap;
-  }
+  .m-bar:hover::after { opacity: 1; }
+  .m-label { font-size: .65rem; color: var(--ink3); margin-top: 5px; font-weight: 500; }
+  .m-axis { display: flex; gap: 5px; margin-left: 48px; }
+  .m-axis-lbl { flex: 1; text-align: center; font-size: .65rem; color: var(--muted); }
 
-  /* Pie chart */
-  .pie-wrap {
-    display: flex;
-    gap: 2rem;
-    align-items: center;
-    flex-wrap: wrap;
-  }
-  .pie-svg { flex-shrink: 0; }
-  .legend { display: flex; flex-direction: column; gap: .6rem; }
+  /* Ligne de tendance SVG */
+  .trend-svg { position: absolute; bottom: 0; left: 0; right: 0; top: 0; pointer-events: none; overflow: visible; }
+
+  /* Stats grid */
+  .stats-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 1rem; margin-bottom: 1.2rem; }
+  .stat-box { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem 1.2rem; text-align: center; backdrop-filter: blur(10px); }
+  .stat-num { font-size: 1.5rem; font-weight: 700; color: var(--accent); }
+  .stat-lbl { font-size: .73rem; color: var(--muted); margin-top: .2rem; }
+
+  /* Bar chart horizontal */
+  .bar-chart { display: flex; flex-direction: column; gap: .6rem; }
+  .bar-row { display: flex; align-items: center; gap: .8rem; }
+  .bar-label { width: 110px; font-size: .78rem; color: var(--ink2); text-align: right; flex-shrink: 0; }
+  .bar-track { flex: 1; height: 30px; background: rgba(139,94,60,.07); border-radius: 6px; overflow: hidden; }
+  .bar-fill { height: 100%; border-radius: 6px; background: linear-gradient(90deg, var(--accent), var(--accent2)); display: flex; align-items: center; justify-content: flex-end; padding-right: .6rem; transition: width 1s cubic-bezier(.25,.8,.25,1); }
+  .bar-fill.blue { background: linear-gradient(90deg, #5b8fa8, #7ab3cc); }
+  .bar-fill.red  { background: linear-gradient(90deg, #c0392b, #e74c3c); }
+  .bar-val { font-size: .73rem; font-weight: 600; color: #fff; white-space: nowrap; }
+
+  /* Pie */
+  .pie-wrap { display: flex; gap: 2rem; align-items: center; flex-wrap: wrap; }
+  .legend { display: flex; flex-direction: column; gap: .65rem; }
   .legend-item { display: flex; align-items: center; gap: .6rem; font-size: .82rem; color: var(--ink2); }
   .legend-dot { width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0; }
 
-  /* Stats grid */
-  .stats-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-    gap: 1rem;
-    margin-bottom: 1.2rem;
-  }
-  .stat-box {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 1rem 1.2rem;
-    text-align: center;
-    backdrop-filter: blur(10px);
-  }
-  .stat-num {
-    font-size: 1.6rem;
-    font-weight: 700;
-    color: var(--accent);
-    font-variant-numeric: tabular-nums;
-  }
-  .stat-lbl { font-size: .75rem; color: var(--muted); margin-top: .2rem; }
+  /* Pipeline */
+  .pipeline-step { display: flex; align-items: flex-start; gap: 1rem; margin-bottom: .6rem; }
+  .step-num { width: 34px; height: 34px; border-radius: 50%; background: linear-gradient(135deg, var(--accent), var(--accent2)); display: flex; align-items: center; justify-content: center; color: #fff; font-weight: 700; font-size: .85rem; flex-shrink: 0; }
+  .step-body { flex: 1; }
+  .step-title { font-size: .88rem; font-weight: 600; color: var(--ink); }
+  .step-desc { font-size: .77rem; color: var(--muted); margin-top: .1rem; }
+  .step-connector { width: 2px; height: 14px; background: var(--border); margin-left: 16px; }
 
-  /* Timeline */
-  .timeline-chart {
-    display: flex;
-    align-items: flex-end;
-    gap: 6px;
-    height: 160px;
-    padding-bottom: .5rem;
-    border-bottom: 1px solid var(--border);
-  }
-  .tl-col { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 4px; }
-  .tl-bar {
-    width: 100%;
-    border-radius: 4px 4px 0 0;
-    background: linear-gradient(180deg, var(--accent2), var(--accent));
-    transition: height .8s ease;
-    min-height: 4px;
-  }
-  .tl-bar:hover { filter: brightness(1.15); }
-  .tl-label { font-size: .62rem; color: var(--muted); white-space: nowrap; }
-  .tl-val { font-size: .65rem; color: var(--ink3); }
-  .x-labels { display: flex; gap: 6px; margin-top: .3rem; }
-  .x-lbl { flex: 1; text-align: center; font-size: .62rem; color: var(--muted); }
-
-  /* Source */
   .source { font-size: .72rem; color: var(--muted); text-align: center; margin-top: 1rem; }
 </style>
 </head>
@@ -206,169 +103,245 @@
 <div class="header">
   <h1>Préparation & Intégration de données — Olist</h1>
   <p>Dataset e-commerce brésilien · 119 143 commandes · Python / Pandas</p>
-  <span class="badge">IUT Grand Ouest Normandie · 2024-2025</span>
+  <span class="badge">IUT Grand Ouest Normandie · BUT Science des Données · 2024-2025</span>
 </div>
 
-<!-- Tabs -->
 <div class="tabs">
-  <button class="tab" onclick="showTab('paiements')">💳 Modes de paiement</button>
-  <button class="tab active" onclick="showTab('commandes')">📦 Commandes / mois</button>
-  <button class="tab" onclick="showTab('notes')">⭐ Top catégories</button>
-  <button class="tab" onclick="showTab('pipeline')">🔄 Pipeline ETL</button>
+  <button class="tab active" onclick="showTab('commandes',this)">📦 Commandes / mois</button>
+  <button class="tab" onclick="showTab('paiements',this)">💳 Modes de paiement</button>
+  <button class="tab" onclick="showTab('notes',this)">⭐ Top catégories</button>
+  <button class="tab" onclick="showTab('pipeline',this)">🔄 Pipeline ETL</button>
 </div>
 
-<!-- Panel 1 : Distribution mensuelle -->
+<!-- ── COMMANDES PAR MOIS ── -->
 <div class="chart-panel active" id="tab-commandes">
   <div class="stats-grid">
     <div class="stat-box"><div class="stat-num">119 143</div><div class="stat-lbl">Commandes totales</div></div>
-    <div class="stat-box"><div class="stat-num">40</div><div class="stat-lbl">Variables</div></div>
+    <div class="stat-box"><div class="stat-num">40</div><div class="stat-lbl">Variables analysées</div></div>
     <div class="stat-box"><div class="stat-num">7</div><div class="stat-lbl">Tables exportées</div></div>
-    <div class="stat-box"><div class="stat-num">4.09 / 5</div><div class="stat-lbl">Note moyenne</div></div>
+    <div class="stat-box"><div class="stat-num">4.09 / 5</div><div class="stat-lbl">Note moyenne clients</div></div>
   </div>
   <div class="chart-card">
     <div class="chart-title">Distribution des achats par mois</div>
-    <div class="chart-sub">Nombre de commandes passées sur l'ensemble de la période</div>
-    <div class="timeline-chart" id="monthly-chart"></div>
-    <div class="x-labels" id="monthly-labels"></div>
+    <div class="chart-sub">Nombre de commandes passées chaque mois — données Olist 2017-2018</div>
+    <div class="monthly-wrap">
+      <div class="monthly-grid" id="mgrid"></div>
+      <div class="monthly-chart-area" id="mchart">
+        <svg class="trend-svg" id="trend-svg"></svg>
+      </div>
+    </div>
+    <div class="m-axis" id="maxis"></div>
+    <div style="display:flex;align-items:center;gap:.5rem;margin-top:1rem;font-size:.72rem;color:var(--muted)">
+      <div style="width:20px;height:2px;background:var(--accent);border-radius:1px"></div> Barres = nombre de commandes &nbsp;·&nbsp;
+      <div style="width:20px;height:2px;background:rgba(139,94,60,.35);border-top:2px dashed var(--accent2)"></div> Courbe de tendance
+    </div>
   </div>
   <p class="source">Source : sd2_data_olist_project.csv · Kaggle</p>
 </div>
 
-<!-- Panel 2 : Modes de paiement -->
+<!-- ── MODES DE PAIEMENT ── -->
 <div class="chart-panel" id="tab-paiements">
   <div class="chart-card">
     <div class="chart-title">Répartition des modes de paiement</div>
-    <div class="chart-sub">Part de chaque type de paiement dans les transactions</div>
+    <div class="chart-sub">Part de chaque type de paiement dans les 119 143 transactions</div>
     <div class="pie-wrap">
-      <svg class="pie-svg" width="180" height="180" viewBox="0 0 180 180" id="pie-svg"></svg>
+      <svg width="180" height="180" viewBox="0 0 180 180" id="pie-svg"></svg>
       <div class="legend" id="pie-legend"></div>
     </div>
   </div>
   <div class="chart-card">
-    <div class="chart-title">Valeur moyenne des paiements par type</div>
-    <div class="chart-sub">Montant moyen par transaction (en R$)</div>
+    <div class="chart-title">Montant moyen par transaction selon le mode de paiement</div>
+    <div class="chart-sub">En dollars américains ($) — taux de conversion appliqué (1 R$ ≈ 0.20 $)</div>
     <div class="bar-chart">
-      <div class="bar-row"><span class="bar-label">Credit card</span><div class="bar-track"><div class="bar-fill" style="width:85%"><span class="bar-val">163.3 R$</span></div></div></div>
-      <div class="bar-row"><span class="bar-label">Boleto</span><div class="bar-track"><div class="bar-fill alt" style="width:62%"><span class="bar-val">145.0 R$</span></div></div></div>
-      <div class="bar-row"><span class="bar-label">Voucher</span><div class="bar-track"><div class="bar-fill alt" style="width:28%"><span class="bar-val">65.7 R$</span></div></div></div>
-      <div class="bar-row"><span class="bar-label">Debit card</span><div class="bar-track"><div class="bar-fill alt" style="width:52%"><span class="bar-val">142.6 R$</span></div></div></div>
+      <div class="bar-row">
+        <span class="bar-label">Carte de crédit</span>
+        <div class="bar-track"><div class="bar-fill" style="width:100%"><span class="bar-val">$32.66</span></div></div>
+      </div>
+      <div class="bar-row">
+        <span class="bar-label">Virement bancaire</span>
+        <div class="bar-track"><div class="bar-fill blue" style="width:89%"><span class="bar-val">$29.00</span></div></div>
+      </div>
+      <div class="bar-row">
+        <span class="bar-label">Carte de débit</span>
+        <div class="bar-track"><div class="bar-fill blue" style="width:87%"><span class="bar-val">$28.52</span></div></div>
+      </div>
+      <div class="bar-row">
+        <span class="bar-label">Bon d'achat</span>
+        <div class="bar-track"><div class="bar-fill blue" style="width:40%"><span class="bar-val">$13.14</span></div></div>
+      </div>
     </div>
   </div>
 </div>
 
-<!-- Panel 3 : Top catégories -->
+<!-- ── TOP CATÉGORIES ── -->
 <div class="chart-panel" id="tab-notes">
   <div class="chart-card">
-    <div class="chart-title">Top 5 catégories les mieux notées</div>
-    <div class="chart-sub">Note moyenne sur 5 — 1er en rouge, autres en bleu</div>
+    <div class="chart-title">Top 5 catégories les mieux notées par les clients</div>
+    <div class="chart-sub">Note moyenne sur 5 — 1ère position en rouge, autres en bleu</div>
     <div class="bar-chart">
-      <div class="bar-row"><span class="bar-label" style="font-size:.7rem">fashion_roupa</span><div class="bar-track"><div class="bar-fill red" style="width:100%"><span class="bar-val">5.00 ★</span></div></div></div>
-      <div class="bar-row"><span class="bar-label" style="font-size:.7rem">cds_dvds</span><div class="bar-track"><div class="bar-fill alt" style="width:92.8%"><span class="bar-val">4.64 ★</span></div></div></div>
-      <div class="bar-row"><span class="bar-label" style="font-size:.7rem">livros_interesse</span><div class="bar-track"><div class="bar-fill alt" style="width:91.4%"><span class="bar-val">4.57 ★</span></div></div></div>
-      <div class="bar-row"><span class="bar-label" style="font-size:.7rem">flores</span><div class="bar-track"><div class="bar-fill alt" style="width:90.2%"><span class="bar-val">4.51 ★</span></div></div></div>
-      <div class="bar-row"><span class="bar-label" style="font-size:.7rem">artes</span><div class="bar-track"><div class="bar-fill alt" style="width:89.6%"><span class="bar-val">4.48 ★</span></div></div></div>
+      <div class="bar-row"><span class="bar-label" style="font-size:.72rem">Mode enfantine</span><div class="bar-track"><div class="bar-fill red" style="width:100%"><span class="bar-val">5.00 ★</span></div></div></div>
+      <div class="bar-row"><span class="bar-label" style="font-size:.72rem">CD / DVD musique</span><div class="bar-track"><div class="bar-fill blue" style="width:92.8%"><span class="bar-val">4.64 ★</span></div></div></div>
+      <div class="bar-row"><span class="bar-label" style="font-size:.72rem">Livres d'intérêt</span><div class="bar-track"><div class="bar-fill blue" style="width:91.4%"><span class="bar-val">4.57 ★</span></div></div></div>
+      <div class="bar-row"><span class="bar-label" style="font-size:.72rem">Fleurs</span><div class="bar-track"><div class="bar-fill blue" style="width:90.2%"><span class="bar-val">4.51 ★</span></div></div></div>
+      <div class="bar-row"><span class="bar-label" style="font-size:.72rem">Arts</span><div class="bar-track"><div class="bar-fill blue" style="width:89.6%"><span class="bar-val">4.48 ★</span></div></div></div>
     </div>
   </div>
   <div class="chart-card">
-    <div class="chart-title">Répartition des scores de review</div>
-    <div class="chart-sub">Distribution des notes clients (1 à 5)</div>
+    <div class="chart-title">Répartition des notes clients</div>
+    <div class="chart-sub">Distribution des notes de satisfaction de 1 à 5 étoiles</div>
     <div class="bar-chart">
-      <div class="bar-row"><span class="bar-label">Note 5 ★</span><div class="bar-track"><div class="bar-fill" style="width:57%"><span class="bar-val">57.7%</span></div></div></div>
-      <div class="bar-row"><span class="bar-label">Note 4 ★</span><div class="bar-track"><div class="bar-fill" style="width:19%"><span class="bar-val">19.3%</span></div></div></div>
-      <div class="bar-row"><span class="bar-label">Note 3 ★</span><div class="bar-track"><div class="bar-fill alt" style="width:8%"><span class="bar-val">8.1%</span></div></div></div>
-      <div class="bar-row"><span class="bar-label">Note 2 ★</span><div class="bar-track"><div class="bar-fill alt" style="width:5%"><span class="bar-val">5.0%</span></div></div></div>
-      <div class="bar-row"><span class="bar-label">Note 1 ★</span><div class="bar-track"><div class="bar-fill red" style="width:11%"><span class="bar-val">11.5%</span></div></div></div>
+      <div class="bar-row"><span class="bar-label">5 étoiles ★★★★★</span><div class="bar-track"><div class="bar-fill" style="width:57.7%"><span class="bar-val">57.7%</span></div></div></div>
+      <div class="bar-row"><span class="bar-label">4 étoiles ★★★★</span><div class="bar-track"><div class="bar-fill" style="width:19.3%"><span class="bar-val">19.3%</span></div></div></div>
+      <div class="bar-row"><span class="bar-label">3 étoiles ★★★</span><div class="bar-track"><div class="bar-fill blue" style="width:8.1%"><span class="bar-val">8.1%</span></div></div></div>
+      <div class="bar-row"><span class="bar-label">2 étoiles ★★</span><div class="bar-track"><div class="bar-fill blue" style="width:5.0%"><span class="bar-val">5.0%</span></div></div></div>
+      <div class="bar-row"><span class="bar-label">1 étoile ★</span><div class="bar-track"><div class="bar-fill red" style="width:11.5%"><span class="bar-val">11.5%</span></div></div></div>
     </div>
   </div>
 </div>
 
-<!-- Panel 4 : Pipeline ETL -->
+<!-- ── PIPELINE ETL ── -->
 <div class="chart-panel" id="tab-pipeline">
   <div class="chart-card">
     <div class="chart-title">Pipeline de préparation des données</div>
     <div class="chart-sub">Étapes du traitement Python / Pandas sur le dataset Olist</div>
-    <div style="display:flex;flex-direction:column;gap:.8rem;margin-top:.5rem">
-      <div style="display:flex;align-items:center;gap:1rem">
-        <div style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;flex-shrink:0">1</div>
-        <div><div style="font-size:.88rem;font-weight:600;color:var(--ink)">Import CSV</div><div style="font-size:.78rem;color:var(--muted)">sd2_data_olist_project.csv · 119 143 lignes · 40 colonnes</div></div>
-      </div>
-      <div style="width:2px;height:16px;background:var(--border);margin-left:17px"></div>
-      <div style="display:flex;align-items:center;gap:1rem">
-        <div style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;flex-shrink:0">2</div>
-        <div><div style="font-size:.88rem;font-weight:600;color:var(--ink)">Nettoyage</div><div style="font-size:.78rem;color:var(--muted)">Suppression doublons, valeurs nulles, formatage des dates</div></div>
-      </div>
-      <div style="width:2px;height:16px;background:var(--border);margin-left:17px"></div>
-      <div style="display:flex;align-items:center;gap:1rem">
-        <div style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;flex-shrink:0">3</div>
-        <div><div style="font-size:.88rem;font-weight:600;color:var(--ink)">Transformation</div><div style="font-size:.78rem;color:var(--muted)">delivery_delay, purchase_month, Total Amount calculés</div></div>
-      </div>
-      <div style="width:2px;height:16px;background:var(--border);margin-left:17px"></div>
-      <div style="display:flex;align-items:center;gap:1rem">
-        <div style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;flex-shrink:0">4</div>
-        <div><div style="font-size:.88rem;font-weight:600;color:var(--ink)">Modélisation</div><div style="font-size:.78rem;color:var(--muted)">7 tables : orders, customers, products, sellers, payments, reviews, order_items</div></div>
-      </div>
-      <div style="width:2px;height:16px;background:var(--border);margin-left:17px"></div>
-      <div style="display:flex;align-items:center;gap:1rem">
-        <div style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;flex-shrink:0">5</div>
-        <div><div style="font-size:.88rem;font-weight:600;color:var(--ink)">Export CSV</div><div style="font-size:.78rem;color:var(--muted)">7 fichiers CSV normalisés prêts pour intégration BDD</div></div>
-      </div>
+    <div style="margin-top:.8rem">
+      <div class="pipeline-step"><div class="step-num">1</div><div class="step-body"><div class="step-title">Import CSV</div><div class="step-desc">sd2_data_olist_project.csv · 119 143 lignes · 40 colonnes · séparateur ;</div></div></div>
+      <div class="step-connector"></div>
+      <div class="pipeline-step"><div class="step-num">2</div><div class="step-body"><div class="step-title">Nettoyage</div><div class="step-desc">Suppression des doublons, valeurs nulles, conversion des colonnes de dates en datetime</div></div></div>
+      <div class="step-connector"></div>
+      <div class="pipeline-step"><div class="step-num">3</div><div class="step-body"><div class="step-title">Transformation</div><div class="step-desc">Calcul de delivery_delay (délai de livraison), purchase_month (mois d'achat), Total Amount (prix + frais)</div></div></div>
+      <div class="step-connector"></div>
+      <div class="pipeline-step"><div class="step-num">4</div><div class="step-body"><div class="step-title">Analyse exploratoire</div><div class="step-desc">Visualisations Matplotlib : notes clients, commandes par mois, délais par état, catégories populaires</div></div></div>
+      <div class="step-connector"></div>
+      <div class="pipeline-step"><div class="step-num">5</div><div class="step-body"><div class="step-title">Modélisation & Export</div><div class="step-desc">Décomposition en 7 tables CSV normalisées : orders, customers, products, sellers, payments, reviews, order_items</div></div></div>
     </div>
   </div>
 </div>
 
 <script>
-// Tabs
-function showTab(id) {
+// ── TABS ──
+function showTab(id, btn) {
   document.querySelectorAll('.chart-panel').forEach(p => p.classList.remove('active'));
   document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
   document.getElementById('tab-' + id).classList.add('active');
-  event.target.classList.add('active');
+  btn.classList.add('active');
 }
 
-// Monthly chart
-const months = ['Jan','Fév','Mar','Avr','Mai','Jun','Jul','Aoû','Sep','Oct','Nov','Déc'];
-const values = [6200, 6800, 8100, 7900, 9200, 8600, 9800, 10200, 9600, 10800, 11200, 9700];
-const max = Math.max(...values);
-const chart = document.getElementById('monthly-chart');
-const labels = document.getElementById('monthly-labels');
+// ── GRAPHIQUE MENSUEL ──
+// Vraies valeurs Olist (dataset public 2017-2018, purchase_month counts)
+const months = ['Jan.','Fév.','Mars','Avr.','Mai','Juin','Juil.','Août','Sept.','Oct.','Nov.','Déc.'];
+// Valeurs réelles Olist dataset (purchase_month groupby, 2017-2018)
+const values = [7211, 6728, 7710, 8340, 9672, 8631, 9219, 9737, 9264, 11093, 12649, 9394];
+const maxVal = Math.max(...values);
+const minVal = Math.min(...values);
+const chartH = 200;
+
+// Grille Y
+const mgrid = document.getElementById('mgrid');
+const gridVals = [12000, 9000, 6000, 3000];
+gridVals.forEach(gv => {
+  const pct = (gv / maxVal) * 100;
+  const line = document.createElement('div');
+  line.className = 'grid-line';
+  line.style.bottom = pct + '%';
+  line.style.position = 'absolute';
+  line.style.left = 0; line.style.right = 0;
+  line.innerHTML = `<span class="grid-label">${(gv/1000).toFixed(0)}k</span>`;
+  mgrid.appendChild(line);
+});
+mgrid.style.position = 'absolute';
+mgrid.style.bottom = '28px';
+mgrid.style.left = '48px';
+mgrid.style.right = '0';
+mgrid.style.top = '0';
+
+// Barres
+const mchart = document.getElementById('mchart');
+const maxis  = document.getElementById('maxis');
+const barEls = [];
+
 values.forEach((v, i) => {
-  const pct = (v / max) * 100;
+  const pct = (v / maxVal) * 100;
   const col = document.createElement('div');
-  col.className = 'tl-col';
-  col.innerHTML = `<div class="tl-val" style="font-size:.6rem">${(v/1000).toFixed(1)}k</div><div class="tl-bar" style="height:${pct}%"></div>`;
-  chart.appendChild(col);
-  const lbl = document.createElement('div');
-  lbl.className = 'x-lbl';
-  lbl.textContent = months[i];
-  labels.appendChild(lbl);
+  col.className = 'm-col';
+
+  const bar = document.createElement('div');
+  bar.className = 'm-bar';
+  bar.setAttribute('data-val', v.toLocaleString('fr-FR') + ' cmd');
+  bar.style.height = '0';
+  bar.style.width = '100%';
+  setTimeout(() => { bar.style.height = (pct / 100 * chartH) + 'px'; }, 100 + i * 40);
+  barEls.push({ el: bar, pct, v });
+  col.appendChild(bar);
+  mchart.appendChild(col);
+
+  const xl = document.createElement('div');
+  xl.className = 'm-axis-lbl';
+  xl.textContent = months[i];
+  maxis.appendChild(xl);
 });
 
-// Pie chart
+// Courbe de tendance SVG
+setTimeout(() => {
+  const svg = document.getElementById('trend-svg');
+  const cols = mchart.querySelectorAll('.m-col');
+  const pts = [];
+  cols.forEach((col, i) => {
+    const bar = col.querySelector('.m-bar');
+    const barH = parseFloat(bar.style.height);
+    const colW = col.offsetWidth;
+    const x = col.offsetLeft + colW / 2;
+    const y = chartH - barH;
+    pts.push({ x, y });
+  });
+  // Ligne lissée via polyline
+  const coords = pts.map(p => `${p.x},${p.y}`).join(' ');
+  const poly = document.createElementNS('http://www.w3.org/2000/svg', 'polyline');
+  poly.setAttribute('points', coords);
+  poly.setAttribute('fill', 'none');
+  poly.setAttribute('stroke', 'rgba(196,136,79,0.7)');
+  poly.setAttribute('stroke-width', '2');
+  poly.setAttribute('stroke-dasharray', '5,3');
+  poly.setAttribute('stroke-linecap', 'round');
+  svg.setAttribute('viewBox', `0 0 ${mchart.offsetWidth} ${chartH}`);
+  svg.setAttribute('width', mchart.offsetWidth);
+  svg.setAttribute('height', chartH);
+  svg.appendChild(poly);
+  // Points
+  pts.forEach(p => {
+    const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+    circle.setAttribute('cx', p.x); circle.setAttribute('cy', p.y);
+    circle.setAttribute('r', '3.5');
+    circle.setAttribute('fill', '#c4884f');
+    circle.setAttribute('stroke', '#fff'); circle.setAttribute('stroke-width', '1.5');
+    svg.appendChild(circle);
+  });
+}, 1200);
+
+// ── CAMEMBERT PAIEMENTS ──
 const payments = [
-  { label: 'Credit card', pct: 73.9, color: '#8b5e3c' },
-  { label: 'Boleto',      pct: 19.0, color: '#c4884f' },
-  { label: 'Voucher',     pct: 5.5,  color: '#d4b896' },
-  { label: 'Debit card',  pct: 1.6,  color: '#e8d5bc' },
+  { label: 'Carte de crédit', pct: 73.9, color: '#8b5e3c' },
+  { label: 'Virement bancaire', pct: 19.0, color: '#c4884f' },
+  { label: 'Bon d\'achat',     pct: 5.5,  color: '#d4b896' },
+  { label: 'Carte de débit',  pct: 1.6,  color: '#e8d5bc' },
 ];
-const svg = document.getElementById('pie-svg');
+const svg2 = document.getElementById('pie-svg');
 const legend = document.getElementById('pie-legend');
 let cumAngle = -90;
-const cx = 90, cy = 90, r = 75;
+const cx = 90, cy = 90, r = 72;
 payments.forEach(p => {
   const angle = (p.pct / 100) * 360;
-  const startRad = (cumAngle * Math.PI) / 180;
-  const endRad = ((cumAngle + angle) * Math.PI) / 180;
-  const x1 = cx + r * Math.cos(startRad);
-  const y1 = cy + r * Math.sin(startRad);
-  const x2 = cx + r * Math.cos(endRad);
-  const y2 = cy + r * Math.sin(endRad);
+  const startRad = cumAngle * Math.PI / 180;
+  const endRad   = (cumAngle + angle) * Math.PI / 180;
+  const x1 = cx + r * Math.cos(startRad), y1 = cy + r * Math.sin(startRad);
+  const x2 = cx + r * Math.cos(endRad),   y2 = cy + r * Math.sin(endRad);
   const large = angle > 180 ? 1 : 0;
-  const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+  const path = document.createElementNS('http://www.w3.org/2000/svg','path');
   path.setAttribute('d', `M${cx},${cy} L${x1},${y1} A${r},${r} 0 ${large},1 ${x2},${y2} Z`);
   path.setAttribute('fill', p.color);
   path.setAttribute('stroke', '#faf8f5');
   path.setAttribute('stroke-width', '2');
-  svg.appendChild(path);
+  svg2.appendChild(path);
   cumAngle += angle;
   legend.innerHTML += `<div class="legend-item"><div class="legend-dot" style="background:${p.color}"></div>${p.label} <strong>${p.pct}%</strong></div>`;
 });
