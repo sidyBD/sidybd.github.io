@@ -31,13 +31,14 @@
   <ul class="nav-links">
     <li><a href="#vedette">Vedette</a></li>
     <li><a href="#projets">Projets</a></li>
-    <li><a href="#competences">Compétences</a>
+    <li><a href="#competences">Compétences</a></li>
     <li><a href="#parcours">Parcours</a></li>
+    <li><a href="#mobilite">Mobilité</a></li>
     <li><a href="#cv">CV</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
   <div class="nav-right">
-    <span class="avail-badge"><span class="avail-dot"></span> Disponible</span>
+    <span class="avail-badge"><span class="avail-dot"></span> Alternance sept. 2026</span>
     <div class="theme-wrap">
       <span class="theme-emoji" id="themeEmoji">☀️</span>
       <button class="theme-toggle" id="themeToggle" aria-label="Changer de thème"></button>
@@ -63,7 +64,7 @@
       <div class="stat-card glass"><div class="stat-num">7+</div><div class="stat-lbl">Projets réalisés en formation</div><div class="stat-bar" style="width:85%"></div></div>
       <div class="stat-card glass"><div class="stat-num">3</div><div class="stat-lbl">Ans de formation</div><div class="chart-mini"><div class="bc" style="height:40%"></div><div class="bc" style="height:65%"></div><div class="bc on" style="height:90%"></div><div class="bc" style="height:50%"></div><div class="bc on" style="height:100%"></div></div></div>
       <div class="stat-card glass"><div class="stat-num">10+</div><div class="stat-lbl">Technologies maîtrisées</div><div class="stat-bar" style="width:72%"></div></div>
-      <div class="stat-card glass" style="text-align:center"><div style="font-size:1.6rem">🎓</div><div class="stat-lbl" style="margin-top:.3rem">IUT Grand Ouest Normandie<br><strong style="color:var(--green)">Disponible dès maintenant</strong></div></div>
+      <div class="stat-card glass" style="text-align:center"><div style="font-size:1.6rem">🔍</div><div class="stat-lbl" style="margin-top:.3rem">Recherche une <strong style="color:var(--green)">alternance</strong><br>Chargé d'études statistiques · Sept. 2026</div></div>
     </div>
   </div>
 </section>
@@ -123,37 +124,26 @@
     <div class="no-results" id="noResults">Aucun projet ne correspond à ta recherche.</div>
     <div class="pgrid" id="pgrid">
 
-      <!-- Projet 1 : Élections européennes -->
-      <div class="pcard glass" data-cat="stats" data-search="statistiques R ggplot2 élections européennes 2024 participation abstention normandie choroplète">
-        <div class="cpreview">
-          <img src="rapport/Programmation_Stat.png" alt="Élections européennes" style="width:100%;height:100%;object-fit:cover;display:block;"/>
-        </div>
+      <div class="pcard glass" data-cat="ml" data-search="machine learning python sklearn classification dataset modèle">
+          <img src="rapport/Programmation_Stat.png" alt="Aperçu du projet" style="width:100%;height:100%;object-fit:cover;border-radius:var(--radius);display:block;"/>
         <div class="ctop"><div class="cicon">📈</div><span class="cbadge bst">Statistiques</span></div>
         <div class="cbody">
-          <div class="ctitle">Analyse statistique des Élections Européennes 2024</div>
-          <div class="cdesc">Analyse des résultats des élections européennes de juin 2024 en France métropolitaine et en Normandie : participation, abstention, votes nuls et répartition par listes politiques.</div>
+          <div class="ctitle">Programmation Statistique Automatisée</div>
+          <div class="cdesc">Les élections européennes de juin 2024 ont constitué un moment crucial pour la démocratie française et européenne. À cette occasion, les citoyens français ont été appelés aux urnes pour élire leurs 81 représentants au Parlement européen.</div>
         </div>
         <div class="cstats">
-          <span class="cstat">🗳️ <strong>38 listes</strong> analysées</span>
-          <span class="cstat">🗺️ <strong>5 dép.</strong> normands</span>
+          <span class="cstat">🎯 Précision <strong>87%</strong></span>
+          <span class="cstat">📦 Dataset <strong>50k lignes</strong></span>
         </div>
-        <div class="ctags">
-          <span class="tag">R</span>
-          <span class="tag">ggplot2</span>
-          <span class="tag">dplyr</span>
-          <span class="tag">Cartographie</span>
-          <span class="tag">data.gouv.fr</span>
-        </div>
+        <div class="ctags"><span class="tag">Python</span><span class="tag">scikit-learn</span><span class="tag">Pandas</span></div>
         <div class="cfoot">
           <a href="https://github.com/sidyBD/Programmation_Statistique_Automatisee" class="clink">GitHub →</a>
-          <a href="rapport/Programmation_Stat.pdf" class="clink" style="margin-left:auto">Rapport →</a>
-        </div>
+          <a href="rapport/Programmation_Stat.pdf" class="clink" style="margin-left:auto">Rapport →</a></div>
       </div>
 
-      <!-- Projet 2 : Power BI & DAX -->
       <div class="pcard glass" data-cat="bi" data-search="power bi DAX SUMX mesures sales amount gros margin dashboard business intelligence ventes produits">
         <div class="cpreview">
-          <img src="rapport/DAX.png" alt="Power BI DAX" style="width:100%;height:100%;object-fit:cover;display:block;"/>
+          <img src="rapport/DAX.png" alt="Aperçu Power BI DAX" style="width:100%;height:100%;object-fit:cover;display:block;"/>
         </div>
         <div class="ctop"><div class="cicon">💼</div><span class="cbadge bbi">Business Intelligence</span></div>
         <div class="cbody">
@@ -178,10 +168,9 @@
         </div>
       </div>
 
-      <!-- Projet 3 : Séries temporelles matières premières -->
       <div class="pcard glass" data-cat="stats" data-search="séries temporelles R tabulapdf café cacao pétrole sucre jus orange cotations finance investing.com prévision">
         <div class="cpreview">
-          <img src="rapport/serie_temporelle.png" alt="Séries temporelles" style="width:100%;height:100%;object-fit:cover;display:block;"/>
+          <img src="rapport/serie_temporelle.png" alt="Aperçu du projet" style="width:100%;height:100%;object-fit:cover;display:block;"/>
         </div>
         <div class="ctop"><div class="cicon">📊</div><span class="cbadge bst">Statistiques</span></div>
         <div class="cbody">
@@ -204,10 +193,9 @@
         </div>
       </div>
 
-      <!-- Projet 4 : Prévision lait -->
       <div class="pcard glass" data-cat="stats" data-search="séries temporelles prévision R tsibble TSLM saisonnalité lait vache brebis chèvre agricole FranceAgriMer">
         <div class="cpreview">
-          <img src="rapport/Projet4.png" alt="Prévision lait" style="width:100%;height:100%;object-fit:cover;display:block;"/>
+          <img src="rapport/Projet4.png" alt="Aperçu du projet" style="width:100%;height:100%;object-fit:cover;display:block;"/>
         </div>
         <div class="ctop"><div class="cicon">📉</div><span class="cbadge bst">Statistiques</span></div>
         <div class="cbody">
@@ -229,15 +217,13 @@
           <a href="https://github.com/sidyBD/SAE-Description-prevision-donnees" class="clink">GitHub →</a>
           <a href="rapport/Rapport_projet4.pdf" class="clink" style="margin-left:auto">Rapport →</a>
         </div>
-      </div>
 
-      <!-- Projet 5 : Talend ETL -->
       <div class="pcard glass" data-cat="bi" data-search="talend open studio ETL pipeline données MySQL CSV Global Superstore nettoyage transformation chargement">
         <div class="cpreview">
-          <img src="rapport/Logo-talend.png" alt="Talend ETL" style="width:100%;height:100%;object-fit:cover;display:block;"/>
+          <img src="rapport/Logo-talend.png" alt="Aperçu Talend" style="width:100%;height:100%;object-fit:cover;display:block;"/>
         </div>
-        <div class="ctop"><div class="cicon">🔄</div><span class="cbadge bbi">Business Intelligence</span></div>
-        <div class="cbody">
+         <div class="ctop"><div class="cicon">🔄</div><span class="cbadge bbi">Business Intelligence</span></div>
+         <div class="cbody">
           <div class="ctitle">Pipeline ETL avec Talend Open Studio</div>
           <div class="cdesc">Automatisation d'un processus ETL complet sur le dataset Global Superstore : import CSV, nettoyage, transformation des données et chargement en base MySQL.</div>
         </div>
@@ -257,10 +243,9 @@
         </div>
       </div>
 
-      <!-- Projet 6 : Olist -->
       <div class="pcard glass" data-cat="bi" data-search="python pandas olist e-commerce préparation données nettoyage transformation normalisation ETL CSV Kaggle matplotlib valeurs manquantes doublons">
         <div class="cpreview">
-          <img src="rapport/prepa_donnees.png" alt="Olist" style="width:100%;height:100%;object-fit:cover;display:block;"/>
+          <img src="rapport/prepa_donnes.png" alt="Aperçu Olist" style="width:100%;height:100%;object-fit:cover;display:block;"/>
         </div>
         <div class="ctop"><div class="cicon">🛒</div><span class="cbadge bbi">Business Intelligence</span></div>
         <div class="cbody">
@@ -278,11 +263,13 @@
           <span class="tag">Nettoyage</span>
           <span class="tag">Normalisation</span>
           <span class="tag">Kaggle</span>
-        </div>
-        <div class="cfoot">
-          <a href="rapport/Rapport_Olist.html" class="clink" style="margin-left:auto">Rapport →</a>
-        </div>
       </div>
+      <div class="cfoot">
+        <a href="rapport/Rapport_Olist.html" download class="clink" style="margin-left:auto">Rapport →</a>
+      </div>
+    </div>
+
+      
 
     </div>
   </div>
@@ -298,33 +285,24 @@
       <p class="sdesc">Un panorama des outils et technologies acquis au fil de la formation.</p>
     </div>
     <div class="sgrid">
-
       <div class="sgroup glass">
         <div class="sgtitle">Langages & Scripts</div>
         <div class="sitem"><div class="srow"><span>Python</span><span class="spct">90%</span></div><div class="strack"><div class="sfill" data-w=".90"></div></div></div>
-        <div class="sitem"><div class="srow"><span>R</span><span class="spct">85%</span></div><div class="strack"><div class="sfill" data-w=".85"></div></div></div>
-        <div class="sitem"><div class="srow"><span>SQL</span><span class="spct">87%</span></div><div class="strack"><div class="sfill" data-w=".87"></div></div></div>
-        <div class="sitem"><div class="srow"><span>PHP</span><span class="spct">85%</span></div><div class="strack"><div class="sfill" data-w=".85"></div></div></div>
-        <div class="sitem"><div class="srow"><span>HTML / CSS</span><span class="spct">97%</span></div><div class="strack"><div class="sfill" data-w=".97"></div></div></div>
-        <div class="sitem"><div class="srow"><span>JavaScript</span><span class="spct">75%</span></div><div class="strack"><div class="sfill" data-w=".75"></div></div></div>
+        <div class="sitem"><div class="srow"><span>R</span><span class="spct">75%</span></div><div class="strack"><div class="sfill" data-w=".75"></div></div></div>
+        <div class="sitem"><div class="srow"><span>SQL</span><span class="spct">85%</span></div><div class="strack"><div class="sfill" data-w=".85"></div></div></div>
       </div>
-
       <div class="sgroup glass">
         <div class="sgtitle">Visualisation & BI</div>
-        <div class="sitem"><div class="srow"><span>Power BI</span><span class="spct">93%</span></div><div class="strack"><div class="sfill" data-w=".93"></div></div></div>
-        <div class="sitem"><div class="srow"><span>Tableau</span><span class="spct">90%</span></div><div class="strack"><div class="sfill" data-w=".90"></div></div></div>
+        <div class="sitem"><div class="srow"><span>Power BI</span><span class="spct">80%</span></div><div class="strack"><div class="sfill" data-w=".80"></div></div></div>
+        <div class="sitem"><div class="srow"><span>Tableau</span><span class="spct">70%</span></div><div class="strack"><div class="sfill" data-w=".70"></div></div></div>
         <div class="sitem"><div class="srow"><span>Matplotlib / Seaborn</span><span class="spct">85%</span></div><div class="strack"><div class="sfill" data-w=".85"></div></div></div>
-        <div class="sitem"><div class="srow"><span>Qlik Sense</span><span class="spct">85%</span></div><div class="strack"><div class="sfill" data-w=".85"></div></div></div>
-        <div class="sitem"><div class="srow"><span>Talend</span><span class="spct">65%</span></div><div class="strack"><div class="sfill" data-w=".65"></div></div></div>
       </div>
-
       <div class="sgroup glass">
         <div class="sgtitle">Bases de données</div>
+        <div class="sitem"><div class="srow"><span>PostgreSQL</span><span class="spct">80%</span></div><div class="strack"><div class="sfill" data-w=".80"></div></div></div>
         <div class="sitem"><div class="srow"><span>MySQL</span><span class="spct">75%</span></div><div class="strack"><div class="sfill" data-w=".75"></div></div></div>
-        <div class="sitem"><div class="srow"><span>SQLite</span><span class="spct">85%</span></div><div class="strack"><div class="sfill" data-w=".85"></div></div></div>
         <div class="sitem"><div class="srow"><span>Modélisation (MCD/MLD)</span><span class="spct">70%</span></div><div class="strack"><div class="sfill" data-w=".70"></div></div></div>
       </div>
-
       <div class="sgroup glass">
         <div class="sgtitle">Langues</div>
         <div class="sitem">
@@ -336,97 +314,60 @@
           <div class="strack"><div class="sfill" data-w=".95"></div></div>
         </div>
         <div class="sitem">
-          <div class="srow"><span>Espagnol</span><span class="spct">Intermédiaire</span></div>
-          <div class="strack"><div class="sfill" data-w=".55"></div></div>
-        </div>
-        <div class="sitem">
           <div class="srow"><span>Wolof</span><span class="spct">Natif</span></div>
           <div class="strack"><div class="sfill" data-w="1.0"></div></div>
         </div>
       </div>
-
     </div>
-
-    <!-- Mots clés -->
-    <div style="margin-top:2rem">
-      <div class="slbl" style="margin-bottom:.4rem">Mots clés</div>
-      <p style="font-size:.78rem;color:var(--ink-muted);margin-bottom:.9rem;font-weight:300;max-width:520px">Concepts, outils et librairies rencontrés au fil de ma formation en science des données.</p>
-      <div style="display:flex;flex-wrap:wrap;gap:.5rem">
-        <!-- Librairies Python -->
-        <span class="tag" style="font-size:.8rem;padding:.35rem .8rem">Pandas</span>
-        <span class="tag" style="font-size:.8rem;padding:.35rem .8rem">NumPy</span>
-        <span class="tag" style="font-size:.8rem;padding:.35rem .8rem">Matplotlib</span>
-        <span class="tag" style="font-size:.8rem;padding:.35rem .8rem">Seaborn</span>
-        <span class="tag" style="font-size:.8rem;padding:.35rem .8rem">scikit-learn</span>
-        <span class="tag" style="font-size:.8rem;padding:.35rem .8rem">SciPy</span>
-        <span class="tag" style="font-size:.8rem;padding:.35rem .8rem">Statsmodels</span>
-        <span class="tag" style="font-size:.8rem;padding:.35rem .8rem">Plotly</span>
-        <!-- Librairies R -->
-        <span class="tag" style="font-size:.8rem;padding:.35rem .8rem">ggplot2</span>
-        <span class="tag" style="font-size:.8rem;padding:.35rem .8rem">dplyr</span>
-        <span class="tag" style="font-size:.8rem;padding:.35rem .8rem">tidyr</span>
-        <span class="tag" style="font-size:.8rem;padding:.35rem .8rem">tidyverse</span>
-        <span class="tag" style="font-size:.8rem;padding:.35rem .8rem">tsibble</span>
-        <span class="tag" style="font-size:.8rem;padding:.35rem .8rem">fable</span>
-        <span class="tag" style="font-size:.8rem;padding:.35rem .8rem">tabulapdf</span>
-        <span class="tag" style="font-size:.8rem;padding:.35rem .8rem">openxlsx</span>
-        <span class="tag" style="font-size:.8rem;padding:.35rem .8rem">sf</span>
-        <span class="tag" style="font-size:.8rem;padding:.35rem .8rem">lubridate</span>
-        <!-- ETL & BI -->
-        <span class="tag" style="font-size:.8rem;padding:.35rem .8rem">Talend Open Studio</span>
-        <span class="tag" style="font-size:.8rem;padding:.35rem .8rem">DAX</span>
-        <span class="tag" style="font-size:.8rem;padding:.35rem .8rem">tMap</span>
-        <span class="tag" style="font-size:.8rem;padding:.35rem .8rem">tFilterRow</span>
-        <span class="tag" style="font-size:.8rem;padding:.35rem .8rem">tAggregateRow</span>
-        <span class="tag" style="font-size:.8rem;padding:.35rem .8rem">ETL</span>
-        <span class="tag" style="font-size:.8rem;padding:.35rem .8rem">Datawarehouse</span>
-        <span class="tag" style="font-size:.8rem;padding:.35rem .8rem">SUMX</span>
-        <!-- Concepts ML / Stats -->
-        <span class="tag" style="font-size:.8rem;padding:.35rem .8rem">Machine Learning</span>
-        <span class="tag" style="font-size:.8rem;padding:.35rem .8rem">Régression</span>
-        <span class="tag" style="font-size:.8rem;padding:.35rem .8rem">Classification</span>
-        <span class="tag" style="font-size:.8rem;padding:.35rem .8rem">Clustering</span>
-        <span class="tag" style="font-size:.8rem;padding:.35rem .8rem">Séries temporelles</span>
-        <span class="tag" style="font-size:.8rem;padding:.35rem .8rem">Saisonnalité</span>
-        <span class="tag" style="font-size:.8rem;padding:.35rem .8rem">Tendance</span>
-        <span class="tag" style="font-size:.8rem;padding:.35rem .8rem">Prévision</span>
-        <span class="tag" style="font-size:.8rem;padding:.35rem .8rem">TSLM</span>
-        <span class="tag" style="font-size:.8rem;padding:.35rem .8rem">Normalisation</span>
-        <span class="tag" style="font-size:.8rem;padding:.35rem .8rem">Standardisation</span>
-        <span class="tag" style="font-size:.8rem;padding:.35rem .8rem">Valeurs manquantes</span>
-        <span class="tag" style="font-size:.8rem;padding:.35rem .8rem">Valeurs aberrantes</span>
-        <span class="tag" style="font-size:.8rem;padding:.35rem .8rem">ACP</span>
-        <span class="tag" style="font-size:.8rem;padding:.35rem .8rem">Corrélation</span>
-        <span class="tag" style="font-size:.8rem;padding:.35rem .8rem">Heatmap</span>
-        <span class="tag" style="font-size:.8rem;padding:.35rem .8rem">Box plot</span>
-        <span class="tag" style="font-size:.8rem;padding:.35rem .8rem">Scatter plot</span>
-        <span class="tag" style="font-size:.8rem;padding:.35rem .8rem">Sur-échantillonnage</span>
-        <!-- Data -->
-        <span class="tag" style="font-size:.8rem;padding:.35rem .8rem">Nettoyage de données</span>
-        <span class="tag" style="font-size:.8rem;padding:.35rem .8rem">Analyse exploratoire</span>
-        <span class="tag" style="font-size:.8rem;padding:.35rem .8rem">Statistiques descriptives</span>
-        <span class="tag" style="font-size:.8rem;padding:.35rem .8rem">Test d'hypothèse</span>
-        <span class="tag" style="font-size:.8rem;padding:.35rem .8rem">Cartographie</span>
-        <span class="tag" style="font-size:.8rem;padding:.35rem .8rem">Dashboard</span>
-        <span class="tag" style="font-size:.8rem;padding:.35rem .8rem">KPI</span>
-        <span class="tag" style="font-size:.8rem;padding:.35rem .8rem">Modélisation</span>
-        <span class="tag" style="font-size:.8rem;padding:.35rem .8rem">MCD / MLD</span>
-        <span class="tag" style="font-size:.8rem;padding:.35rem .8rem">Jointure</span>
-        <span class="tag" style="font-size:.8rem;padding:.35rem .8rem">Agrégation</span>
-        <span class="tag" style="font-size:.8rem;padding:.35rem .8rem">Pipeline</span>
-        <span class="tag" style="font-size:.8rem;padding:.35rem .8rem">Kaggle</span>
-        <span class="tag" style="font-size:.8rem;padding:.35rem .8rem">Open Data</span>
-        <span class="tag" style="font-size:.8rem;padding:.35rem .8rem">LaTeX</span>
-        <span class="tag" style="font-size:.8rem;padding:.35rem .8rem">Jupyter Notebook</span>
-        <span class="tag" style="font-size:.8rem;padding:.35rem .8rem">Git</span>
-        <span class="tag" style="font-size:.8rem;padding:.35rem .8rem">GitHub</span>
-      </div>
     </div>
-
   </div>
 </section>
 
-
+<!-- CERTIFICATIONS -->
+<section id="certifications">
+  <div class="si">
+    <div class="shd">
+      <div class="slbl">Formations complémentaires</div>
+      <h2 class="stitle">Certifications</h2>
+      <div class="divider"></div>
+      <p class="sdesc">Certifications obtenues ou en cours pour compléter la formation.</p>
+    </div>
+    <div class="cert-grid">
+      <div class="cert-card glass">
+        <div class="cert-icon">🐍</div>
+        <div class="cert-body">
+          <h4>Python for Data Science</h4>
+          <p>DataCamp · À compléter</p>
+          <span class="cert-badge cert-wip">⏳ Prévu</span>
+        </div>
+      </div>
+      <div class="cert-card glass">
+        <div class="cert-icon">📊</div>
+        <div class="cert-body">
+          <h4>Google Data Analytics</h4>
+          <p>Coursera · À compléter</p>
+          <span class="cert-badge cert-wip">⏳ Prévu</span>
+        </div>
+      </div>
+      <div class="cert-card glass">
+        <div class="cert-icon">🤖</div>
+        <div class="cert-body">
+          <h4>Machine Learning Specialization</h4>
+          <p>Coursera — Andrew Ng · À compléter</p>
+          <span class="cert-badge cert-wip">⏳ Prévu</span>
+        </div>
+      </div>
+      <div class="cert-card glass">
+        <div class="cert-icon">💼</div>
+        <div class="cert-body">
+          <h4>Power BI Data Analyst</h4>
+          <p>Microsoft · À compléter</p>
+          <span class="cert-badge cert-wip">⏳ Prévu</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- PARCOURS / TIMELINE -->
 <section id="parcours">
@@ -490,12 +431,19 @@
         <h3>Passionné par la valeur<br>cachée dans les données.</h3>
         <p>Je m'appelle Sidy Babacar, étudiant en 2ème année de BUT Science des Données à l'IUT Grand Ouest Normandie, spécialité Visualisation et Outils décisionnels.</p>
         <p>Ce portfolio rassemble les projets réalisés au fil de ma formation : analyses statistiques, modèles prédictifs, dashboards interactifs et bien plus encore.</p>
-        <p>Actuellement disponible, je recherche des opportunités pour mettre mes compétences en pratique dans un environnement professionnel.</p>
+        <p>Actuellement à la recherche d'une <strong>alternance de Chargé d'études statistiques</strong> pour septembre 2026, je souhaite mettre mes compétences au service d'une organisation tout en poursuivant ma formation.</p>
         <div class="fcard glass">
           <div class="fdot"></div>
           <div>
             <h4>BUT Science des Données — Visualisation & Outils décisionnels</h4>
-            <p>IUT Grand Ouest Normandie · 2022 – 2025 · Disponible dès maintenant</p>
+            <p>IUT Grand Ouest Normandie · 2023 – 2026</p>
+          </div>
+        </div>
+        <div class="fcard glass" style="margin-top:.8rem">
+          <div class="fdot" style="background:var(--green)"></div>
+          <div>
+            <h4 style="color:var(--green)">Recherche active — Alternance</h4>
+            <p>Chargé d'études statistiques · Disponible dès septembre 2026</p>
           </div>
         </div>
       </div>
@@ -607,6 +555,140 @@
   </div>
 </section>
 
+
+<!-- MOBILITÉ -->
+<section id="mobilite" style="background:var(--bg-alt)">
+  <div class="si">
+    <div class="shd">
+      <div class="slbl">Mobilité & Recherche</div>
+      <h2 class="stitle">Alternance — Chargé d'études statistiques</h2>
+      <div class="divider"></div>
+      <p class="sdesc">Disponible dès septembre 2026 — voici les villes où je suis mobile pour une alternance.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 340px;gap:2.5rem;align-items:start">
+
+      <!-- Carte France SVG -->
+      <div class="glass" style="padding:1.5rem;position:relative">
+        <div style="font-size:.78rem;color:var(--ink-muted);margin-bottom:1rem;text-align:center">🗺️ Survole une ville pour voir les détails</div>
+        <svg viewBox="0 0 600 620" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:560px;display:block;margin:0 auto">
+          <!-- Contour simplifié de la France métropolitaine -->
+          <path d="M 180 40 L 220 30 L 280 35 L 330 25 L 380 45 L 420 40 L 450 60 L 470 90 L 490 120 L 500 155 L 490 185 L 510 210 L 520 245 L 510 275 L 495 300 L 510 325 L 500 360 L 480 390 L 460 415 L 430 440 L 400 460 L 370 475 L 340 490 L 310 500 L 280 495 L 250 480 L 220 465 L 195 445 L 170 420 L 150 395 L 130 365 L 120 335 L 110 305 L 105 270 L 110 240 L 100 210 L 95 180 L 100 150 L 115 120 L 130 95 L 150 70 L 165 50 Z"
+            fill="var(--tag-bg)" stroke="var(--glass-border)" stroke-width="2" stroke-linejoin="round"/>
+
+          <!-- Ligne côtière Bretagne -->
+          <path d="M 180 40 L 155 55 L 130 65 L 110 80 L 95 100 L 80 125 L 75 155 L 85 175 L 95 180"
+            fill="none" stroke="var(--glass-border)" stroke-width="1.5"/>
+
+          <!-- Villes — cercles cliquables -->
+          <!-- Paris -->
+          <g class="ville-pin" style="cursor:pointer" onclick="showVille('Paris', '📍 Paris & Île-de-France', 'Ville principale · Toutes lignes de métro et RER')">
+            <circle cx="295" cy="165" r="14" fill="var(--accent)" opacity=".9" stroke="#fff" stroke-width="2"/>
+            <circle cx="295" cy="165" r="22" fill="var(--accent)" opacity=".15"/>
+            <text x="295" y="170" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">P</text>
+            <text x="295" y="195" text-anchor="middle" font-size="11" fill="var(--ink)" font-weight="600">Paris</text>
+          </g>
+
+          <!-- Caen -->
+          <g class="ville-pin" style="cursor:pointer" onclick="showVille('Caen', '📍 Caen — Normandie', 'Ville de formation · IUT Grand Ouest Normandie')">
+            <circle cx="175" cy="140" r="12" fill="var(--accent-2)" opacity=".9" stroke="#fff" stroke-width="2"/>
+            <circle cx="175" cy="140" r="20" fill="var(--accent-2)" opacity=".15"/>
+            <text x="175" y="145" text-anchor="middle" font-size="10" font-weight="700" fill="#fff">C</text>
+            <text x="175" y="165" text-anchor="middle" font-size="11" fill="var(--ink)" font-weight="600">Caen</text>
+          </g>
+
+          <!-- Rouen -->
+          <g class="ville-pin" style="cursor:pointer" onclick="showVille('Rouen', '📍 Rouen — Normandie', 'Capitale de région · Proche de Caen')">
+            <circle cx="230" cy="130" r="12" fill="var(--accent-2)" opacity=".9" stroke="#fff" stroke-width="2"/>
+            <circle cx="230" cy="130" r="20" fill="var(--accent-2)" opacity=".15"/>
+            <text x="230" y="135" text-anchor="middle" font-size="10" font-weight="700" fill="#fff">R</text>
+            <text x="230" y="155" text-anchor="middle" font-size="11" fill="var(--ink)" font-weight="600">Rouen</text>
+          </g>
+
+          <!-- Lyon -->
+          <g class="ville-pin" style="cursor:pointer" onclick="showVille('Lyon', '📍 Lyon — Auvergne-Rhône-Alpes', '2ème métropole française · Fort tissu data & BI')">
+            <circle cx="370" cy="330" r="12" fill="var(--accent)" opacity=".9" stroke="#fff" stroke-width="2"/>
+            <circle cx="370" cy="330" r="20" fill="var(--accent)" opacity=".15"/>
+            <text x="370" y="335" text-anchor="middle" font-size="10" font-weight="700" fill="#fff">L</text>
+            <text x="370" y="355" text-anchor="middle" font-size="11" fill="var(--ink)" font-weight="600">Lyon</text>
+          </g>
+
+          <!-- Bordeaux -->
+          <g class="ville-pin" style="cursor:pointer" onclick="showVille('Bordeaux', '📍 Bordeaux — Nouvelle-Aquitaine', 'Ville dynamique · Secteurs viti, tourisme & data')">
+            <circle cx="195" cy="385" r="12" fill="var(--accent)" opacity=".9" stroke="#fff" stroke-width="2"/>
+            <circle cx="195" cy="385" r="20" fill="var(--accent)" opacity=".15"/>
+            <text x="195" y="390" text-anchor="middle" font-size="10" font-weight="700" fill="#fff">B</text>
+            <text x="195" y="410" text-anchor="middle" font-size="11" fill="var(--ink)" font-weight="600">Bordeaux</text>
+          </g>
+
+          <!-- Nantes -->
+          <g class="ville-pin" style="cursor:pointer" onclick="showVille('Nantes', '📍 Nantes — Pays de la Loire', 'Ville tech & numérique · Forte croissance')">
+            <circle cx="155" cy="285" r="12" fill="var(--accent)" opacity=".9" stroke="#fff" stroke-width="2"/>
+            <circle cx="155" cy="285" r="20" fill="var(--accent)" opacity=".15"/>
+            <text x="155" y="290" text-anchor="middle" font-size="10" font-weight="700" fill="#fff">N</text>
+            <text x="155" y="310" text-anchor="middle" font-size="11" fill="var(--ink)" font-weight="600">Nantes</text>
+          </g>
+
+          <!-- Légende -->
+          <g transform="translate(20, 520)">
+            <circle cx="8" cy="8" r="7" fill="var(--accent)" opacity=".9"/>
+            <text x="22" y="13" font-size="11" fill="var(--ink-3)">Ville prioritaire</text>
+            <circle cx="8" cy="28" r="7" fill="var(--accent-2)" opacity=".9"/>
+            <text x="22" y="33" font-size="11" fill="var(--ink-3)">Ville de formation</text>
+          </g>
+        </svg>
+
+        <!-- Tooltip ville -->
+        <div id="villeTooltip" style="display:none;margin-top:1rem;padding:1rem 1.2rem;background:var(--glass-bg);border:1px solid var(--glass-border);border-radius:var(--radius);backdrop-filter:var(--glass-blur)">
+          <div id="villeName" style="font-family:'Lora',serif;font-size:1rem;font-weight:600;color:var(--ink);margin-bottom:.2rem"></div>
+          <div id="villeDesc" style="font-size:.82rem;color:var(--ink-muted)"></div>
+        </div>
+      </div>
+
+      <!-- Panneau infos -->
+      <div style="display:flex;flex-direction:column;gap:1.2rem;position:sticky;top:80px">
+        <div class="glass" style="padding:1.4rem">
+          <div style="font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);margin-bottom:.9rem">Ce que je recherche</div>
+          <div style="font-family:'Lora',serif;font-size:1.05rem;font-weight:600;color:var(--ink);margin-bottom:.6rem">Alternance — Chargé d'études statistiques</div>
+          <div style="font-size:.84rem;color:var(--ink-2);line-height:1.6;margin-bottom:1rem">Contrat d'apprentissage ou de professionnalisation dans le domaine de la data, des études statistiques ou de la Business Intelligence.</div>
+          <div style="display:flex;flex-direction:column;gap:.5rem">
+            <div style="display:flex;align-items:center;gap:.6rem;font-size:.82rem;color:var(--ink-2)"><span>📅</span> Disponible dès <strong>septembre 2026</strong></div>
+            <div style="display:flex;align-items:center;gap:.6rem;font-size:.82rem;color:var(--ink-2)"><span>🗓️</span> Rythme <strong>3 semaines / 1 semaine</strong></div>
+            <div style="display:flex;align-items:center;gap:.6rem;font-size:.82rem;color:var(--ink-2)"><span>🚗</span> Mobilité <strong>nationale</strong></div>
+            <div style="display:flex;align-items:center;gap:.6rem;font-size:.82rem;color:var(--ink-2)"><span>🎓</span> Formation <strong>BUT Science des Données</strong></div>
+          </div>
+        </div>
+
+        <div class="glass" style="padding:1.4rem">
+          <div style="font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);margin-bottom:.9rem">Villes cibles</div>
+          <div style="display:flex;flex-wrap:wrap;gap:.4rem">
+            <span class="tag" style="font-size:.78rem;padding:.25rem .65rem">🏙️ Paris</span>
+            <span class="tag" style="font-size:.78rem;padding:.25rem .65rem">🏛️ Caen</span>
+            <span class="tag" style="font-size:.78rem;padding:.25rem .65rem">🌉 Rouen</span>
+            <span class="tag" style="font-size:.78rem;padding:.25rem .65rem">🦁 Lyon</span>
+            <span class="tag" style="font-size:.78rem;padding:.25rem .65rem">🍷 Bordeaux</span>
+            <span class="tag" style="font-size:.78rem;padding:.25rem .65rem">🌊 Nantes</span>
+            <span class="tag" style="font-size:.78rem;padding:.25rem .65rem">+ Toute la France</span>
+          </div>
+        </div>
+
+        <a href="#contact" class="btn btn-primary" style="justify-content:center">Me contacter →</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<script>
+function showVille(name, titre, desc) {
+  const tooltip = document.getElementById('villeTooltip');
+  document.getElementById('villeName').textContent = titre;
+  document.getElementById('villeDesc').textContent = desc;
+  tooltip.style.display = 'block';
+  // Highlight
+  document.querySelectorAll('.ville-pin circle:first-child').forEach(c => c.style.opacity = '.4');
+  event.currentTarget.querySelector('circle').style.opacity = '1';
+}
+</script>
 
 <button id="scrollTop" aria-label="Remonter en haut">
   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
