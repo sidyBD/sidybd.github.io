@@ -21,7 +21,9 @@
   .tab { padding: .45rem 1.1rem; border-radius: 20px; border: 1px solid var(--border); background: var(--card); color: var(--ink3); font-size: .82rem; font-weight: 500; cursor: pointer; transition: all .2s; backdrop-filter: blur(10px); }
   .tab.active { background: linear-gradient(135deg, rgba(196,136,79,.85), rgba(139,94,60,.95)); color: #fff; border-color: transparent; }
   .chart-panel { display: none; }
-  .chart-panel.active { display: block; }
+  .chart-panel.active { display: flex; flex-direction: column; align-items: center; }
+  .chart-panel.active .chart-card { width: 100%; max-width: 800px; }
+  .chart-panel.active .stats-grid { width: 100%; max-width: 800px; }
   .chart-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.5rem; backdrop-filter: blur(12px); box-shadow: 0 4px 24px rgba(100,60,20,.08); margin-bottom: 1.2rem; }
   .chart-title { font-size: 1rem; font-weight: 600; color: var(--ink); margin-bottom: .25rem; }
   .chart-sub { font-size: .78rem; color: var(--muted); margin-bottom: 1.4rem; }
