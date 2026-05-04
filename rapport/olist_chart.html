@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" data-theme="light">
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -11,9 +11,14 @@
     --ink: #1a1208; --ink2: #4a3c2a; --ink3: #7a6650; --muted: #a89278;
     --radius: 14px;
   }
+  [data-theme="dark"] {
+    --bg: #100d08; --card: rgba(40,28,16,0.72);
+    --border: rgba(180,120,60,0.24); --accent: #d4915a; --accent2: #f0b87a;
+    --ink: #f5ede2; --ink2: #c8b49a; --ink3: #9a806a; --muted: #6a5444;
+  }
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: 'Segoe UI', system-ui, sans-serif; background: var(--bg); color: var(--ink); min-height: 100vh; padding: 2rem; }
-  .header { text-align: center; margin-bottom: 2rem; }
+  body { font-family: 'Segoe UI', system-ui, sans-serif; background: var(--bg); color: var(--ink); min-height: 100vh; padding: 2rem; transition: background .35s, color .35s; }
+  .header { text-align: center; margin-bottom: 2rem; position: relative; }
   .header h1 { font-size: 1.5rem; font-weight: 700; color: var(--ink); margin-bottom: .3rem; }
   .header p { font-size: .88rem; color: var(--ink3); }
   .badge { display: inline-block; background: rgba(139,94,60,.1); color: var(--accent); font-size: .72rem; font-weight: 600; padding: .25rem .7rem; border-radius: 20px; margin-top: .5rem; }
@@ -98,11 +103,41 @@
   .step-connector { width: 2px; height: 14px; background: var(--border); margin-left: 16px; }
 
   .source { font-size: .72rem; color: var(--muted); text-align: center; margin-top: 1rem; }
+
+  /* ── DARK MODE TOGGLE ── */
+  .theme-btn {
+    position: absolute; top: 0; right: 0;
+    display: flex; align-items: center; gap: .4rem;
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 20px; padding: .35rem .8rem;
+    cursor: pointer; font-size: .8rem; color: var(--ink3);
+    transition: all .2s; backdrop-filter: blur(10px);
+  }
+  .theme-btn:hover { border-color: var(--accent); color: var(--accent); }
+  .theme-toggle-track {
+    width: 36px; height: 20px; border-radius: 10px;
+    background: var(--border); position: relative;
+    transition: background .3s;
+  }
+  [data-theme="dark"] .theme-toggle-track { background: var(--accent); }
+  .theme-toggle-thumb {
+    width: 14px; height: 14px; border-radius: 50%;
+    background: #fff; position: absolute; top: 3px; left: 3px;
+    transition: transform .3s;
+  }
+  [data-theme="dark"] .theme-toggle-thumb { transform: translateX(16px); }
+
+  /* transitions globales */
+  .chart-card, .stat-box, .tab, .bar-track { transition: background .35s, border-color .35s; }
 </style>
 </head>
 <body>
 
 <div class="header">
+  <button class="theme-btn" id="themeToggle" onclick="toggleTheme()">
+    <span id="themeEmoji">☀️</span>
+    <div class="theme-toggle-track"><div class="theme-toggle-thumb"></div></div>
+  </button>
   <h1>Préparation & Intégration de données — Olist</h1>
   <p>Dataset e-commerce brésilien · 119 143 commandes · Python / Pandas</p>
   <span class="badge">IUT Grand Ouest Normandie · BUT Science des Données · 2024-2025</span>
@@ -221,6 +256,28 @@
 </div>
 
 <script>
+// ── DARK MODE ──
+function toggleTheme() {
+  const html = document.documentElement;
+  const dark = html.getAttribute('data-theme') === 'dark';
+  html.setAttribute('data-theme', dark ? 'light' : 'dark');
+  document.getElementById('themeEmoji').textContent = dark ? '☀️' : '🌙';
+  localStorage.setItem('olist-theme', dark ? 'light' : 'dark');
+  // Mettre à jour la couleur du stroke des camemberts
+  document.querySelectorAll('#pie-svg path').forEach(p => {
+    p.setAttribute('stroke', dark ? '#faf8f5' : '#100d08');
+  });
+}
+// Appliquer le thème sauvegardé
+(function() {
+  const saved = localStorage.getItem('olist-theme');
+  const sysDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  if (saved === 'dark' || (!saved && sysDark)) {
+    document.documentElement.setAttribute('data-theme', 'dark');
+    document.getElementById('themeEmoji').textContent = '🌙';
+  }
+})();
+
 // ── TABS ──
 function showTab(id, btn) {
   document.querySelectorAll('.chart-panel').forEach(p => p.classList.remove('active'));
