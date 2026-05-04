@@ -1,4 +1,3 @@
-
 /* ══ LOADER ══ */
 window.addEventListener('load', () => {
   document.getElementById('loader').classList.add('hidden');
@@ -41,7 +40,6 @@ const counterObs = new IntersectionObserver(entries => {
 const heroVisual = document.querySelector('.hero-visual');
 if (heroVisual) counterObs.observe(heroVisual);
 
-
 /* ══ FORMULAIRE CONTACT ══ */
 function submitForm(e) {
   e.preventDefault();
@@ -62,10 +60,10 @@ function submitForm(e) {
 /* ══════════════════════════════════════
    DARK MODE
 ══════════════════════════════════════ */
-const html   = document.documentElement;
-const toggle = document.getElementById('themeToggle');
-const emoji  = document.getElementById('themeEmoji');
-const saved  = localStorage.getItem('theme');
+const html    = document.documentElement;
+const toggle  = document.getElementById('themeToggle');
+const emoji   = document.getElementById('themeEmoji');
+const saved   = localStorage.getItem('theme');
 const sysDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
 
 if (saved === 'dark' || (!saved && sysDark)) {
@@ -81,7 +79,7 @@ toggle.addEventListener('click', () => {
 });
 
 /* ══════════════════════════════════════
-   FILTRES PROJETS
+   FILTRES & RECHERCHE PROJETS
 ══════════════════════════════════════ */
 let currentCat = 'all';
 
@@ -92,27 +90,28 @@ function filterP(cat, btn) {
   applyFilters();
 }
 
-/* ══════════════════════════════════════
-   RECHERCHE
-══════════════════════════════════════ */
-function searchProjects() { applyFilters(); }
+function searchProjects() {
+  applyFilters();
+}
 
 function applyFilters() {
   const q = document.getElementById('searchInput').value.toLowerCase().trim();
   let visible = 0;
 
-  document.querySelectorAll('.pcard').forEach(c => {
-    const catOk = currentCat === 'all' || c.dataset.cat === currentCat;
-    const searchOk = !q
-      || (c.dataset.search || '').includes(q)
-      || (c.querySelector('.ctitle')?.textContent.toLowerCase().includes(q))
-      || (c.querySelector('.cdesc')?.textContent.toLowerCase().includes(q));
+  document.querySelectorAll('.pcard').forEach(card => {
+    const catOk     = currentCat === 'all' || card.getAttribute('data-cat') === currentCat;
+    const title     = card.querySelector('.ctitle')?.textContent.toLowerCase() || '';
+    const desc      = card.querySelector('.cdesc')?.textContent.toLowerCase() || '';
+    const tags      = card.getAttribute('data-search')?.toLowerCase() || '';
+    const searchOk  = !q || title.includes(q) || desc.includes(q) || tags.includes(q);
+
     const show = catOk && searchOk;
-    c.style.display = show ? '' : 'none';
+    card.style.display = show ? '' : 'none';
     if (show) visible++;
   });
 
-  document.getElementById('noResults').style.display = visible === 0 ? 'block' : 'none';
+  const noResults = document.getElementById('noResults');
+  if (noResults) noResults.style.display = visible === 0 ? 'block' : 'none';
 }
 
 /* ══════════════════════════════════════
