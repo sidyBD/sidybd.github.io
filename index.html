@@ -500,61 +500,79 @@
       <!-- Carte France SVG -->
       <div class="glass" style="padding:1.5rem;position:relative">
         <div style="font-size:.78rem;color:var(--ink-muted);margin-bottom:1rem;text-align:center">🗺️ Clique sur une ville pour voir les détails</div>
-        <svg viewBox="0 0 600 620" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:560px;display:block;margin:0 auto">
-          <path d="M 180 40 L 220 30 L 280 35 L 330 25 L 380 45 L 420 40 L 450 60 L 470 90 L 490 120 L 500 155 L 490 185 L 510 210 L 520 245 L 510 275 L 495 300 L 510 325 L 500 360 L 480 390 L 460 415 L 430 440 L 400 460 L 370 475 L 340 490 L 310 500 L 280 495 L 250 480 L 220 465 L 195 445 L 170 420 L 150 395 L 130 365 L 120 335 L 110 305 L 105 270 L 110 240 L 100 210 L 95 180 L 100 150 L 115 120 L 130 95 L 150 70 L 165 50 Z"
-            fill="var(--tag-bg)" stroke="var(--glass-border)" stroke-width="2" stroke-linejoin="round"/>
-          <path d="M 180 40 L 155 55 L 130 65 L 110 80 L 95 100 L 80 125 L 75 155 L 85 175 L 95 180"
+        <svg viewBox="0 0 600 640" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:560px;display:block;margin:0 auto">
+
+          <!-- Contour France métropolitaine -->
+          <path d="
+            M 302 28 C 318 26, 338 30, 352 36 C 368 42, 382 38, 396 44
+            C 412 52, 424 48, 438 58 C 452 68, 458 82, 466 96
+            C 474 110, 484 118, 490 132 C 498 150, 496 166, 500 182
+            C 504 198, 514 210, 516 226 C 518 244, 512 258, 514 274
+            C 516 290, 524 302, 520 318 C 516 334, 504 342, 498 356
+            C 490 372, 490 388, 480 402 C 470 416, 456 424, 444 436
+            C 430 450, 416 458, 400 466 C 382 474, 364 478, 346 484
+            C 326 490, 306 492, 286 490 C 266 488, 248 480, 230 472
+            C 212 464, 196 452, 180 440 C 164 428, 150 414, 138 398
+            C 124 380, 116 360, 108 342 C 100 322, 96 302, 94 282
+            C 92 262, 96 242, 96 222 C 96 204, 90 188, 92 170
+            C 94 152, 102 138, 106 120 C 110 104, 112 88, 120 74
+            C 128 60, 138 50, 150 42 C 162 34, 176 30, 192 28
+            C 208 26, 224 30, 240 30 C 256 30, 270 26, 286 26
+            C 292 26, 298 27, 302 28 Z
+          " fill="var(--tag-bg)" stroke="var(--glass-border)" stroke-width="2"/>
+
+          <!-- Bretagne -->
+          <path d="M 192 28 C 178 32, 162 38, 146 46 C 128 56, 112 68, 96 80 C 80 92, 66 106, 58 122 C 50 138, 50 154, 54 168 C 58 180, 66 188, 74 196 C 82 204, 92 208, 96 222"
             fill="none" stroke="var(--glass-border)" stroke-width="1.5"/>
+
+          <!-- Alpes / frontière est -->
+          <path d="M 500 182 C 508 190, 516 198, 520 210 C 524 222, 522 234, 524 246 C 526 258, 530 270, 528 282 C 526 294, 518 302, 514 314 C 510 326, 510 338, 504 350 C 498 362, 490 372, 482 382 C 474 392, 466 400, 456 410 C 448 420, 442 430, 434 438"
+            fill="none" stroke="var(--glass-border)" stroke-width="1"/>
+
+          <!-- Pyrénées -->
+          <path d="M 138 398 C 144 410, 148 422, 152 434 C 156 446, 160 458, 168 468 C 178 476, 192 480, 208 480 C 224 480, 240 476, 252 472 C 264 468, 274 466, 286 490"
+            fill="none" stroke="var(--glass-border)" stroke-width="1"/>
+
           <!-- Paris -->
-          <g class="ville-pin" style="cursor:pointer" onclick="showVille(this, '📍 Paris & Île-de-France', 'Ville principale · Toutes lignes de métro et RER')">
-            <circle cx="295" cy="165" r="14" fill="var(--accent)" opacity=".9" stroke="#fff" stroke-width="2"/>
-            <circle cx="295" cy="165" r="22" fill="var(--accent)" opacity=".15"/>
-            <text x="295" y="170" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">P</text>
-            <text x="295" y="195" text-anchor="middle" font-size="11" fill="var(--ink)" font-weight="600">Paris</text>
+          <g class="ville-pin" style="cursor:pointer" onclick="showVille(this, '📍 Paris & Île-de-France', 'Capitale · Très nombreuses opportunités data & statistiques')">
+            <circle cx="305" cy="200" r="14" fill="var(--accent)" opacity=".9" stroke="#fff" stroke-width="2"/>
+            <circle cx="305" cy="200" r="22" fill="var(--accent)" opacity=".15"/>
+            <text x="305" y="205" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">P</text>
+            <text x="305" y="228" text-anchor="middle" font-size="11" fill="var(--ink)" font-weight="600">Paris</text>
           </g>
+
           <!-- Caen -->
-          <g class="ville-pin" style="cursor:pointer" onclick="showVille(this, '📍 Caen — Normandie', 'Ville de formation · IUT Grand Ouest Normandie')">
-            <circle cx="175" cy="140" r="12" fill="var(--accent-2)" opacity=".9" stroke="#fff" stroke-width="2"/>
-            <circle cx="175" cy="140" r="20" fill="var(--accent-2)" opacity=".15"/>
-            <text x="175" y="145" text-anchor="middle" font-size="10" font-weight="700" fill="#fff">C</text>
-            <text x="175" y="165" text-anchor="middle" font-size="11" fill="var(--ink)" font-weight="600">Caen</text>
+          <g class="ville-pin" style="cursor:pointer" onclick="showVille(this, '📍 Caen — Normandie', 'Ville de formation · IUT Grand Ouest Normandie · Région familière')">
+            <circle cx="196" cy="162" r="12" fill="var(--accent)" opacity=".9" stroke="#fff" stroke-width="2"/>
+            <circle cx="196" cy="162" r="20" fill="var(--accent)" opacity=".15"/>
+            <text x="196" y="167" text-anchor="middle" font-size="10" font-weight="700" fill="#fff">C</text>
+            <text x="196" y="186" text-anchor="middle" font-size="11" fill="var(--ink)" font-weight="600">Caen</text>
           </g>
-          <!-- Rouen -->
-          <g class="ville-pin" style="cursor:pointer" onclick="showVille(this, '📍 Rouen — Normandie', 'Capitale de région · Proche de Caen')">
-            <circle cx="240" cy="125" r="12" fill="var(--accent-2)" opacity=".9" stroke="#fff" stroke-width="2"/>
-            <circle cx="240" cy="125" r="20" fill="var(--accent-2)" opacity=".15"/>
-            <text x="240" y="130" text-anchor="middle" font-size="10" font-weight="700" fill="#fff">R</text>
-            <text x="240" y="152" text-anchor="middle" font-size="11" fill="var(--ink)" font-weight="600">Rouen</text>
+
+          <!-- Le Havre -->
+          <g class="ville-pin" style="cursor:pointer" onclick="showVille(this, '📍 Le Havre — Normandie', 'Grand port · Secteurs logistique, industrie & data')">
+            <circle cx="218" cy="138" r="12" fill="var(--accent)" opacity=".9" stroke="#fff" stroke-width="2"/>
+            <circle cx="218" cy="138" r="20" fill="var(--accent)" opacity=".15"/>
+            <text x="218" y="143" text-anchor="middle" font-size="10" font-weight="700" fill="#fff">H</text>
+            <text x="218" y="162" text-anchor="middle" font-size="11" fill="var(--ink)" font-weight="600">Le Havre</text>
           </g>
+
           <!-- Lyon -->
-          <g class="ville-pin" style="cursor:pointer" onclick="showVille(this, '📍 Lyon — Auvergne-Rhône-Alpes', '2ème métropole française · Fort tissu data & BI')">
-            <circle cx="370" cy="330" r="12" fill="var(--accent)" opacity=".9" stroke="#fff" stroke-width="2"/>
-            <circle cx="370" cy="330" r="20" fill="var(--accent)" opacity=".15"/>
-            <text x="370" y="335" text-anchor="middle" font-size="10" font-weight="700" fill="#fff">L</text>
-            <text x="370" y="355" text-anchor="middle" font-size="11" fill="var(--ink)" font-weight="600">Lyon</text>
+          <g class="ville-pin" style="cursor:pointer" onclick="showVille(this, '📍 Lyon — Auvergne-Rhône-Alpes', '2ème métropole française · Fort tissu data, BI & statistiques')">
+            <circle cx="392" cy="348" r="12" fill="var(--accent)" opacity=".9" stroke="#fff" stroke-width="2"/>
+            <circle cx="392" cy="348" r="20" fill="var(--accent)" opacity=".15"/>
+            <text x="392" y="353" text-anchor="middle" font-size="10" font-weight="700" fill="#fff">L</text>
+            <text x="392" y="373" text-anchor="middle" font-size="11" fill="var(--ink)" font-weight="600">Lyon</text>
           </g>
-          <!-- Bordeaux -->
-          <g class="ville-pin" style="cursor:pointer" onclick="showVille(this, '📍 Bordeaux — Nouvelle-Aquitaine', 'Ville dynamique · Secteurs viti, tourisme & data')">
-            <circle cx="195" cy="385" r="12" fill="var(--accent)" opacity=".9" stroke="#fff" stroke-width="2"/>
-            <circle cx="195" cy="385" r="20" fill="var(--accent)" opacity=".15"/>
-            <text x="195" y="390" text-anchor="middle" font-size="10" font-weight="700" fill="#fff">B</text>
-            <text x="195" y="410" text-anchor="middle" font-size="11" fill="var(--ink)" font-weight="600">Bordeaux</text>
-          </g>
-          <!-- Nantes -->
-          <g class="ville-pin" style="cursor:pointer" onclick="showVille(this, '📍 Nantes — Pays de la Loire', 'Ville tech & numérique · Forte croissance')">
-            <circle cx="155" cy="285" r="12" fill="var(--accent)" opacity=".9" stroke="#fff" stroke-width="2"/>
-            <circle cx="155" cy="285" r="20" fill="var(--accent)" opacity=".15"/>
-            <text x="155" y="290" text-anchor="middle" font-size="10" font-weight="700" fill="#fff">N</text>
-            <text x="155" y="310" text-anchor="middle" font-size="11" fill="var(--ink)" font-weight="600">Nantes</text>
-          </g>
+
           <!-- Légende -->
-          <g transform="translate(20, 520)">
+          <g transform="translate(16, 550)">
             <circle cx="8" cy="8" r="7" fill="var(--accent)" opacity=".9"/>
-            <text x="22" y="13" font-size="11" fill="var(--ink-3)">Ville prioritaire</text>
-            <circle cx="8" cy="28" r="7" fill="var(--accent-2)" opacity=".9"/>
-            <text x="22" y="33" font-size="11" fill="var(--ink-3)">Ville de formation</text>
+            <text x="22" y="13" font-size="11" fill="var(--ink-3)">Villes cibles pour l'alternance</text>
           </g>
         </svg>
+
+        <!-- Tooltip ville -->
         <div id="villeTooltip" style="display:none;margin-top:1rem;padding:1rem 1.2rem;background:var(--glass-bg);border:1px solid var(--glass-border);border-radius:var(--radius);backdrop-filter:var(--glass-blur)">
           <div id="villeName" style="font-family:'Lora',serif;font-size:1rem;font-weight:600;color:var(--ink);margin-bottom:.2rem"></div>
           <div id="villeDesc" style="font-size:.82rem;color:var(--ink-muted)"></div>
@@ -579,11 +597,8 @@
           <div style="display:flex;flex-wrap:wrap;gap:.4rem">
             <span class="tag" style="font-size:.78rem;padding:.25rem .65rem">🏙️ Paris</span>
             <span class="tag" style="font-size:.78rem;padding:.25rem .65rem">🏛️ Caen</span>
-            <span class="tag" style="font-size:.78rem;padding:.25rem .65rem">🌉 Rouen</span>
+            <span class="tag" style="font-size:.78rem;padding:.25rem .65rem">⚓ Le Havre</span>
             <span class="tag" style="font-size:.78rem;padding:.25rem .65rem">🦁 Lyon</span>
-            <span class="tag" style="font-size:.78rem;padding:.25rem .65rem">🍷 Bordeaux</span>
-            <span class="tag" style="font-size:.78rem;padding:.25rem .65rem">🌊 Nantes</span>
-            <span class="tag" style="font-size:.78rem;padding:.25rem .65rem">+ Toute la France</span>
           </div>
         </div>
         <a href="#contact" class="btn btn-primary" style="justify-content:center">Me contacter →</a>
@@ -592,6 +607,16 @@
     </div>
   </div>
 </section>
+
+<script>
+function showVille(el, titre, desc) {
+  document.getElementById('villeName').textContent = titre;
+  document.getElementById('villeDesc').textContent = desc;
+  document.getElementById('villeTooltip').style.display = 'block';
+  document.querySelectorAll('.ville-pin circle:first-child').forEach(c => c.style.opacity = '.4');
+  el.querySelector('circle').style.opacity = '1';
+}
+</script>
 
 <!-- CV -->
 <section id="cv">
