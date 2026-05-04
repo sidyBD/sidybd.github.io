@@ -41,20 +41,18 @@ const heroVisual = document.querySelector('.hero-visual');
 if (heroVisual) counterObs.observe(heroVisual);
 
 /* ══ FORMULAIRE CONTACT ══ */
-function submitForm(e) {
+function envoyerMail(e) {
   e.preventDefault();
-  const btn = e.target.querySelector('button[type="submit"]');
-  const msg = document.getElementById('formMsg');
-  btn.textContent = 'Envoi…'; btn.disabled = true;
-  setTimeout(() => {
-    btn.textContent = 'Envoyer →'; btn.disabled = false;
-    msg.style.display = 'block';
-    msg.style.background = 'var(--green-bg)';
-    msg.style.color = 'var(--green)';
-    msg.textContent = '✓ Message envoyé ! Je vous répondrai rapidement.';
-    e.target.reset();
-    setTimeout(() => { msg.style.display = 'none'; }, 4000);
-  }, 1000);
+  const nom     = e.target.querySelector('input[type="text"]').value;
+  const email   = e.target.querySelector('input[type="email"]').value;
+  const sujet   = e.target.querySelectorAll('input[type="text"]')[1].value;
+  const message = e.target.querySelector('textarea').value;
+
+  const mailtoLink = `mailto:sidy2002@hotmail.fr`
+    + `?subject=${encodeURIComponent(sujet)}`
+    + `&body=${encodeURIComponent(`Nom : ${nom}\nEmail : ${email}\n\n${message}`)}`;
+
+  window.location.href = mailtoLink;
 }
 
 /* ══════════════════════════════════════
