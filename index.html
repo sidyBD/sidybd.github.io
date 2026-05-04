@@ -356,6 +356,144 @@
     </div>
 
     <!-- Mots clés -->
+
+    <!-- Nuage de mots -->
+<div style="margin-top:2.5rem">
+  <div class="slbl" style="margin-bottom:.4rem">Nuage de mots</div>
+  <p style="font-size:.78rem;color:var(--ink-muted);margin-bottom:1.2rem;font-weight:300;max-width:520px">Représentation visuelle des concepts les plus présents dans ma formation.</p>
+  <div id="wordcloud" style="
+    position:relative;width:100%;height:360px;
+    background:var(--glass-bg);border:1px solid var(--glass-border);
+    border-radius:var(--radius);overflow:hidden;
+    backdrop-filter:var(--glass-blur);
+  "></div>
+</div>
+
+<script>
+(function() {
+  const words = [
+    { text: 'Python',              size: 2.4 },
+    { text: 'R',                   size: 2.2 },
+    { text: 'Machine Learning',    size: 2.2 },
+    { text: 'SQL',                 size: 2.0 },
+    { text: 'Pandas',              size: 1.9 },
+    { text: 'Power BI',            size: 1.9 },
+    { text: 'Séries temporelles',  size: 1.8 },
+    { text: 'ETL',                 size: 1.7 },
+    { text: 'Statistiques',        size: 1.7 },
+    { text: 'ggplot2',             size: 1.6 },
+    { text: 'Visualisation',       size: 1.6 },
+    { text: 'Talend',              size: 1.5 },
+    { text: 'DAX',                 size: 1.5 },
+    { text: 'Normalisation',       size: 1.4 },
+    { text: 'scikit-learn',        size: 1.4 },
+    { text: 'Nettoyage',           size: 1.4 },
+    { text: 'Matplotlib',          size: 1.3 },
+    { text: 'Régression',          size: 1.3 },
+    { text: 'Classification',      size: 1.3 },
+    { text: 'Dashboard',           size: 1.2 },
+    { text: 'ACP',                 size: 1.2 },
+    { text: 'Prévision',           size: 1.2 },
+    { text: 'Kaggle',              size: 1.1 },
+    { text: 'Heatmap',             size: 1.1 },
+    { text: 'Corrélation',         size: 1.1 },
+    { text: 'GitHub',              size: 1.0 },
+    { text: 'Clustering',          size: 1.0 },
+    { text: 'MySQL',               size: 1.0 },
+    { text: 'tidyverse',           size: 0.95 },
+    { text: 'KPI',                 size: 0.95 },
+    { text: 'SMOTE',               size: 0.9 },
+    { text: 'LaTeX',               size: 0.9 },
+    { text: 'tsibble',             size: 0.9 },
+    { text: 'Scatter plot',        size: 0.85 },
+    { text: 'Box plot',            size: 0.85 },
+    { text: 'Pipeline',            size: 0.85 },
+    { text: 'Cartographie',        size: 0.85 },
+    { text: 'Open Data',           size: 0.8 },
+    { text: 'MCD / MLD',           size: 0.8 },
+    { text: 'Feature Engineering', size: 0.8 },
+  ];
+
+  const colors = [
+    'var(--accent)', 'var(--accent-2)',
+    '#5b8fa8', '#7ab3cc',
+    '#8a6fa8', '#a08bc4',
+  ];
+
+  const container = document.getElementById('wordcloud');
+  const W = container.offsetWidth || 700;
+  const H = 360;
+  const placed = [];
+
+  function overlaps(nx, ny, nw, nh) {
+    for (const p of placed) {
+      if (nx < p.x + p.w + 10 && nx + nw + 10 > p.x &&
+          ny < p.y + p.h + 6  && ny + nh + 6  > p.y) return true;
+    }
+    return false;
+  }
+
+  // Trier par taille décroissante
+  words.sort((a, b) => b.size - a.size);
+
+  words.forEach((word, idx) => {
+    const span = document.createElement('span');
+    span.textContent = word.text;
+    span.style.cssText = `
+      position:absolute;
+      font-size:${word.size}rem;
+      font-weight:${word.size > 1.5 ? '700' : word.size > 1.1 ? '600' : '500'};
+      color:${colors[idx % colors.length]};
+      opacity:0;
+      white-space:nowrap;
+      cursor:default;
+      transition:opacity .5s ease, transform .2s;
+      user-select:none;
+      padding:2px 4px;
+      border-radius:4px;
+    `;
+    span.addEventListener('mouseenter', () => {
+      span.style.transform = 'scale(1.15)';
+      span.style.zIndex = '10';
+    });
+    span.addEventListener('mouseleave', () => {
+      span.style.transform = 'scale(1)';
+      span.style.zIndex = '';
+    });
+    container.appendChild(span);
+
+    // Mesurer
+    const sw = span.offsetWidth || word.text.length * word.size * 9;
+    const sh = span.offsetHeight || word.size * 20;
+
+    // Placer — spirale depuis le centre
+    let placed_ok = false;
+    const cx = W / 2, cy = H / 2;
+    for (let r = 0; r < 300; r += 3) {
+      const angle = r * 0.45;
+      const tx = cx + r * Math.cos(angle) - sw / 2;
+      const ty = cy + r * Math.sin(angle) - sh / 2;
+      if (tx < 4 || tx + sw > W - 4 || ty < 4 || ty + sh > H - 4) continue;
+      if (!overlaps(tx, ty, sw, sh)) {
+        span.style.left = tx + 'px';
+        span.style.top  = ty + 'px';
+        placed.push({ x: tx, y: ty, w: sw, h: sh });
+        placed_ok = true;
+        break;
+      }
+    }
+
+    if (placed_ok) {
+      setTimeout(() => { span.style.opacity = '1'; }, idx * 35);
+    } else {
+      span.remove();
+    }
+  });
+})();
+</script>
+
+
+
     <div style="margin-top:2rem">
       <div class="slbl" style="margin-bottom:.4rem">Mots clés</div>
       <p style="font-size:.78rem;color:var(--ink-muted);margin-bottom:.9rem;font-weight:300;max-width:520px">Concepts, outils et librairies rencontrés au fil de ma formation en science des données.</p>
