@@ -1,0 +1,38 @@
+[
+  {
+    "sujet": "20261021-1-plus-gros-client",
+    "accroche": "Ton plus gros client part demain",
+    "theme": "light",
+    "legende": "Si ton plus gros client part demain, il te reste quoi ?\n\nPrends une graphiste avec quatre clients. Un seul lui rapporte la moitié de ce qu'elle gagne. S'il s'en va, la moitié de ses revenus part avec lui. Et comme il le sait, c'est souvent lui qui fixe les prix.\n\nLe bon repère : aucun client au-dessus d'un tiers de ce que tu encaisses dans l'année.\n\nRegarde ce soir qui t'a le plus payé cette année. Tu sauras tout de suite si tu es tranquille.\n\n#entrepreneur #freelance #independant #microentrepreneur #clients #gestion #tpe",
+    "video": "Disyb_Reel_20261021-1-plus-gros-client.mp4",
+    "couverture": "Disyb_Reel_20261021-1-plus-gros-client_couverture.jpg",
+    "created_at": "2026-10-16T21:57:30Z"
+  },
+  {
+    "sujet": "20261021-2-ia-releve-bancaire",
+    "accroche": "L'IA lit ton relevé bancaire",
+    "theme": "dark",
+    "legende": "Tu sais où part ton argent chaque mois ? Ton relevé bancaire, lui, le sait.\n\nTélécharge ton relevé pro depuis ton appli bancaire, enlève ton nom et ton IBAN, et donne-le à l'IA avec le bon prompt. Elle te range tes dépenses et trouve souvent des abonnements que tu avais oubliés. Parfois une centaine d'euros par mois.\n\nCommente BANQUE et je t'envoie le prompt en message.\n\n#ia #intelligenceartificielle #prompt #entrepreneur #freelance #gestion #independant",
+    "video": "Disyb_Reel_20261021-2-ia-releve-bancaire.mp4",
+    "couverture": "Disyb_Reel_20261021-2-ia-releve-bancaire_couverture.jpg",
+    "created_at": "2026-10-16T21:57:45Z"
+  },
+  {
+    "sujet": "20261019-2-trois-formules-excel",
+    "accroche": "3 formules Excel pour ton suivi",
+    "theme": "light",
+    "legende": "3 formules Excel pour suivre ton activité sans tout recompter à la main :\n\n1. SOMME.SI.ENS : ton chiffre d'affaires d'un mois en une cellule.\n=SOMME.SI.ENS(C:C;A:A;\"Mars\") additionne la colonne des montants pour les lignes du mois de mars.\n\n2. RECHERCHEX : tu tapes un client, tu retrouves ce qu'il te doit.\n=RECHERCHEX(G2;B:B;D:D) cherche le client tapé en G2 dans la colonne B et renvoie ce qu'il doit, en colonne D.\n(Disponible sur Excel 2021 et Microsoft 365. Sur une version plus ancienne, RECHERCHEV fait le même travail.)\n\n3. NB.SI : le nombre de factures encore en retard.\n=NB.SI(E:E;\"En retard\") compte les lignes dont le statut est « En retard ».\n\nEnregistre ce Reel pour ton prochain fichier. Et si tu préfères la version déjà montée, nos templates sont en lien dans la bio.\n\n#excel #astuceexcel #formuleexcel #tableaudebord #entrepreneur #freelance #gestion #productivite",
+    "video": "Disyb_Reel_20261019-2-trois-formules-excel.mp4",
+    "couverture": "Disyb_Reel_20261019-2-trois-formules-excel_couverture.jpg",
+    "created_at": "2026-10-16T22:02:30Z"
+  },
+  {
+    "sujet": "20261019-1-tresorerie-en-jours",
+    "accroche": "Ta trésorerie en jours",
+    "theme": "dark",
+    "legende": "Ton chiffre d'affaires ne dit pas combien de temps tu tiens. Ta trésorerie en jours, si.\n\nLe calcul : ta trésorerie divisée par tes dépenses d'un mois normal, fois 30.\nExemple : 12 000 € sur le compte et 6 000 € de dépenses par mois, tu tiens 60 jours si plus rien ne rentre.\n\nEn dessous d'un mois, chaque retard de paiement devient un problème. Regarde ce chiffre une fois par mois : il te dit quand ralentir et quand tu peux investir.\n\nCommente JOURS et je t'envoie la formule prête à coller dans Excel.\n\n#tresorerie #entrepreneur #freelance #microentrepreneur #gestion #tpe #excel #independant",
+    "video": "Disyb_Reel_20261019-1-tresorerie-en-jours.mp4",
+    "couverture": "Disyb_Reel_20261019-1-tresorerie-en-jours_couverture.jpg",
+    "created_at": "2026-10-16T22:02:45Z"
+  }
+]
