@@ -1,38 +1,38 @@
 [
   {
-    "sujet": "20261021-1-plus-gros-client",
-    "accroche": "Ton plus gros client part demain",
-    "theme": "light",
-    "legende": "Si ton plus gros client part demain, il te reste quoi ?\n\nPrends une graphiste avec quatre clients. Un seul lui rapporte la moitié de ce qu'elle gagne. S'il s'en va, la moitié de ses revenus part avec lui. Et comme il le sait, c'est souvent lui qui fixe les prix.\n\nLe bon repère : aucun client au-dessus d'un tiers de ce que tu encaisses dans l'année.\n\nRegarde ce soir qui t'a le plus payé cette année. Tu sauras tout de suite si tu es tranquille.\n\n#entrepreneur #freelance #independant #microentrepreneur #clients #gestion #tpe",
-    "video": "Disyb_Reel_20261021-1-plus-gros-client.mp4",
-    "couverture": "Disyb_Reel_20261021-1-plus-gros-client_couverture.jpg",
-    "created_at": "2026-10-16T21:57:30Z"
-  },
-  {
-    "sujet": "20261021-2-ia-releve-bancaire",
-    "accroche": "L'IA lit ton relevé bancaire",
+    "sujet": "20261021-3-client-qui-ne-paie-pas",
+    "accroche": "Ton client ne paie pas",
     "theme": "dark",
-    "legende": "Tu sais où part ton argent chaque mois ? Ton relevé bancaire, lui, le sait.\n\nTélécharge ton relevé pro depuis ton appli bancaire, enlève ton nom et ton IBAN, et donne-le à l'IA avec le bon prompt. Elle te range tes dépenses et trouve souvent des abonnements que tu avais oubliés. Parfois une centaine d'euros par mois.\n\nCommente BANQUE et je t'envoie le prompt en message.\n\n#ia #intelligenceartificielle #prompt #entrepreneur #freelance #gestion #independant",
-    "video": "Disyb_Reel_20261021-2-ia-releve-bancaire.mp4",
-    "couverture": "Disyb_Reel_20261021-2-ia-releve-bancaire_couverture.jpg",
-    "created_at": "2026-10-16T21:57:45Z"
+    "legende": "Ton client devait payer, et depuis, silence radio ? Pas de panique.\n\n1. Relance dès le lendemain de l'échéance, avec un message court et poli.\n2. Avec un client professionnel, tu peux réclamer 40 € d'indemnité forfaitaire pour frais de recouvrement, dès le premier jour de retard. C'est prévu par le Code de commerce, et cette mention doit figurer sur tes factures.\n3. Chaque semaine, regarde qui te doit encore de l'argent.\n\nCommente RELANCE et je t'envoie mon message de relance prêt à copier.\n\n#freelance #microentrepreneur #facture #independant #entrepreneur #gestion",
+    "video": "Disyb_Reel_20261021-3-client-qui-ne-paie-pas.mp4",
+    "couverture": "Disyb_Reel_20261021-3-client-qui-ne-paie-pas_couverture.jpg",
+    "created_at": "2026-10-16T21:57:50Z"
   },
   {
-    "sujet": "20261019-2-trois-formules-excel",
-    "accroche": "3 formules Excel pour ton suivi",
+    "sujet": "20261021-4-excel-a-jour-tout-seul",
+    "accroche": "Excel à jour tout seul",
     "theme": "light",
-    "legende": "3 formules Excel pour suivre ton activité sans tout recompter à la main :\n\n1. SOMME.SI.ENS : ton chiffre d'affaires d'un mois en une cellule.\n=SOMME.SI.ENS(C:C;A:A;\"Mars\") additionne la colonne des montants pour les lignes du mois de mars.\n\n2. RECHERCHEX : tu tapes un client, tu retrouves ce qu'il te doit.\n=RECHERCHEX(G2;B:B;D:D) cherche le client tapé en G2 dans la colonne B et renvoie ce qu'il doit, en colonne D.\n(Disponible sur Excel 2021 et Microsoft 365. Sur une version plus ancienne, RECHERCHEV fait le même travail.)\n\n3. NB.SI : le nombre de factures encore en retard.\n=NB.SI(E:E;\"En retard\") compte les lignes dont le statut est « En retard ».\n\nEnregistre ce Reel pour ton prochain fichier. Et si tu préfères la version déjà montée, nos templates sont en lien dans la bio.\n\n#excel #astuceexcel #formuleexcel #tableaudebord #entrepreneur #freelance #gestion #productivite",
-    "video": "Disyb_Reel_20261019-2-trois-formules-excel.mp4",
-    "couverture": "Disyb_Reel_20261019-2-trois-formules-excel_couverture.jpg",
-    "created_at": "2026-10-16T22:02:30Z"
+    "legende": "Tu refais ton tableau Excel à la main chaque mois ? Il peut se mettre à jour tout seul.\n\n1. Range tous tes exports (ventes, banque, factures) dans un seul dossier.\n2. Dans Excel : onglet Données, Obtenir des données, À partir d'un dossier. Excel les assemble pour toi.\n3. Chaque mois, glisse le nouvel export dans le dossier et clique sur Actualiser tout (Ctrl + Alt + F5).\n\nEnregistre ce Reel pour ton prochain export. Et si tu préfères un tableau déjà monté, nos templates sont en lien dans la bio.\n\n#excel #astuceexcel #tableaudebord #powerquery #entrepreneur #productivite",
+    "video": "Disyb_Reel_20261021-4-excel-a-jour-tout-seul.mp4",
+    "couverture": "Disyb_Reel_20261021-4-excel-a-jour-tout-seul_couverture.jpg",
+    "created_at": "2026-10-16T21:57:55Z"
   },
   {
-    "sujet": "20261019-1-tresorerie-en-jours",
-    "accroche": "Ta trésorerie en jours",
+    "sujet": "20261021-5-facture-electronique",
+    "accroche": "La facture électronique sans stress",
     "theme": "dark",
-    "legende": "Ton chiffre d'affaires ne dit pas combien de temps tu tiens. Ta trésorerie en jours, si.\n\nLe calcul : ta trésorerie divisée par tes dépenses d'un mois normal, fois 30.\nExemple : 12 000 € sur le compte et 6 000 € de dépenses par mois, tu tiens 60 jours si plus rien ne rentre.\n\nEn dessous d'un mois, chaque retard de paiement devient un problème. Regarde ce chiffre une fois par mois : il te dit quand ralentir et quand tu peux investir.\n\nCommente JOURS et je t'envoie la formule prête à coller dans Excel.\n\n#tresorerie #entrepreneur #freelance #microentrepreneur #gestion #tpe #excel #independant",
-    "video": "Disyb_Reel_20261019-1-tresorerie-en-jours.mp4",
-    "couverture": "Disyb_Reel_20261019-1-tresorerie-en-jours_couverture.jpg",
-    "created_at": "2026-10-16T22:02:45Z"
+    "legende": "La facture électronique te fait peur ? Respire, c'est plus simple que ça en a l'air.\n\nDepuis le 1er septembre 2026, toutes les entreprises, micro-entrepreneurs compris, doivent pouvoir recevoir des factures électroniques, via une plateforme agréée par l'État.\nPour en envoyer à d'autres professionnels, les micro-entreprises ont jusqu'au 1er septembre 2027.\nSi tu ne travailles qu'avec des particuliers, tu n'auras pas de facture électronique à envoyer : tu transmettras seulement les données de tes ventes (e-reporting), à partir de la même date.\n\nLe détail et la liste des plateformes agréées sont sur impots.gouv.fr, rubrique facturation électronique.\n\n#microentrepreneur #autoentrepreneur #factureelectronique #independant #freelance #entrepreneur",
+    "video": "Disyb_Reel_20261021-5-facture-electronique.mp4",
+    "couverture": "Disyb_Reel_20261021-5-facture-electronique_couverture.jpg",
+    "created_at": "2026-10-16T21:58:00Z"
+  },
+  {
+    "sujet": "20261021-6-ia-point-du-mois",
+    "accroche": "L'IA fait le point du mois",
+    "theme": "light",
+    "legende": "Pas de contrôleur de gestion ? L'IA peut faire une partie du travail.\n\nChaque début de mois, donne-lui tes chiffres du mois dernier et pose-lui trois questions simples : qu'est-ce qui a changé, qu'est-ce qui doit m'inquiéter, et que faire ce mois-ci.\n\nMais garde la main : l'IA se trompe parfois et ne connaît pas tes clients. Elle te fait gagner du temps, c'est toi qui décides.\n\nCommente MOIS et je t'envoie les trois questions prêtes à coller.\n\n#ia #intelligenceartificielle #gestion #entrepreneur #freelance #independant",
+    "video": "Disyb_Reel_20261021-6-ia-point-du-mois.mp4",
+    "couverture": "Disyb_Reel_20261021-6-ia-point-du-mois_couverture.jpg",
+    "created_at": "2026-10-16T21:58:05Z"
   }
 ]
