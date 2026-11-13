@@ -1,422 +1,115 @@
 <!DOCTYPE html>
 <html lang="fr" data-theme="light">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Analyse Olist — Préparation & Intégration de données</title>
-<style>
-  :root {
-    --bg: #faf8f5; --card: rgba(255,248,240,0.9);
-    --border: rgba(180,140,100,0.25); --accent: #8b5e3c; --accent2: #c4884f;
-    --ink: #1a1208; --ink2: #4a3c2a; --ink3: #7a6650; --muted: #a89278;
-    --radius: 14px;
-  }
-  [data-theme="dark"] {
-    --bg: #100d08; --card: rgba(40,28,16,0.72);
-    --border: rgba(180,120,60,0.24); --accent: #d4915a; --accent2: #f0b87a;
-    --ink: #f5ede2; --ink2: #c8b49a; --ink3: #9a806a; --muted: #6a5444;
-  }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: 'Segoe UI', system-ui, sans-serif; background: var(--bg); color: var(--ink); min-height: 100vh; padding: 2rem; transition: background .35s, color .35s; }
-  .header { text-align: center; margin-bottom: 2rem; position: relative; }
-  .header h1 { font-size: 1.5rem; font-weight: 700; color: var(--ink); margin-bottom: .3rem; }
-  .header p { font-size: .88rem; color: var(--ink3); }
-  .badge { display: inline-block; background: rgba(139,94,60,.1); color: var(--accent); font-size: .72rem; font-weight: 600; padding: .25rem .7rem; border-radius: 20px; margin-top: .5rem; }
-  .tabs { display: flex; gap: .5rem; justify-content: center; margin-bottom: 1.5rem; flex-wrap: wrap; }
-  .tab { padding: .45rem 1.1rem; border-radius: 20px; border: 1px solid var(--border); background: var(--card); color: var(--ink3); font-size: .82rem; font-weight: 500; cursor: pointer; transition: all .2s; backdrop-filter: blur(10px); }
-  .tab.active { background: linear-gradient(135deg, rgba(196,136,79,.85), rgba(139,94,60,.95)); color: #fff; border-color: transparent; }
-  .chart-panel { display: none; }
-  .chart-panel.active { display: flex; flex-direction: column; align-items: center; }
-  .chart-panel.active .chart-card { width: 100%; max-width: 800px; }
-  .chart-panel.active .stats-grid { width: 100%; max-width: 800px; }
-  .chart-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.5rem; backdrop-filter: blur(12px); box-shadow: 0 4px 24px rgba(100,60,20,.08); margin-bottom: 1.2rem; }
-  .chart-title { font-size: 1rem; font-weight: 600; color: var(--ink); margin-bottom: .25rem; }
-  .chart-sub { font-size: .78rem; color: var(--muted); margin-bottom: 1.4rem; }
-
-  /* ── GRAPHIQUE MENSUEL AMÉLIORÉ ── */
-  .monthly-wrap { position: relative; }
-  .monthly-grid {
-    position: absolute; top: 0; left: 48px; right: 0; bottom: 28px;
-    display: flex; flex-direction: column; justify-content: space-between;
-    pointer-events: none;
-  }
-  .grid-line { border-top: 1px dashed rgba(139,94,60,.12); position: relative; }
-  .grid-label { position: absolute; left: -52px; top: -8px; font-size: .68rem; color: var(--muted); text-align: right; width: 46px; }
-  .monthly-chart-area {
-    display: flex; align-items: flex-end; gap: 5px;
-    height: 200px; margin-left: 48px;
-    padding-bottom: 0; border-bottom: 2px solid rgba(139,94,60,.2);
-    position: relative;
-  }
-  .m-col { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 0; position: relative; cursor: pointer; }
-  .m-bar {
-    width: 100%; border-radius: 5px 5px 0 0;
-    background: linear-gradient(180deg, var(--accent2) 0%, var(--accent) 100%);
-    transition: all .8s cubic-bezier(.25,.8,.25,1);
-    position: relative; min-height: 4px;
-  }
-  .m-bar:hover { filter: brightness(1.15); }
-  .m-bar::after {
-    content: attr(data-val);
-    position: absolute; top: -22px; left: 50%; transform: translateX(-50%);
-    font-size: .62rem; font-weight: 600; color: var(--accent);
-    white-space: nowrap; opacity: 0; transition: opacity .2s;
-    background: var(--card); padding: 1px 4px; border-radius: 3px;
-    border: 1px solid var(--border);
-  }
-  .m-bar:hover::after { opacity: 1; }
-  .m-label { font-size: .65rem; color: var(--ink3); margin-top: 5px; font-weight: 500; }
-  .m-axis { display: flex; gap: 5px; margin-left: 48px; }
-  .m-axis-lbl { flex: 1; text-align: center; font-size: .65rem; color: var(--muted); }
-
-  /* Ligne de tendance SVG */
-  .trend-svg { position: absolute; bottom: 0; left: 0; right: 0; top: 0; pointer-events: none; overflow: visible; }
-
-  /* Stats grid */
-  .stats-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 1rem; margin-bottom: 1.2rem; }
-  .stat-box { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem 1.2rem; text-align: center; backdrop-filter: blur(10px); }
-  .stat-num { font-size: 1.5rem; font-weight: 700; color: var(--accent); }
-  .stat-lbl { font-size: .73rem; color: var(--muted); margin-top: .2rem; }
-
-  /* Bar chart horizontal */
-  .bar-chart { display: flex; flex-direction: column; gap: .6rem; }
-  .bar-row { display: flex; align-items: center; gap: .8rem; }
-  .bar-label { width: 110px; font-size: .78rem; color: var(--ink2); text-align: right; flex-shrink: 0; }
-  .bar-track { flex: 1; height: 30px; background: rgba(139,94,60,.07); border-radius: 6px; overflow: hidden; }
-  .bar-fill { height: 100%; border-radius: 6px; background: linear-gradient(90deg, var(--accent), var(--accent2)); display: flex; align-items: center; justify-content: flex-end; padding-right: .6rem; transition: width 1s cubic-bezier(.25,.8,.25,1); }
-  .bar-fill.blue { background: linear-gradient(90deg, #5b8fa8, #7ab3cc); }
-  .bar-fill.red  { background: linear-gradient(90deg, #c0392b, #e74c3c); }
-  .bar-val { font-size: .73rem; font-weight: 600; color: #fff; white-space: nowrap; }
-
-  /* Pie */
-  .pie-wrap { display: flex; gap: 2rem; align-items: center; flex-wrap: wrap; }
-  .legend { display: flex; flex-direction: column; gap: .65rem; }
-  .legend-item { display: flex; align-items: center; gap: .6rem; font-size: .82rem; color: var(--ink2); }
-  .legend-dot { width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0; }
-
-  /* Pipeline */
-  .pipeline-step { display: flex; align-items: flex-start; gap: 1rem; margin-bottom: .6rem; }
-  .step-num { width: 34px; height: 34px; border-radius: 50%; background: linear-gradient(135deg, var(--accent), var(--accent2)); display: flex; align-items: center; justify-content: center; color: #fff; font-weight: 700; font-size: .85rem; flex-shrink: 0; }
-  .step-body { flex: 1; }
-  .step-title { font-size: .88rem; font-weight: 600; color: var(--ink); }
-  .step-desc { font-size: .77rem; color: var(--muted); margin-top: .1rem; }
-  .step-connector { width: 2px; height: 14px; background: var(--border); margin-left: 16px; }
-
-  .source { font-size: .72rem; color: var(--muted); text-align: center; margin-top: 1rem; }
-
-  /* ── DARK MODE TOGGLE ── */
-  .theme-btn {
-    position: absolute; top: 0; right: 0;
-    display: flex; align-items: center; gap: .4rem;
-    background: var(--card); border: 1px solid var(--border);
-    border-radius: 20px; padding: .35rem .8rem;
-    cursor: pointer; font-size: .8rem; color: var(--ink3);
-    transition: all .2s; backdrop-filter: blur(10px);
-  }
-  .theme-btn:hover { border-color: var(--accent); color: var(--accent); }
-  .theme-toggle-track {
-    width: 36px; height: 20px; border-radius: 10px;
-    background: var(--border); position: relative;
-    transition: background .3s;
-  }
-  [data-theme="dark"] .theme-toggle-track { background: var(--accent); }
-  .theme-toggle-thumb {
-    width: 14px; height: 14px; border-radius: 50%;
-    background: #fff; position: absolute; top: 3px; left: 3px;
-    transition: transform .3s;
-  }
-  [data-theme="dark"] .theme-toggle-thumb { transform: translateX(16px); }
-
-  /* transitions globales */
-  .chart-card, .stat-box, .tab, .bar-track { transition: background .35s, border-color .35s; }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Olist, préparation et intégration de données</title>
+  <meta name="description" content="Préparation des données Olist en Python et tableau de bord Qlik Sense : étapes et résultats.">
+  <link rel="icon" href="../logo.png">
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+  <script>
+    try {
+      var t = localStorage.getItem('theme');
+      if (t === 'dark' || (!t && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+    } catch (e) {}
+  </script>
 </head>
-<body>
+<body class="page-detail">
 
-  <a href="https://sidybd.github.io/" style="
-  display:inline-flex;align-items:center;gap:.5rem;
-  position:fixed;top:1rem;left:1rem;z-index:100;
-  background:var(--card);border:1px solid var(--border);
-  border-radius:20px;padding:.4rem 1rem;
-  font-size:.82rem;font-weight:500;color:var(--ink3);
-  text-decoration:none;backdrop-filter:blur(12px);
-  transition:all .2s;
-" onmouseover="this.style.color='var(--accent)';this.style.borderColor='var(--accent)'"
-   onmouseout="this.style.color='var(--ink3)';this.style.borderColor='var(--border)'">
-  ← Retour au portfolio
-</a>
-
-<div class="header">
-  <button class="theme-btn" id="themeToggle" onclick="toggleTheme()">
-    <span id="themeEmoji">☀️</span>
-    <div class="theme-toggle-track"><div class="theme-toggle-thumb"></div></div>
-  </button>
-  <h1>Préparation & Intégration de données — Olist</h1>
-  <p>Dataset e-commerce brésilien · 119 143 commandes · Python / Pandas</p>
-  <span class="badge">IUT Grand Ouest Normandie · BUT Science des Données · 2024-2025</span>
-</div>
-
-<div class="tabs">
-  <button class="tab active" onclick="showTab('commandes',this)">📦 Commandes / mois</button>
-  <button class="tab" onclick="showTab('paiements',this)">💳 Modes de paiement</button>
-  <button class="tab" onclick="showTab('notes',this)">⭐ Top catégories</button>
-  <button class="tab" onclick="showTab('pipeline',this)">🔄 Pipeline ETL</button>
-</div>
-
-<!-- ── COMMANDES PAR MOIS ── -->
-<div class="chart-panel active" id="tab-commandes">
-  <div class="stats-grid">
-    <div class="stat-box"><div class="stat-num">119 143</div><div class="stat-lbl">Commandes totales</div></div>
-    <div class="stat-box"><div class="stat-num">40</div><div class="stat-lbl">Variables analysées</div></div>
-    <div class="stat-box"><div class="stat-num">7</div><div class="stat-lbl">Tables exportées</div></div>
-    <div class="stat-box"><div class="stat-num">4.09 / 5</div><div class="stat-lbl">Note moyenne clients</div></div>
-  </div>
-  <div class="chart-card">
-    <div class="chart-title">Distribution des achats par mois</div>
-    <div class="chart-sub">Nombre de commandes passées chaque mois — données Olist 2017-2018</div>
-    <div class="monthly-wrap">
-      <div class="monthly-grid" id="mgrid"></div>
-      <div class="monthly-chart-area" id="mchart">
-        <svg class="trend-svg" id="trend-svg"></svg>
-      </div>
-    </div>
-    <div class="m-axis" id="maxis"></div>
-    <div style="display:flex;align-items:center;gap:.5rem;margin-top:1rem;font-size:.72rem;color:var(--muted)">
-      <div style="width:20px;height:2px;background:var(--accent);border-radius:1px"></div> Barres = nombre de commandes &nbsp;·&nbsp;
-      <div style="width:20px;height:2px;background:rgba(139,94,60,.35);border-top:2px dashed var(--accent2)"></div> Courbe de tendance
+<nav class="barre">
+  <a class="nav-logo" href="../index.html">
+    <img src="../logo.png" alt="" onerror="this.remove()">
+    Sidy Babacar Diop <span>•</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="../index.html#projets">Retour aux projets</a></li>
+  </ul>
+  <div class="nav-right">
+    <div class="theme-wrap">
+      <span class="theme-emoji" id="themeEmoji" aria-hidden="true">☀️</span>
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Changer de thème"></button>
     </div>
   </div>
-  <p class="source">Source : sd2_data_olist_project.csv · Kaggle</p>
-</div>
+</nav>
 
-<!-- ── MODES DE PAIEMENT ── -->
-<div class="chart-panel" id="tab-paiements">
-  <div class="chart-card">
-    <div class="chart-title">Répartition des modes de paiement</div>
-    <div class="chart-sub">Part de chaque type de paiement dans les 119 143 transactions</div>
-    <div class="pie-wrap">
-      <svg width="180" height="180" viewBox="0 0 180 180" id="pie-svg"></svg>
-      <div class="legend" id="pie-legend"></div>
-    </div>
-  </div>
-  <div class="chart-card">
-    <div class="chart-title">Montant moyen par transaction selon le mode de paiement</div>
-    <div class="chart-sub">En dollars américains ($) — taux de conversion appliqué (1 R$ ≈ 0.20 $)</div>
-    <div class="bar-chart">
-      <div class="bar-row">
-        <span class="bar-label">Carte de crédit</span>
-        <div class="bar-track"><div class="bar-fill" style="width:100%"><span class="bar-val">$32.66</span></div></div>
-      </div>
-      <div class="bar-row">
-        <span class="bar-label">Virement bancaire</span>
-        <div class="bar-track"><div class="bar-fill blue" style="width:89%"><span class="bar-val">$29.00</span></div></div>
-      </div>
-      <div class="bar-row">
-        <span class="bar-label">Carte de débit</span>
-        <div class="bar-track"><div class="bar-fill blue" style="width:87%"><span class="bar-val">$28.52</span></div></div>
-      </div>
-      <div class="bar-row">
-        <span class="bar-label">Bon d'achat</span>
-        <div class="bar-track"><div class="bar-fill blue" style="width:40%"><span class="bar-val">$13.14</span></div></div>
-      </div>
-    </div>
-  </div>
-</div>
+<main>
 
-<!-- ── TOP CATÉGORIES ── -->
-<div class="chart-panel" id="tab-notes">
-  <div class="chart-card">
-    <div class="chart-title">Top 5 catégories les mieux notées par les clients</div>
-    <div class="chart-sub">Note moyenne sur 5 — 1ère position en rouge, autres en bleu</div>
-    <div class="bar-chart">
-      <div class="bar-row"><span class="bar-label" style="font-size:.72rem">Mode enfantine</span><div class="bar-track"><div class="bar-fill red" style="width:100%"><span class="bar-val">5.00 ★</span></div></div></div>
-      <div class="bar-row"><span class="bar-label" style="font-size:.72rem">CD / DVD musique</span><div class="bar-track"><div class="bar-fill blue" style="width:92.8%"><span class="bar-val">4.64 ★</span></div></div></div>
-      <div class="bar-row"><span class="bar-label" style="font-size:.72rem">Livres d'intérêt</span><div class="bar-track"><div class="bar-fill blue" style="width:91.4%"><span class="bar-val">4.57 ★</span></div></div></div>
-      <div class="bar-row"><span class="bar-label" style="font-size:.72rem">Fleurs</span><div class="bar-track"><div class="bar-fill blue" style="width:90.2%"><span class="bar-val">4.51 ★</span></div></div></div>
-      <div class="bar-row"><span class="bar-label" style="font-size:.72rem">Arts</span><div class="bar-track"><div class="bar-fill blue" style="width:89.6%"><span class="bar-val">4.48 ★</span></div></div></div>
-    </div>
-  </div>
-  <div class="chart-card">
-    <div class="chart-title">Répartition des notes clients</div>
-    <div class="chart-sub">Distribution des notes de satisfaction de 1 à 5 étoiles</div>
-    <div class="bar-chart">
-      <div class="bar-row"><span class="bar-label">5 étoiles ★★★★★</span><div class="bar-track"><div class="bar-fill" style="width:57.7%"><span class="bar-val">57.7%</span></div></div></div>
-      <div class="bar-row"><span class="bar-label">4 étoiles ★★★★</span><div class="bar-track"><div class="bar-fill" style="width:19.3%"><span class="bar-val">19.3%</span></div></div></div>
-      <div class="bar-row"><span class="bar-label">3 étoiles ★★★</span><div class="bar-track"><div class="bar-fill blue" style="width:8.1%"><span class="bar-val">8.1%</span></div></div></div>
-      <div class="bar-row"><span class="bar-label">2 étoiles ★★</span><div class="bar-track"><div class="bar-fill blue" style="width:5.0%"><span class="bar-val">5.0%</span></div></div></div>
-      <div class="bar-row"><span class="bar-label">1 étoile ★</span><div class="bar-track"><div class="bar-fill red" style="width:11.5%"><span class="bar-val">11.5%</span></div></div></div>
-    </div>
-  </div>
-</div>
+  <section>
+    <h1>Commandes Olist : du fichier brut au tableau de bord</h1>
+    <p class="chapo">Olist met en relation des petits vendeurs brésiliens et leurs clients. Le fichier de départ mélangeait commandes, paiements, avis, produits et vendeurs dans une seule table.</p>
+    <ul class="chiffres">
+      <li><strong>119 143</strong><span>lignes dans le fichier brut</span></li>
+      <li><strong>40</strong><span>colonnes au départ</span></li>
+      <li><strong>73</strong><span>catégories de produits</span></li>
+      <li><strong>7</strong><span>tables CSV en sortie</span></li>
+    </ul>
+  </section>
 
-<!-- ── PIPELINE ETL ── -->
-<div class="chart-panel" id="tab-pipeline">
-  <div class="chart-card">
-    <div class="chart-title">Pipeline de préparation des données</div>
-    <div class="chart-sub">Étapes du traitement Python / Pandas sur le dataset Olist</div>
-    <div style="margin-top:.8rem">
-      <div class="pipeline-step"><div class="step-num">1</div><div class="step-body"><div class="step-title">Import CSV</div><div class="step-desc">sd2_data_olist_project.csv · 119 143 lignes · 40 colonnes · séparateur ;</div></div></div>
-      <div class="step-connector"></div>
-      <div class="pipeline-step"><div class="step-num">2</div><div class="step-body"><div class="step-title">Nettoyage</div><div class="step-desc">Suppression des doublons, valeurs nulles, conversion des colonnes de dates en datetime</div></div></div>
-      <div class="step-connector"></div>
-      <div class="pipeline-step"><div class="step-num">3</div><div class="step-body"><div class="step-title">Transformation</div><div class="step-desc">Calcul de delivery_delay (délai de livraison), purchase_month (mois d'achat), Total Amount (prix + frais)</div></div></div>
-      <div class="step-connector"></div>
-      <div class="pipeline-step"><div class="step-num">4</div><div class="step-body"><div class="step-title">Analyse exploratoire</div><div class="step-desc">Visualisations Matplotlib : notes clients, commandes par mois, délais par état, catégories populaires</div></div></div>
-      <div class="step-connector"></div>
-      <div class="pipeline-step"><div class="step-num">5</div><div class="step-body"><div class="step-title">Modélisation & Export</div><div class="step-desc">Décomposition en 7 tables CSV normalisées : orders, customers, products, sellers, payments, reviews, order_items</div></div></div>
-    </div>
-  </div>
-</div>
+  <section>
+    <h2>Ce que j'ai fait dans le notebook</h2>
+    <ol class="etapes">
+      <li>Lecture du fichier <code>sd2_data_olist_project.csv</code> avec pandas et premier tour des colonnes et des types.</li>
+      <li>Sélection de 33 colonnes utiles, puis filtre sur les commandes au statut <code>delivered</code>.</li>
+      <li>Conversion des dates et création de trois variables : délai de livraison en jours, mois d'achat, montant total (prix plus frais de port).</li>
+      <li>Premiers graphiques de contrôle avec matplotlib : notes, délais, achats par mois, catégories.</li>
+      <li>Découpage en sept tables (clients, commandes, articles, paiements, avis, vendeurs, produits) exportées en CSV pour Qlik Sense.</li>
+    </ol>
+  </section>
 
-<script>
-// ── DARK MODE ──
-function toggleTheme() {
-  const html = document.documentElement;
-  const dark = html.getAttribute('data-theme') === 'dark';
-  html.setAttribute('data-theme', dark ? 'light' : 'dark');
-  document.getElementById('themeEmoji').textContent = dark ? '☀️' : '🌙';
-  localStorage.setItem('olist-theme', dark ? 'light' : 'dark');
-  // Mettre à jour la couleur du stroke des camemberts
-  document.querySelectorAll('#pie-svg path').forEach(p => {
-    p.setAttribute('stroke', dark ? '#faf8f5' : '#100d08');
-  });
-}
-// Appliquer le thème sauvegardé
-(function() {
-  const saved = localStorage.getItem('olist-theme');
-  const sysDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-  if (saved === 'dark' || (!saved && sysDark)) {
-    document.documentElement.setAttribute('data-theme', 'dark');
-    document.getElementById('themeEmoji').textContent = '🌙';
-  }
-})();
+  <section>
+    <h2>Où se trouvent les commandes</h2>
+    <p>São Paulo écrase le classement : plus du triple de Rio de Janeiro, qui arrive deuxième.</p>
+    <table class="barres">
+      <caption>Lignes de commande livrées par État, les sept premiers. Source : notebook du projet.</caption>
+      <tbody>
+        <tr><th scope="row">São Paulo</th><td class="trace"><div style="width:100%"></div></td><td class="valeur">48 816</td></tr>
+        <tr><th scope="row">Rio de Janeiro</th><td class="trace"><div style="width:30.7%"></div></td><td class="valeur">14 963</td></tr>
+        <tr><th scope="row">Minas Gerais</th><td class="trace"><div style="width:27.6%"></div></td><td class="valeur">13 496</td></tr>
+        <tr><th scope="row">Rio Grande do Sul</th><td class="trace"><div style="width:13.2%"></div></td><td class="valeur">6 431</td></tr>
+        <tr><th scope="row">Paraná</th><td class="trace"><div style="width:12.1%"></div></td><td class="valeur">5 894</td></tr>
+        <tr><th scope="row">Santa Catarina</th><td class="trace"><div style="width:8.7%"></div></td><td class="valeur">4 239</td></tr>
+        <tr><th scope="row">Bahia</th><td class="trace"><div style="width:8.1%"></div></td><td class="valeur">3 950</td></tr>
+      </tbody>
+    </table>
+  </section>
 
-// ── TABS ──
-function showTab(id, btn) {
-  document.querySelectorAll('.chart-panel').forEach(p => p.classList.remove('active'));
-  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-  document.getElementById('tab-' + id).classList.add('active');
-  btn.classList.add('active');
-}
+  <section>
+    <h2>Combien de temps pour être livré</h2>
+    <p>C'est aussi à São Paulo que les colis arrivent le plus vite. Rio, pourtant deuxième en volume, attend presque deux fois plus longtemps.</p>
+    <table class="barres">
+      <caption>Délai moyen de livraison en jours, les sept États les plus rapides. Source : notebook du projet.</caption>
+      <tbody>
+        <tr><th scope="row">São Paulo</th><td class="trace"><div style="width:56%"></div></td><td class="valeur">8,3 j</td></tr>
+        <tr><th scope="row">Minas Gerais</th><td class="trace"><div style="width:77.8%"></div></td><td class="valeur">11,5 j</td></tr>
+        <tr><th scope="row">Paraná</th><td class="trace"><div style="width:78%"></div></td><td class="valeur">11,5 j</td></tr>
+        <tr><th scope="row">District fédéral</th><td class="trace"><div style="width:84.6%"></div></td><td class="valeur">12,5 j</td></tr>
+        <tr><th scope="row">Santa Catarina</th><td class="trace"><div style="width:98.2%"></div></td><td class="valeur">14,5 j</td></tr>
+        <tr><th scope="row">Rio Grande do Sul</th><td class="trace"><div style="width:99.5%"></div></td><td class="valeur">14,7 j</td></tr>
+        <tr><th scope="row">Rio de Janeiro</th><td class="trace"><div style="width:100%"></div></td><td class="valeur">14,8 j</td></tr>
+      </tbody>
+    </table>
+  </section>
 
-// ── GRAPHIQUE MENSUEL ──
-// Vraies valeurs Olist (dataset public 2017-2018, purchase_month counts)
-const months = ['Jan.','Fév.','Mars','Avr.','Mai','Juin','Juil.','Août','Sept.','Oct.','Nov.','Déc.'];
-// Valeurs réelles Olist dataset (purchase_month groupby, 2017-2018)
-const values = [7211, 6728, 7710, 8340, 9672, 8631, 9219, 9737, 9264, 11093, 12649, 9394];
-const maxVal = Math.max(...values);
-const minVal = Math.min(...values);
-const chartH = 200;
+  <section>
+    <h2>Le tableau de bord Qlik Sense</h2>
+    <p>Une fois les tables chargées, le tableau de bord résume l'activité : 96,48 milliers de commandes, 16,19 millions de réaux de ventes, un panier moyen de 139,89 réaux, une note moyenne de 4,08 sur 5 et douze jours de livraison en moyenne.</p>
+    <p>Un détail à connaître sur les avis : la catégorie la mieux notée affiche 5 sur 5, mais avec très peu de commandes. Parmi les vendeurs, c'est pareil. Une moyenne sans le nombre d'avis derrière ne veut pas dire grand-chose.</p>
+    <figure style="margin-top:2rem">
+      <a href="../img/olist-tableau-de-bord-qlik.png"><img src="../img/olist-tableau-de-bord-qlik.png" alt="Tableau de bord Qlik Sense : indicateurs, catégories les plus commandées, États, ventes mensuelles, modes de paiement et carte des clients" width="1400" height="660"></a>
+      <figcaption>Le tableau de bord tel que rendu dans le projet.</figcaption>
+    </figure>
+    <p style="margin-top:2.5rem"><a class="btn btn-ligne" href="../index.html#projets">Retour aux projets</a></p>
+  </section>
 
-// Grille Y
-const mgrid = document.getElementById('mgrid');
-const gridVals = [12000, 9000, 6000, 3000];
-gridVals.forEach(gv => {
-  const pct = (gv / maxVal) * 100;
-  const line = document.createElement('div');
-  line.className = 'grid-line';
-  line.style.bottom = pct + '%';
-  line.style.position = 'absolute';
-  line.style.left = 0; line.style.right = 0;
-  line.innerHTML = `<span class="grid-label">${(gv/1000).toFixed(0)}k</span>`;
-  mgrid.appendChild(line);
-});
-mgrid.style.position = 'absolute';
-mgrid.style.bottom = '28px';
-mgrid.style.left = '48px';
-mgrid.style.right = '0';
-mgrid.style.top = '0';
+</main>
 
-// Barres
-const mchart = document.getElementById('mchart');
-const maxis  = document.getElementById('maxis');
-const barEls = [];
+<footer>
+  <p>Sidy Babacar Diop. Projet réalisé en 2024-2025 au BUT Science des Données.</p>
+</footer>
 
-values.forEach((v, i) => {
-  const pct = (v / maxVal) * 100;
-  const col = document.createElement('div');
-  col.className = 'm-col';
-
-  const bar = document.createElement('div');
-  bar.className = 'm-bar';
-  bar.setAttribute('data-val', v.toLocaleString('fr-FR') + ' cmd');
-  bar.style.height = '0';
-  bar.style.width = '100%';
-  setTimeout(() => { bar.style.height = (pct / 100 * chartH) + 'px'; }, 100 + i * 40);
-  barEls.push({ el: bar, pct, v });
-  col.appendChild(bar);
-  mchart.appendChild(col);
-
-  const xl = document.createElement('div');
-  xl.className = 'm-axis-lbl';
-  xl.textContent = months[i];
-  maxis.appendChild(xl);
-});
-
-// Courbe de tendance SVG
-setTimeout(() => {
-  const svg = document.getElementById('trend-svg');
-  const cols = mchart.querySelectorAll('.m-col');
-  const pts = [];
-  cols.forEach((col, i) => {
-    const bar = col.querySelector('.m-bar');
-    const barH = parseFloat(bar.style.height);
-    const colW = col.offsetWidth;
-    const x = col.offsetLeft + colW / 2;
-    const y = chartH - barH;
-    pts.push({ x, y });
-  });
-  // Ligne lissée via polyline
-  const coords = pts.map(p => `${p.x},${p.y}`).join(' ');
-  const poly = document.createElementNS('http://www.w3.org/2000/svg', 'polyline');
-  poly.setAttribute('points', coords);
-  poly.setAttribute('fill', 'none');
-  poly.setAttribute('stroke', 'rgba(196,136,79,0.7)');
-  poly.setAttribute('stroke-width', '2');
-  poly.setAttribute('stroke-dasharray', '5,3');
-  poly.setAttribute('stroke-linecap', 'round');
-  svg.setAttribute('viewBox', `0 0 ${mchart.offsetWidth} ${chartH}`);
-  svg.setAttribute('width', mchart.offsetWidth);
-  svg.setAttribute('height', chartH);
-  svg.appendChild(poly);
-  // Points
-  pts.forEach(p => {
-    const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-    circle.setAttribute('cx', p.x); circle.setAttribute('cy', p.y);
-    circle.setAttribute('r', '3.5');
-    circle.setAttribute('fill', '#c4884f');
-    circle.setAttribute('stroke', '#fff'); circle.setAttribute('stroke-width', '1.5');
-    svg.appendChild(circle);
-  });
-}, 1200);
-
-// ── CAMEMBERT PAIEMENTS ──
-const payments = [
-  { label: 'Carte de crédit', pct: 73.9, color: '#8b5e3c' },
-  { label: 'Virement bancaire', pct: 19.0, color: '#c4884f' },
-  { label: 'Bon d\'achat',     pct: 5.5,  color: '#d4b896' },
-  { label: 'Carte de débit',  pct: 1.6,  color: '#e8d5bc' },
-];
-const svg2 = document.getElementById('pie-svg');
-const legend = document.getElementById('pie-legend');
-let cumAngle = -90;
-const cx = 90, cy = 90, r = 72;
-payments.forEach(p => {
-  const angle = (p.pct / 100) * 360;
-  const startRad = cumAngle * Math.PI / 180;
-  const endRad   = (cumAngle + angle) * Math.PI / 180;
-  const x1 = cx + r * Math.cos(startRad), y1 = cy + r * Math.sin(startRad);
-  const x2 = cx + r * Math.cos(endRad),   y2 = cy + r * Math.sin(endRad);
-  const large = angle > 180 ? 1 : 0;
-  const path = document.createElementNS('http://www.w3.org/2000/svg','path');
-  path.setAttribute('d', `M${cx},${cy} L${x1},${y1} A${r},${r} 0 ${large},1 ${x2},${y2} Z`);
-  path.setAttribute('fill', p.color);
-  path.setAttribute('stroke', '#faf8f5');
-  path.setAttribute('stroke-width', '2');
-  svg2.appendChild(path);
-  cumAngle += angle;
-  legend.innerHTML += `<div class="legend-item"><div class="legend-dot" style="background:${p.color}"></div>${p.label} <strong>${p.pct}%</strong></div>`;
-});
-</script>
+<script src="../script.js"></script>
 </body>
 </html>

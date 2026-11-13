@@ -1,33 +1,33 @@
 <!DOCTYPE html>
 <html lang="fr" data-theme="light">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <link rel="icon" type="image/x-icon" href="logo.png"/>
-  <title>Sidy — Portfolio Science des Données</title>
-  <meta name="description" content="Portfolio de Sidy Babacar Diop — Étudiant en BUT Science des Données, spécialité Visualisation & Outils décisionnels."/>
-  <meta property="og:title" content="Sidy Babacar Diop — Portfolio Science des Données"/>
-  <meta property="og:description" content="Projets de science des données, machine learning, visualisation et BI réalisés en formation."/>
-  <meta property="og:image" content="photo-profil.jpg"/>
-  <meta property="og:type" content="website"/>
-  <meta name="twitter:card" content="summary_large_image"/>
-  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="style.css"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="logo.png">
+  <title>Sidy Babacar Diop, portfolio données et statistiques</title>
+  <meta name="description" content="Portfolio de Sidy Babacar Diop : projets de statistiques, de visualisation et de Business Intelligence réalisés pendant le BUT Science des Données.">
+  <meta property="og:title" content="Sidy Babacar Diop, portfolio données et statistiques">
+  <meta property="og:description" content="Projets de statistiques, de visualisation et de Business Intelligence.">
+  <meta property="og:image" content="pdp.png">
+  <meta property="og:type" content="website">
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <link rel="stylesheet" href="style.css">
+  <script>
+    try {
+      var t = localStorage.getItem('theme');
+      if (t === 'dark' || (!t && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+    } catch (e) {}
+  </script>
 </head>
 <body>
 
-<div id="loader">
-  <div class="loader-inner">
-    <div class="loader-dot"></div>
-    <div class="loader-dot"></div>
-    <div class="loader-dot"></div>
-  </div>
-</div>
-
 <!-- NAV -->
-<nav>
+<nav class="barre">
   <a class="nav-logo" href="#">
-    <img src="logo.png" alt="Logo" style="height:28px;width:28px;object-fit:contain;border-radius:6px;"/>
+    <img src="logo.png" alt="" onerror="this.remove()">
     Sidy Babacar Diop <span>•</span>
   </a>
   <ul class="nav-links">
@@ -40,34 +40,36 @@
     <li><a href="#contact">Contact</a></li>
   </ul>
   <div class="nav-right">
-    <span class="avail-badge"><span class="avail-dot"></span> Alternance sept. 2026</span>
+    <span class="avail-badge"><span class="avail-dot"></span> Stage juin 2027</span>
     <div class="theme-wrap">
-      <span class="theme-emoji" id="themeEmoji">☀️</span>
-      <button class="theme-toggle" id="themeToggle" aria-label="Changer de thème"></button>
+      <span class="theme-emoji" id="themeEmoji" aria-hidden="true">☀️</span>
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Changer de thème"></button>
     </div>
-    <a href="#contact" class="btn btn-primary" style="padding:.5rem 1.1rem;font-size:.81rem;">Contact</a>
   </div>
 </nav>
 
-<!-- HERO -->
+<!-- ACCUEIL -->
 <section id="hero">
-  <div class="orb orb1"></div><div class="orb orb2"></div>
   <div class="hero-grid">
-    <div style="opacity:0;animation:fadeUp .55s ease .05s forwards">
-      <div class="hero-eyebrow"><span class="dot"></span> Portfolio Science des Données</div>
-      <h1>Données, <em>insights,</em><br>décisions éclairées.</h1>
-      <p class="hero-sub">Étudiant en BUT Science des Données — spécialité Visualisation & Conception d'Outils décisionnels. Je transforme des données brutes en valeur concrète.</p>
+    <div>
+      <h1>Sidy Babacar Diop</h1>
+      <p class="chapo">Je prends des fichiers de données en désordre et j'en fais des tableaux, des cartes et des prévisions qu'on peut lire sans moi.</p>
+      <p class="hero-sub">Ce site regroupe ce que j'ai fait pendant le BUT Science des Données : des analyses en R, de la préparation de données en Python et des tableaux de bord.</p>
       <div class="hero-ctas">
-        <a href="#vedette" class="btn btn-primary">Voir mes projets →</a>
-        <a href="#cv" class="btn btn-glass">📄 Mon CV</a>
+        <a href="#projets" class="btn btn-primary">Voir mes projets</a>
+        <a href="#cv" class="btn btn-ligne">Mon CV</a>
       </div>
     </div>
-    <div class="hero-visual">
-      <div class="stat-card glass"><div class="stat-num">7+</div><div class="stat-lbl">Projets réalisés en formation</div><div class="stat-bar" style="width:85%"></div></div>
-      <div class="stat-card glass"><div class="stat-num">3</div><div class="stat-lbl">Ans de formation</div><div class="chart-mini"><div class="bc" style="height:40%"></div><div class="bc" style="height:65%"></div><div class="bc on" style="height:90%"></div><div class="bc" style="height:50%"></div><div class="bc on" style="height:100%"></div></div></div>
-      <div class="stat-card glass"><div class="stat-num">10+</div><div class="stat-lbl">Technologies maîtrisées</div><div class="stat-bar" style="width:72%"></div></div>
-      <div class="stat-card glass" style="text-align:center"><div style="font-size:1.6rem">🔍</div><div class="stat-lbl" style="margin-top:.3rem">Recherche une <strong style="color:var(--green)">alternance</strong><br>Chargé d'études statistiques · Sept. 2026</div></div>
-    </div>
+    <dl class="bref boite">
+      <dt>En ce moment</dt>
+      <dd>BUT 2 Technologies de l'information, IUT de Villetaneuse</dd>
+      <dt>Avant</dt>
+      <dd>BUT Science des Données, IUT Grand Ouest Normandie</dd>
+      <dt>Je cherche</dt>
+      <dd>Un stage de 2 mois à partir de juin 2027, en études statistiques ou en analyse de données</dd>
+      <dt>Où</dt>
+      <dd>Île-de-France, Normandie, Lyon</dd>
+    </dl>
   </div>
 </section>
 
@@ -75,26 +77,23 @@
 <section id="vedette">
   <div class="si">
     <div class="shd">
-      <div class="slbl">⭐ À la une</div>
       <h2 class="stitle">Projet mis en avant</h2>
-      <div class="divider"></div>
-      <p class="sdesc">Le projet phare de ma formation — démarche complète, résultats concrets.</p>
+      <p class="sdesc">Celui où il a fallu tout faire, de la collecte des données jusqu'à la page qui les affiche.</p>
     </div>
-    <div class="vedette-grid glass" style="padding:2.5rem">
-      <div class="vedette-content">
-        <div class="vedette-tag"><span>🤖</span> Machine Learning</div>
-        <div class="vedette-title">Boursetrack<br><em style="font-family:'Lora',serif;font-size:1rem;color:var(--ink-3);font-weight:400">—Lesieur Romain & Diop Sidy & Saint-Hubert Courteney</em></div>
-        <p class="vedette-desc">BourseTrack est une application web conçue pour suivre et analyser les performances financières des grandes entreprises, enrichies par des actualités pertinentes pour offrir une compréhension globale des tendances économiques.</p>
-        <div class="vedette-techs">
-          <span class="tag">Python</span><span class="tag">scikit-learn</span><span class="tag">Pandas</span><span class="tag">Matplotlib</span><span class="tag">SQL</span>
-        </div>
+    <div class="vedette-grid boite">
+      <div>
+        <h3 class="vedette-title">BourseTrack</h3>
+        <p class="vedette-auteurs">Romain Lesieur, Sidy Diop et Courteney Saint-Hubert</p>
+        <p class="vedette-desc">BourseTrack suit le cours de quelques grandes entreprises sur les cent derniers jours ouvrés et met en face les actualités qui les concernent.</p>
+        <p class="vedette-desc">Les cours viennent de l'API Alpha Vantage, les articles de News API. On enregistre le tout en CSV, on le range dans une base à deux tables reliées par le symbole boursier, puis on l'affiche dans un tableau triable : prix moyens, volatilité, volume, tendance.</p>
+        <p class="coutils">Outils : API Alpha Vantage et News API, SQL, HTML</p>
         <div class="vedette-ctas">
-          <a href="http://github.com/EkiaND/BourseTrack" class="btn btn-primary">Voir sur GitHub →</a>
-          <a href="rapport/Boursetrack.pdf" class="btn btn-glass" style="margin-left:auto">Voir le rapport →</a>
+          <a href="https://github.com/EkiaND/BourseTrack" class="btn btn-primary">Voir sur GitHub</a>
+          <a href="rapport/Boursetrack.pdf" class="btn btn-ligne">Lire le rapport</a>
         </div>
       </div>
-      <div class="vedette-preview glass">
-        <img src="rapport/Boursetrack.png" alt="Aperçu du projet" style="width:100%;height:100%;object-fit:cover;border-radius:var(--radius);display:block;"/>
+      <div class="vedette-preview">
+        <img src="rapport/Boursetrack.png" alt="Page de BourseTrack : tableau des performances, répartition des volumes et actualités">
       </div>
     </div>
   </div>
@@ -104,253 +103,138 @@
 <section id="projets">
   <div class="si">
     <div class="shd">
-      <div class="slbl">Réalisations</div>
       <h2 class="stitle">Tous mes projets</h2>
-      <div class="divider"></div>
-      <p class="sdesc">Analyse de données, visualisation, machine learning, Business Intelligence.</p>
+      <p class="sdesc">Sept travaux du BUT, seul ou en groupe. Les rapports et le code sont en lien sous chaque projet.</p>
     </div>
-    <div class="search-wrap">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-      <input type="text" id="searchInput" placeholder="Rechercher un projet, outil…" oninput="searchProjects()"/>
+    <div class="outils-recherche">
+      <input type="search" id="searchInput" placeholder="Chercher un projet ou un outil" aria-label="Chercher un projet ou un outil">
+      <div class="filters">
+        <button type="button" class="filter-btn active" data-cat="all">Tous</button>
+        <button type="button" class="filter-btn" data-cat="stats">Statistiques</button>
+        <button type="button" class="filter-btn" data-cat="bi">Business Intelligence</button>
+        <button type="button" class="filter-btn" data-cat="web">Web et données</button>
+      </div>
     </div>
-    <div class="filters">
-      <button class="filter-btn active" onclick="filterP('all',this)">Tous</button>
-      <button class="filter-btn" onclick="filterP('stats',this)">Statistiques</button>
-      <button class="filter-btn" onclick="filterP('bi',this)">Business Intelligence</button>
-      <button class="filter-btn" onclick="filterP('ml',this)">Machine Learning</button>
-      <button class="filter-btn" onclick="filterP('viz',this)">Visualisation</button>
-    </div>
-    <div class="no-results" id="noResults">Aucun projet ne correspond à ta recherche.</div>
+    <p class="no-results" id="noResults">Aucun projet ne correspond à cette recherche.</p>
     <div class="pgrid" id="pgrid">
 
-      <!-- Projet 1 : Élections européennes -->
-      <div class="pcard glass" data-cat="stats" data-search="statistiques R ggplot2 élections européennes 2024 participation abstention normandie choroplète">
-        <div class="cpreview">
-          <img src="rapport/Programmation_Stat.png" alt="Élections européennes" style="width:100%;height:100%;object-fit:cover;display:block;"/>
-        </div>
-        <div class="ctop"><div class="cicon">📈</div><span class="cbadge bst">Statistiques</span></div>
+      <article class="pcard boite" data-cat="stats" data-search="statistiques R ggplot2 dplyr sf openxlsx élections européennes 2024 participation abstention normandie carte">
+        <div class="cpreview"><img src="img/elections-participation-normandie.png" alt="Carte de la Normandie colorée selon le taux de participation de chaque département" loading="lazy"></div>
         <div class="cbody">
-          <div class="ctitle">Analyse statistique des Élections Européennes 2024</div>
-          <div class="cdesc">Analyse des résultats des élections européennes de juin 2024 en France métropolitaine et en Normandie : participation, abstention, votes nuls et répartition par listes politiques.</div>
-        </div>
-        <div class="cstats">
-          <span class="cstat">🗳️ <strong>38 listes</strong> analysées</span>
-          <span class="cstat">🗺️ <strong>5 dép.</strong> normands</span>
-        </div>
-        <div class="ctags">
-          <span class="tag">R</span>
-          <span class="tag">ggplot2</span>
-          <span class="tag">dplyr</span>
-          <span class="tag">Cartographie</span>
-          <span class="tag">data.gouv.fr</span>
+          <p class="ccat">Statistiques, 2024-2025, groupe de trois</p>
+          <h3 class="ctitle">Élections européennes 2024, bureau de vote par bureau de vote</h3>
+          <p class="cdesc">On est partis du fichier des résultats par bureau de vote publié sur data.gouv.fr, avec ses 38 listes. Chaque bureau a été rattaché à son département et à sa région, puis un classeur Excel se génère tout seul avec un onglet par département. Le rapport finit par un zoom sur les cinq départements normands, cartes à l'appui.</p>
+          <p class="coutils">Outils : R, dplyr, ggplot2, sf, openxlsx</p>
         </div>
         <div class="cfoot">
-          <a href="https://github.com/sidyBD/Programmation_Statistique_Automatisee" class="clink">GitHub →</a>
-          <a href="rapport/Programmation_Stat.pdf" class="clink" style="margin-left:auto">Rapport →</a>
+          <a href="rapport/Programmation_Stat.pdf">Lire le rapport (PDF)</a>
+          <a href="https://github.com/sidyBD/Programmation_Statistique_Automatisee">Code sur GitHub</a>
         </div>
-      </div>
+      </article>
 
-      <!-- Projet 2 : Power BI & DAX -->
-      <div class="pcard glass" data-cat="bi" data-search="power bi DAX SUMX mesures sales amount gros margin dashboard business intelligence ventes produits">
-        <div class="cpreview">
-          <img src="rapport/DAX.png" alt="Power BI DAX" style="width:100%;height:100%;object-fit:cover;display:block;"/>
-        </div>
-        <div class="ctop"><div class="cicon">💼</div><span class="cbadge bbi">Business Intelligence</span></div>
+      <article class="pcard boite" data-cat="bi" data-search="power bi DAX SUMX mesures sales amount gros margin business intelligence ventes produits related">
+        <div class="cpreview"><img src="img/powerbi-marge-par-produit.png" alt="Tableau Power BI : coût, ventes, marge brute et taux de marge par produit" loading="lazy"></div>
         <div class="cbody">
-          <div class="ctitle">Analyse des ventes avec Power BI & DAX</div>
-          <div class="cdesc">Modélisation et analyse de données de ventes multi-tables : création de mesures DAX (SUMX, Gros Margin, Gros Margin Rate), table de mesures dédiée et relations entre tables.</div>
-        </div>
-        <div class="cstats">
-          <span class="cstat">💰 CA total <strong>25,66M€</strong></span>
-          <span class="cstat">📈 Marge brute <strong>32,52%</strong></span>
-        </div>
-        <div class="ctags">
-          <span class="tag">Power BI</span>
-          <span class="tag">DAX</span>
-          <span class="tag">SUMX</span>
-          <span class="tag">Modélisation</span>
-          <span class="tag">Sales Analytics</span>
+          <p class="ccat">Business Intelligence</p>
+          <h3 class="ctitle">Ventes avec Power BI et DAX</h3>
+          <p class="cdesc">Un modèle de ventes à six tables : ventes, produits, clients, vendeurs, lieux et dates. J'y ai écrit les mesures en DAX, avec SUMX pour le chiffre d'affaires, puis le coût, la marge brute et le taux de marge, rangés dans une table de mesures à part. Sur tout le jeu, cela donne 25,66 M€ de ventes pour 32,52 % de marge.</p>
+          <p class="coutils">Outils : Power BI, DAX</p>
         </div>
         <div class="cfoot">
-          <a href="rapport/PBI_DAX.pbix" download class="clink">⬇️ DAX.pbix</a>
-          <a href="rapport/PBI_Table_de_mesures.pbix" download class="clink">⬇️ Mesures.pbix</a>
-          <a href="rapport/PBI_Related.pbix" download class="clink" style="margin-left:auto">⬇️ Related.pbix</a>
+          <a href="rapport/PBI_DAX.pbix" download>DAX (.pbix)</a>
+          <a href="rapport/PBI_Table_de_mesures.pbix" download>Table de mesures (.pbix)</a>
+          <a href="rapport/PBI_DAX_Related.pbix" download>RELATED (.pbix)</a>
         </div>
-      </div>
+      </article>
 
-      <!-- Projet 3 : Séries temporelles matières premières -->
-      <div class="pcard glass" data-cat="stats" data-search="séries temporelles R tabulapdf café cacao pétrole sucre jus orange cotations finance investing.com prévision">
-        <div class="cpreview">
-          <img src="rapport/serie_temporelle.png" alt="Séries temporelles" style="width:100%;height:100%;object-fit:cover;display:block;"/>
-        </div>
-        <div class="ctop"><div class="cicon">📊</div><span class="cbadge bst">Statistiques</span></div>
+      <article class="pcard boite" data-cat="stats" data-search="séries temporelles R tabulapdf café cacao pétrole brent sucre jus orange cotations investing prévision poster">
+        <div class="cpreview"><img src="img/brent-prevision.png" alt="Moyenne mensuelle du cours du Brent et prévision avec bande de confiance à 95 %" loading="lazy"></div>
         <div class="cbody">
-          <div class="ctitle">Analyse de séries temporelles — Matières premières</div>
-          <div class="cdesc">Analyse des cotations journalières du café, cacao, jus d'orange, sucre et pétrole sur plus d'une décennie : extraction PDF, exploration, modélisation et prévision des tendances.</div>
-        </div>
-        <div class="cstats">
-          <span class="cstat">📦 <strong>5 produits</strong> analysés</span>
-          <span class="cstat">📅 <strong>10+ ans</strong> de cotations</span>
-        </div>
-        <div class="ctags">
-          <span class="tag">R</span>
-          <span class="tag">tabulapdf</span>
-          <span class="tag">tsibble</span>
-          <span class="tag">Séries temporelles</span>
-          <span class="tag">Finance</span>
+          <p class="ccat">Statistiques, 2024-2025, groupe de quatre</p>
+          <h3 class="ctitle">Séries temporelles : cours des matières premières</h3>
+          <p class="cdesc">Les historiques du café, du cacao, du jus d'orange, du sucre et du Brent n'existaient qu'en PDF sur Investing.com. On a récupéré les tableaux avec tabulapdf, nettoyé les colonnes et comparé les produits année par année. La fin du poster prévoit la moyenne mensuelle du Brent, avec une bande de confiance qui s'élargit vite.</p>
+          <p class="coutils">Outils : R, tabulapdf, ggplot2</p>
         </div>
         <div class="cfoot">
-          <a href="rapport/Poster_Analyse_de_séries_temporelles.pdf" class="clink" style="margin-left:auto">Poster →</a>
+          <a href="rapport/Poster_Analyse_de_séries_temporelles.pdf">Voir le poster (PDF)</a>
         </div>
-      </div>
+      </article>
 
-      <!-- Projet 4 : Prévision lait -->
-      <div class="pcard glass" data-cat="stats" data-search="séries temporelles prévision R tsibble TSLM saisonnalité lait vache brebis chèvre agricole FranceAgriMer">
-        <div class="cpreview">
-          <img src="rapport/Projet4.png" alt="Prévision lait" style="width:100%;height:100%;object-fit:cover;display:block;"/>
-        </div>
-        <div class="ctop"><div class="cicon">📉</div><span class="cbadge bst">Statistiques</span></div>
+      <article class="pcard boite" data-cat="stats" data-search="séries temporelles prévision R tsibble fable TSLM saisonnalité lait vache brebis chèvre FranceAgriMer">
+        <div class="cpreview"><img src="img/lait-prevision-vache.png" alt="Indice de collecte du lait de vache de 2018 à 2025, prolongé par trois ans de prévision" loading="lazy"></div>
         <div class="cbody">
-          <div class="ctitle">Description et prévision de données temporelles</div>
-          <div class="cdesc">Analyse et prévision de la collecte hebdomadaire de lait de vache, brebis et chèvre en France (2009–2025) : modélisation de la tendance, saisonnalité et projection sur 3 ans.</div>
-        </div>
-        <div class="cstats">
-          <span class="cstat">📅 <strong>16 ans</strong> de données</span>
-          <span class="cstat">🐄 <strong>3 filières</strong> modélisées</span>
-        </div>
-        <div class="ctags">
-          <span class="tag">R</span>
-          <span class="tag">tsibble</span>
-          <span class="tag">TSLM</span>
-          <span class="tag">Séries temporelles</span>
-          <span class="tag">FranceAgriMer</span>
+          <p class="ccat">Statistiques, 2025-2026, groupe de cinq</p>
+          <h3 class="ctitle">Collecte de lait en France : description et prévision</h3>
+          <p class="cdesc">FranceAgriMer publie chaque semaine un indice de collecte pour le lait de vache, de chèvre et de brebis. On a réuni les trois fichiers dans un seul tableau temporel, puis ajusté un modèle par filière. Pour la vache, la tendance seule n'explique que 8,7 % des variations : c'est la saisonnalité qui porte la prévision à trois ans.</p>
+          <p class="coutils">Outils : R, tsibble, fable, ggplot2, LaTeX</p>
         </div>
         <div class="cfoot">
-          <a href="https://github.com/sidyBD/SAE-Description-prevision-donnees" class="clink">GitHub →</a>
-          <a href="rapport/Rapport_projet4.pdf" class="clink" style="margin-left:auto">Rapport →</a>
+          <a href="rapport/Rapport_projet4.pdf">Lire le rapport (PDF)</a>
+          <a href="https://github.com/sidyBD/SAE-Description-prevision-donnees">Code sur GitHub</a>
         </div>
-      </div>
+      </article>
 
-      <!-- Projet 5 : Talend ETL -->
-      <div class="pcard glass" data-cat="bi" data-search="talend open studio ETL pipeline données MySQL CSV Global Superstore nettoyage transformation chargement">
-        <div class="cpreview">
-          <img src="rapport/Logo-talend.png" alt="Talend ETL" style="width:100%;height:100%;object-fit:cover;display:block;"/>
-        </div>
-        <div class="ctop"><div class="cicon">🔄</div><span class="cbadge bbi">Business Intelligence</span></div>
+      <article class="pcard boite" data-cat="bi" data-search="talend open studio ETL MySQL CSV Global Superstore nettoyage transformation chargement tMap excel">
+        <div class="cpreview"><img src="rapport/Logo-talend.png" alt="Logo de Talend" loading="lazy"></div>
         <div class="cbody">
-          <div class="ctitle">Pipeline ETL avec Talend Open Studio</div>
-          <div class="cdesc">Automatisation d'un processus ETL complet sur le dataset Global Superstore : import CSV, nettoyage, transformation des données et chargement en base MySQL.</div>
-        </div>
-        <div class="cstats">
-          <span class="cstat">🔄 <strong>4 tables</strong> exportées</span>
-          <span class="cstat">🗄️ MySQL <strong>diop226_bd</strong></span>
-        </div>
-        <div class="ctags">
-          <span class="tag">Talend</span>
-          <span class="tag">ETL</span>
-          <span class="tag">MySQL</span>
-          <span class="tag">tMap</span>
-          <span class="tag">Global Superstore</span>
+          <p class="ccat">Business Intelligence, 2024-2025, en binôme</p>
+          <h3 class="ctitle">Chaîne ETL avec Talend Open Studio</h3>
+          <p class="cdesc">Une chaîne complète à partir du jeu de ventes Global Superstore : lecture du CSV, retrait des lignes vides ou invalides, mise en forme des dates, total et marge par client, puis restriction à la région West. Le résultat part dans une base MySQL et dans un classeur Excel de quatre feuilles.</p>
+          <p class="coutils">Outils : Talend Open Studio, MySQL, Excel</p>
         </div>
         <div class="cfoot">
-          <a href="rapport/SAE_Talend-rapport.pdf" class="clink" style="margin-left:auto">Rapport →</a>
+          <a href="rapport/SAE_Talend-rapport.pdf">Lire le rapport (PDF)</a>
         </div>
-      </div>
+      </article>
 
-      <!-- Projet 6 : Olist -->
-      <div class="pcard glass" data-cat="bi" data-search="python pandas olist e-commerce préparation données nettoyage transformation normalisation ETL CSV Kaggle matplotlib valeurs manquantes doublons">
-        <div class="cpreview">
-          <img src="rapport/prepa_donnees.png" alt="Olist" style="width:100%;height:100%;object-fit:cover;display:block;"/>
-        </div>
-        <div class="ctop"><div class="cicon">🛒</div><span class="cbadge bbi">Business Intelligence</span></div>
+      <article class="pcard boite" data-cat="bi" data-search="python pandas olist e-commerce préparation données nettoyage transformation CSV matplotlib qlik sense tableau de bord">
+        <div class="cpreview"><img src="img/olist-tableau-de-bord-qlik.png" alt="Tableau de bord Qlik Sense du projet Olist" loading="lazy"></div>
         <div class="cbody">
-          <div class="ctitle">Préparation & Intégration de données — Olist</div>
-          <div class="cdesc">Pipeline complet de préparation de données sur 119 143 commandes e-commerce : nettoyage (doublons, valeurs manquantes), transformation (feature engineering, normalisation), modélisation en 7 tables normalisées et analyse exploratoire.</div>
-        </div>
-        <div class="cstats">
-          <span class="cstat">📦 <strong>119k</strong> commandes</span>
-          <span class="cstat">🗃️ <strong>7 tables</strong> normalisées</span>
-        </div>
-        <div class="ctags">
-          <span class="tag">Python</span>
-          <span class="tag">Pandas</span>
-          <span class="tag">Matplotlib</span>
-          <span class="tag">Nettoyage</span>
-          <span class="tag">Normalisation</span>
-          <span class="tag">Kaggle</span>
+          <p class="ccat">Business Intelligence, 2024-2025</p>
+          <h3 class="ctitle">Préparation et intégration de données Olist</h3>
+          <p class="cdesc">Olist est une place de marché brésilienne. Le fichier de départ faisait 119 143 lignes et 40 colonnes. Dans un notebook Python, j'ai gardé les colonnes utiles et les commandes livrées, calculé le délai de livraison et le montant total, puis découpé le tout en sept tables CSV pour un tableau de bord Qlik Sense.</p>
+          <p class="coutils">Outils : Python, pandas, matplotlib, Qlik Sense</p>
         </div>
         <div class="cfoot">
-          <a href="rapport/olist_chart.html" class="clink" style="margin-left:auto">Rapport →</a>
+          <a href="rapport/olist_chart.html">Voir les chiffres en détail</a>
         </div>
-      </div>
+      </article>
 
-
-      <!-- Projet 7 : BourseTrack-->
-      <div class="pcard glass" data-cat="ml" data-search="boursetrack bourse finance machine learning python sklearn pandas matplotlib sql application web entreprises actualités">
-        <div class="cpreview">
-          <img src="rapport/Boursetrack.png" alt="BourseTrack" style="width:100%;height:100%;object-fit:cover;display:block;"/>
-        </div>
-        <div class="ctop"><div class="cicon">📈</div><span class="cbadge bml">Machine Learning</span></div>
+      <article class="pcard boite" data-cat="web" data-search="boursetrack bourse finance api alpha vantage news api sql html csv application web entreprises actualités">
+        <div class="cpreview"><img src="img/boursetrack-tableau.png" alt="Page de BourseTrack : tableau des performances par entreprise" loading="lazy"></div>
         <div class="cbody">
-          <div class="ctitle">BourseTrack</div>
-          <div class="cdesc">Application web de suivi et d'analyse des performances financières des grandes entreprises, enrichie par des actualités pertinentes pour une compréhension globale des tendances économiques.</div>
-        </div>
-        <div class="cstats">
-          <span class="cstat">🤝 Projet <strong>en trinôme</strong></span>
-          <span class="cstat">🌐 Application <strong>web</strong></span>
-        </div>
-        <div class="ctags">
-          <span class="tag">Python</span>
-          <span class="tag">scikit-learn</span>
-          <span class="tag">Pandas</span>
-          <span class="tag">Matplotlib</span>
-          <span class="tag">SQL</span>
+          <p class="ccat">Web et données, 2024-2025, groupe de trois</p>
+          <h3 class="ctitle">BourseTrack</h3>
+          <p class="cdesc">Un petit site qui suit le cours de quelques grandes entreprises sur les cent derniers jours ouvrés et affiche les actualités qui les concernent. Les cours viennent de l'API Alpha Vantage, les articles de News API. Tout est rangé dans une base à deux tables, puis affiché dans un tableau triable.</p>
+          <p class="coutils">Outils : API Alpha Vantage et News API, SQL, HTML</p>
         </div>
         <div class="cfoot">
-          <a href="http://github.com/EkiaND/BourseTrack" class="clink">GitHub →</a>
-          <a href="rapport/Boursetrack.pdf" class="clink" style="margin-left:auto">Rapport →</a>
+          <a href="rapport/Boursetrack.pdf">Lire le rapport (PDF)</a>
+          <a href="https://github.com/EkiaND/BourseTrack">Code sur GitHub</a>
         </div>
-      </div>
+      </article>
 
     </div>
   </div>
 </section>
 
-
 <!-- PORTFOLIOS ANNUELS -->
 <section id="portfolios">
   <div class="si">
     <div class="shd">
-      <div class="slbl">Progression</div>
       <h2 class="stitle">Portfolios annuels</h2>
-      <div class="divider"></div>
-      <p class="sdesc">Retrouvez mes portfolios de 1ère et 2ème année — témoins de ma progression tout au long du BUT.</p>
+      <p class="sdesc">Le portfolio écrit que je rends en fin d'année, avec le détail de chaque projet et ce que j'en ai retenu.</p>
     </div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.4rem">
-
-      <!-- 2ème année -->
-      <div class="glass" style="padding:1.8rem;display:flex;flex-direction:column;gap:1rem">
-        <div style="display:flex;align-items:center;gap:.8rem">
-          <div style="width:42px;height:42px;border-radius:10px;background:linear-gradient(135deg,var(--accent),var(--accent-2));display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0">2️⃣</div>
-          <div>
-            <div style="font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--accent)">2024 — 2025</div>
-            <div style="font-family:'Lora',serif;font-size:1.05rem;font-weight:600;color:var(--ink)">Portfolio 2ème année</div>
-          </div>
-        </div>
-        <p style="font-size:.84rem;color:var(--ink-2);line-height:1.6">Parcours Visualisation & Conception d'Outils décisionnels : datawarehouse Olist, BourseTrack, élections européennes, séries temporelles, Dynamic EcoDashboard et analyse multivariée AGRICAN.</p>
-        <div style="display:flex;flex-wrap:wrap;gap:.4rem">
-          <span class="tag" style="font-size:.75rem;padding:.2rem .55rem">Python</span>
-          <span class="tag" style="font-size:.75rem;padding:.2rem .55rem">Qlik Sense</span>
-          <span class="tag" style="font-size:.75rem;padding:.2rem .55rem">PHP / JS</span>
-          <span class="tag" style="font-size:.75rem;padding:.2rem .55rem">ACP / CAH</span>
-          <span class="tag" style="font-size:.75rem;padding:.2rem .55rem">6 SAÉ</span>
-        </div>
-        <div style="display:flex;gap:.6rem;margin-top:auto">
-          <a href="rapport/Portfolio_SD2.pdf" target="_blank" class="btn btn-glass" style="flex:1;justify-content:center;font-size:.82rem">🔗 Ouvrir</a>
-          <a href="rapport/Portfolio_SD2.pdf" download class="btn btn-primary" style="flex:1;justify-content:center;font-size:.82rem">📥 Télécharger</a>
-        </div>
+    <div class="portfolio-ligne boite">
+      <div>
+        <p class="annee">2024-2025</p>
+        <h3>Portfolio de 2e année</h3>
+        <p>Parcours Visualisation et conception d'outils décisionnels. On y retrouve Olist, BourseTrack, les élections européennes et les séries temporelles, plus deux projets absents de cette page : un tableau de bord économique en PHP et JavaScript, et une analyse multivariée (ACP, CAH) des données AGRICAN.</p>
       </div>
-
+      <div class="portfolio-actions">
+        <a href="rapport/Portfolio_SD2.pdf" target="_blank" rel="noopener" class="btn btn-ligne">Ouvrir</a>
+        <a href="rapport/Portfolio_SD2.pdf" download class="btn btn-primary">Télécharger</a>
+      </div>
     </div>
   </div>
 </section>
@@ -359,453 +243,194 @@
 <section id="competences">
   <div class="si">
     <div class="shd">
-      <div class="slbl">Savoir-faire</div>
       <h2 class="stitle">Compétences techniques</h2>
-      <div class="divider"></div>
-      <p class="sdesc">Un panorama des outils et technologies acquis au fil de la formation.</p>
+      <p class="sdesc">Les outils que j'utilise, avec les projets où je m'en suis servi.</p>
     </div>
     <div class="sgrid">
-      <div class="sgroup glass">
-        <div class="sgtitle">Langages & Scripts</div>
-        <div class="sitem"><div class="srow"><span>Python</span><span class="spct">90%</span></div><div class="strack"><div class="sfill" data-w=".90"></div></div></div>
-        <div class="sitem"><div class="srow"><span>R</span><span class="spct">85%</span></div><div class="strack"><div class="sfill" data-w=".85"></div></div></div>
-        <div class="sitem"><div class="srow"><span>SQL</span><span class="spct">87%</span></div><div class="strack"><div class="sfill" data-w=".87"></div></div></div>
-        <div class="sitem"><div class="srow"><span>PHP</span><span class="spct">85%</span></div><div class="strack"><div class="sfill" data-w=".85"></div></div></div>
-        <div class="sitem"><div class="srow"><span>HTML / CSS</span><span class="spct">97%</span></div><div class="strack"><div class="sfill" data-w=".97"></div></div></div>
-        <div class="sitem"><div class="srow"><span>JavaScript</span><span class="spct">75%</span></div><div class="strack"><div class="sfill" data-w=".75"></div></div></div>
+      <div class="sgroup boite">
+        <h3 class="petit-titre">Langages et scripts</h3>
+        <ul>
+          <li><span>R</span><span>Lait, élections, matières premières. Surtout dplyr, ggplot2, tsibble, fable et sf.</span></li>
+          <li><span>Python</span><span>Préparation des données Olist avec pandas et matplotlib, dans Jupyter.</span></li>
+          <li><span>SQL</span><span>Requêtes et modélisation, base de BourseTrack.</span></li>
+          <li><span>PHP, JavaScript</span><span>Tableau de bord économique avec Chart.js.</span></li>
+          <li><span>HTML, CSS</span><span>Ce site.</span></li>
+          <li><span>C</span><span>En cours d'apprentissage à l'IUT de Villetaneuse.</span></li>
+        </ul>
       </div>
-      <div class="sgroup glass">
-        <div class="sgtitle">Visualisation & BI</div>
-        <div class="sitem"><div class="srow"><span>Power BI</span><span class="spct">93%</span></div><div class="strack"><div class="sfill" data-w=".93"></div></div></div>
-        <div class="sitem"><div class="srow"><span>Tableau</span><span class="spct">90%</span></div><div class="strack"><div class="sfill" data-w=".90"></div></div></div>
-        <div class="sitem"><div class="srow"><span>Matplotlib / Seaborn</span><span class="spct">85%</span></div><div class="strack"><div class="sfill" data-w=".85"></div></div></div>
-        <div class="sitem"><div class="srow"><span>Qlik Sense</span><span class="spct">85%</span></div><div class="strack"><div class="sfill" data-w=".85"></div></div></div>
-        <div class="sitem"><div class="srow"><span>Talend</span><span class="spct">65%</span></div><div class="strack"><div class="sfill" data-w=".65"></div></div></div>
+      <div class="sgroup boite">
+        <h3 class="petit-titre">Visualisation et BI</h3>
+        <ul>
+          <li><span>Power BI</span><span>Modèle de ventes à six tables, mesures DAX.</span></li>
+          <li><span>Qlik Sense</span><span>Tableau de bord et carte du projet Olist.</span></li>
+          <li><span>Talend</span><span>Chaîne ETL Global Superstore vers MySQL.</span></li>
+          <li><span>Matplotlib</span><span>Graphiques de contrôle du notebook Olist.</span></li>
+          <li><span>Tableau</span><span>Vu en cours.</span></li>
+        </ul>
       </div>
-      <div class="sgroup glass">
-        <div class="sgtitle">Bases de données</div>
-        <div class="sitem"><div class="srow"><span>MySQL</span><span class="spct">75%</span></div><div class="strack"><div class="sfill" data-w=".75"></div></div></div>
-        <div class="sitem"><div class="srow"><span>SQLite</span><span class="spct">85%</span></div><div class="strack"><div class="sfill" data-w=".85"></div></div></div>
-        <div class="sitem"><div class="srow"><span>Modélisation (MCD/MLD)</span><span class="spct">70%</span></div><div class="strack"><div class="sfill" data-w=".95"></div></div></div>
+      <div class="sgroup boite">
+        <h3 class="petit-titre">Bases de données</h3>
+        <ul>
+          <li><span>MySQL</span><span>Base de destination de la chaîne Talend.</span></li>
+          <li><span>SQLite</span><span>Vu en cours.</span></li>
+          <li><span>Modélisation</span><span>MCD et MLD.</span></li>
+        </ul>
       </div>
-      <div class="sgroup glass">
-        <div class="sgtitle">Langues</div>
-        <div class="sitem"><div class="srow"><span>Français</span><span class="spct">Natif</span></div><div class="strack"><div class="sfill" data-w="1.0"></div></div></div>
-        <div class="sitem"><div class="srow"><span>Anglais</span><span class="spct">Bilingue</span></div><div class="strack"><div class="sfill" data-w=".95"></div></div></div>
-        <div class="sitem"><div class="srow"><span>Espagnol</span><span class="spct">Intermédiaire</span></div><div class="strack"><div class="sfill" data-w=".55"></div></div></div>
-        <div class="sitem"><div class="srow"><span>Wolof</span><span class="spct">Natif</span></div><div class="strack"><div class="sfill" data-w="1.0"></div></div></div>
+      <div class="sgroup boite">
+        <h3 class="petit-titre">Langues</h3>
+        <ul>
+          <li><span>Français</span><span>Langue maternelle</span></li>
+          <li><span>Wolof</span><span>Langue maternelle</span></li>
+          <li><span>Anglais</span><span>Courant (C2)</span></li>
+          <li><span>Espagnol</span><span>Intermédiaire</span></li>
+        </ul>
       </div>
+    </div>
+
+    <!-- Nuage de mots -->
+    <div class="bloc-mots">
+      <h3 class="petit-titre">Nuage de mots</h3>
+      <p>Les notions et les outils croisés pendant la formation. Une couleur par famille.</p>
+      <ul class="legende-nuage">
+        <li><i style="background:#8b5e3c"></i>Langages</li>
+        <li><i style="background:#d4a017"></i>Visualisation et BI</li>
+        <li><i style="background:#2e86ab"></i>Machine Learning</li>
+        <li><i style="background:#7b4fa6"></i>Statistiques</li>
+        <li><i style="background:#c0392b"></i>ETL et bases de données</li>
+        <li><i style="background:#1a9e6e"></i>Préparation de données</li>
+        <li><i style="background:#3a7d6e"></i>Librairies R</li>
+      </ul>
+      <div id="wordcloud" aria-hidden="true"></div>
     </div>
 
     <!-- Mots clés -->
-
-    <!-- Nuage de mots -->
-<div style="margin-top:2.5rem">
-  <div class="slbl" style="margin-bottom:.4rem">Nuage de mots</div>
-  <p style="font-size:.78rem;color:var(--ink-muted);margin-bottom:.8rem;font-weight:300;max-width:520px">Représentation visuelle des concepts les plus présents dans ma formation.</p>
-
-  <!-- Légende -->
-  <div style="display:flex;flex-wrap:wrap;gap:.6rem;margin-bottom:1.2rem">
-    <span style="display:flex;align-items:center;gap:.4rem;font-size:.75rem;color:var(--ink-3)"><span style="width:10px;height:10px;border-radius:50%;background:#8b5e3c;display:inline-block"></span>Langages</span>
-    <span style="display:flex;align-items:center;gap:.4rem;font-size:.75rem;color:var(--ink-3)"><span style="width:10px;height:10px;border-radius:50%;background:#d4a017;display:inline-block"></span>Visualisation & BI</span>
-    <span style="display:flex;align-items:center;gap:.4rem;font-size:.75rem;color:var(--ink-3)"><span style="width:10px;height:10px;border-radius:50%;background:#2e86ab;display:inline-block"></span>Machine Learning</span>
-    <span style="display:flex;align-items:center;gap:.4rem;font-size:.75rem;color:var(--ink-3)"><span style="width:10px;height:10px;border-radius:50%;background:#7b4fa6;display:inline-block"></span>Statistiques</span>
-    <span style="display:flex;align-items:center;gap:.4rem;font-size:.75rem;color:var(--ink-3)"><span style="width:10px;height:10px;border-radius:50%;background:#c0392b;display:inline-block"></span>ETL & Bases de données</span>
-    <span style="display:flex;align-items:center;gap:.4rem;font-size:.75rem;color:var(--ink-3)"><span style="width:10px;height:10px;border-radius:50%;background:#1a9e6e;display:inline-block"></span>Préparation de données</span>
-    <span style="display:flex;align-items:center;gap:.4rem;font-size:.75rem;color:var(--ink-3)"><span style="width:10px;height:10px;border-radius:50%;background:#3a7d6e;display:inline-block"></span>Librairies R</span>
-  </div>
-
-  <div id="wordcloud" style="
-    position:relative;width:100%;height:600px;
-    background:var(--glass-bg);border:1px solid var(--glass-border);
-    border-radius:var(--radius);overflow:hidden;
-    backdrop-filter:var(--glass-blur);
-  "></div>
-</div>
-
-<script>
-(function() {
-  // rotate: true = peut être mis à 90°, false = toujours horizontal
-  const words = [
-    { text: 'Python',                size: 2.2,  color: '#8b5e3c', rotate: false },
-    { text: 'R',                     size: 2.0,  color: '#8b5e3c', rotate: false },
-    { text: 'SQL',                   size: 1.9,  color: '#8b5e3c', rotate: false },
-    { text: 'PHP',                   size: 1.1,  color: '#8b5e3c', rotate: true  },
-    { text: 'HTML / CSS',            size: 1.0,  color: '#8b5e3c', rotate: true  },
-    { text: 'JavaScript',            size: 1.0,  color: '#8b5e3c', rotate: true  },
-    { text: 'LaTeX',                 size: 0.8,  color: '#8b5e3c', rotate: true  },
-    { text: 'Jupyter',               size: 0.8,  color: '#8b5e3c', rotate: true  },
-    { text: 'Git',                   size: 0.8,  color: '#8b5e3c', rotate: true  },
-    { text: 'GitHub',                size: 0.8,  color: '#8b5e3c', rotate: true  },
-    { text: 'RStudio',               size: 1.0,  color: '#8b5e3c', rotate: true  },
-    { text: 'VS Code',               size: 0.9,  color: '#8b5e3c', rotate: true  },
-
-    { text: 'Power BI',              size: 2.0,  color: '#d4a017', rotate: false },
-    { text: 'DAX',                   size: 1.8,  color: '#d4a017', rotate: false },
-    { text: 'Tableau',               size: 1.5,  color: '#d4a017', rotate: false },
-    { text: 'Dashboard',             size: 1.3,  color: '#d4a017', rotate: false },
-    { text: 'Excel',                 size: 1.3,  color: '#d4a017', rotate: false },
-    { text: 'Google Looker Studio',  size: 1.0,  color: '#d4a017', rotate: true  },
-    { text: 'Qlik Sense',            size: 1.2,  color: '#d4a017', rotate: true  },
-    { text: 'SUMX',                  size: 1.1,  color: '#d4a017', rotate: true  },
-    { text: 'Matplotlib',            size: 1.2,  color: '#d4a017', rotate: false },
-    { text: 'Seaborn',               size: 1.1,  color: '#d4a017', rotate: true  },
-    { text: 'Plotly',                size: 0.9,  color: '#d4a017', rotate: true  },
-    { text: 'Heatmap',               size: 0.85, color: '#d4a017', rotate: true  },
-    { text: 'KPI',                   size: 1.0,  color: '#d4a017', rotate: true  },
-    { text: 'Box plot',              size: 0.8,  color: '#d4a017', rotate: true  },
-    { text: 'Scatter plot',          size: 0.8,  color: '#d4a017', rotate: true  },
-    { text: 'Cartographie',          size: 0.85, color: '#d4a017', rotate: true  },
-    { text: 'Choroplète',            size: 0.75, color: '#d4a017', rotate: true  },
-    { text: 'Datavisualisation',     size: 1.1,  color: '#d4a017', rotate: false },
-
-    { text: 'Machine Learning',      size: 2.1,  color: '#2e86ab', rotate: false },
-    { text: 'scikit-learn',          size: 1.5,  color: '#2e86ab', rotate: false },
-    { text: 'Régression',            size: 1.3,  color: '#2e86ab', rotate: false },
-    { text: 'Classification',        size: 1.3,  color: '#2e86ab', rotate: false },
-    { text: 'Clustering',            size: 1.2,  color: '#2e86ab', rotate: true  },
-    { text: 'Random Forest',         size: 1.0,  color: '#2e86ab', rotate: true  },
-    { text: 'SVM',                   size: 0.9,  color: '#2e86ab', rotate: true  },
-    { text: 'SMOTE',                 size: 0.85, color: '#2e86ab', rotate: true  },
-    { text: 'Sur-échantillonnage',   size: 0.8,  color: '#2e86ab', rotate: true  },
-    { text: 'Overfitting',           size: 0.8,  color: '#2e86ab', rotate: true  },
-    { text: 'Cross-validation',      size: 0.8,  color: '#2e86ab', rotate: true  },
-    { text: 'Prévision',             size: 1.2,  color: '#2e86ab', rotate: false },
-    { text: 'Modélisation',          size: 1.2,  color: '#2e86ab', rotate: false },
-
-    { text: 'Statistiques',          size: 1.8,  color: '#7b4fa6', rotate: false },
-    { text: 'ACP',                   size: 1.3,  color: '#7b4fa6', rotate: true  },
-    { text: 'Corrélation',           size: 1.2,  color: '#7b4fa6', rotate: false },
-    { text: 'Test d\'hypothèse',     size: 1.1,  color: '#7b4fa6', rotate: true  },
-    { text: 'Séries temporelles',    size: 1.6,  color: '#7b4fa6', rotate: false },
-    { text: 'Saisonnalité',          size: 1.0,  color: '#7b4fa6', rotate: true  },
-    { text: 'Tendance',              size: 1.0,  color: '#7b4fa6', rotate: true  },
-    { text: 'TSLM',                  size: 0.9,  color: '#7b4fa6', rotate: true  },
-    { text: 'Stat. descriptives',    size: 0.8,  color: '#7b4fa6', rotate: true  },
-    { text: 'Analyse exploratoire',  size: 0.85, color: '#7b4fa6', rotate: false },
-    { text: 'p-value',               size: 0.8,  color: '#7b4fa6', rotate: true  },
-    { text: 'ANOVA',                 size: 0.75, color: '#7b4fa6', rotate: true  },
-    { text: 'Régression linéaire',   size: 0.8,  color: '#7b4fa6', rotate: true  },
-
-    { text: 'ETL',                   size: 1.8,  color: '#c0392b', rotate: false },
-    { text: 'Talend',                size: 1.5,  color: '#c0392b', rotate: false },
-    { text: 'MySQL',                 size: 1.2,  color: '#c0392b', rotate: false },
-    { text: 'MySQL Workbench',       size: 0.9,  color: '#c0392b', rotate: true  },
-    { text: 'SQLite',                size: 1.0,  color: '#c0392b', rotate: true  },
-    { text: 'Datawarehouse',         size: 1.1,  color: '#c0392b', rotate: false },
-    { text: 'MCD / MLD',             size: 0.95, color: '#c0392b', rotate: true  },
-    { text: 'tMap',                  size: 0.85, color: '#c0392b', rotate: true  },
-    { text: 'tFilterRow',            size: 0.8,  color: '#c0392b', rotate: true  },
-    { text: 'tAggregateRow',         size: 0.8,  color: '#c0392b', rotate: true  },
-    { text: 'Jointure',              size: 0.85, color: '#c0392b', rotate: true  },
-    { text: 'Agrégation',            size: 0.85, color: '#c0392b', rotate: true  },
-    { text: 'Schéma en étoile',      size: 0.75, color: '#c0392b', rotate: true  },
-    { text: 'Modélisation BDD',      size: 0.8,  color: '#c0392b', rotate: true  },
-
-    { text: 'Pandas',                size: 1.7,  color: '#1a9e6e', rotate: false },
-    { text: 'NumPy',                 size: 1.2,  color: '#1a9e6e', rotate: true  },
-    { text: 'Nettoyage',             size: 1.4,  color: '#1a9e6e', rotate: false },
-    { text: 'Normalisation',         size: 1.2,  color: '#1a9e6e', rotate: false },
-    { text: 'Standardisation',       size: 1.1,  color: '#1a9e6e', rotate: true  },
-    { text: 'Feature Engineering',   size: 1.1,  color: '#1a9e6e', rotate: false },
-    { text: 'Valeurs manquantes',    size: 1.0,  color: '#1a9e6e', rotate: true  },
-    { text: 'Valeurs aberrantes',    size: 0.95, color: '#1a9e6e', rotate: true  },
-    { text: 'Doublons',              size: 0.85, color: '#1a9e6e', rotate: true  },
-    { text: 'Discrétisation',        size: 0.8,  color: '#1a9e6e', rotate: true  },
-    { text: 'Binarisation',          size: 0.8,  color: '#1a9e6e', rotate: true  },
-    { text: 'Pipeline',              size: 0.95, color: '#1a9e6e', rotate: true  },
-    { text: 'Kaggle',                size: 0.85, color: '#1a9e6e', rotate: true  },
-    { text: 'Open Data',             size: 0.8,  color: '#1a9e6e', rotate: true  },
-    { text: 'SciPy',                 size: 0.85, color: '#1a9e6e', rotate: true  },
-    { text: 'Statsmodels',           size: 0.8,  color: '#1a9e6e', rotate: true  },
-
-    { text: 'ggplot2',               size: 1.7,  color: '#3a7d6e', rotate: false },
-    { text: 'dplyr',                 size: 1.3,  color: '#3a7d6e', rotate: false },
-    { text: 'tidyverse',             size: 1.2,  color: '#3a7d6e', rotate: false },
-    { text: 'tsibble',               size: 1.1,  color: '#3a7d6e', rotate: true  },
-    { text: 'fable',                 size: 0.95, color: '#3a7d6e', rotate: true  },
-    { text: 'tidyr',                 size: 0.95, color: '#3a7d6e', rotate: true  },
-    { text: 'tabulapdf',             size: 0.85, color: '#3a7d6e', rotate: true  },
-    { text: 'openxlsx',              size: 0.85, color: '#3a7d6e', rotate: true  },
-    { text: 'sf',                    size: 0.85, color: '#3a7d6e', rotate: true  },
-    { text: 'lubridate',             size: 0.8,  color: '#3a7d6e', rotate: true  },
-  ];
-
-  const container = document.getElementById('wordcloud');
-  const W = container.offsetWidth || 900;
-  const H = 600;
-  const CELL = 3;
-  const cols = Math.ceil(W / CELL);
-  const rows = Math.ceil(H / CELL);
-  const grid = new Uint8Array(cols * rows);
-
-  function markGrid(x, y, w, h) {
-    const pad = 5;
-    const x0 = Math.max(0, Math.floor((x - pad) / CELL));
-    const x1 = Math.min(cols - 1, Math.ceil((x + w + pad) / CELL));
-    const y0 = Math.max(0, Math.floor((y - pad) / CELL));
-    const y1 = Math.min(rows - 1, Math.ceil((y + h + pad) / CELL));
-    for (let r = y0; r <= y1; r++)
-      for (let c = x0; c <= x1; c++)
-        grid[r * cols + c] = 1;
-  }
-
-  function isFree(x, y, w, h) {
-    const pad = 3;
-    const x0 = Math.max(0, Math.floor((x - pad) / CELL));
-    const x1 = Math.min(cols - 1, Math.ceil((x + w + pad) / CELL));
-    const y0 = Math.max(0, Math.floor((y - pad) / CELL));
-    const y1 = Math.min(rows - 1, Math.ceil((y + h + pad) / CELL));
-    for (let r = y0; r <= y1; r++)
-      for (let c = x0; c <= x1; c++)
-        if (grid[r * cols + c]) return false;
-    return true;
-  }
-
-  function tryPlace(span, sw, sh) {
-    const cx = W / 2 - sw / 2;
-    const cy = H / 2 - sh / 2;
-    const maxR = Math.sqrt(W * W + H * H);
-    for (let r = 0; r < maxR; r += 2) {
-      const steps = Math.max(10, Math.floor(2 * Math.PI * (r + 1) / 5));
-      for (let s = 0; s < steps; s++) {
-        const angle = (s / steps) * 2 * Math.PI + r * 0.25;
-        const tx = cx + r * Math.cos(angle);
-        const ty = cy + r * Math.sin(angle);
-        if (tx < 2 || tx + sw > W - 2 || ty < 2 || ty + sh > H - 2) continue;
-        if (isFree(tx, ty, sw, sh)) {
-          span.style.left = tx + 'px';
-          span.style.top  = ty + 'px';
-          markGrid(tx, ty, sw, sh);
-          return true;
-        }
-      }
-    }
-    return false;
-  }
-
-  words.sort((a, b) => b.size - a.size);
-
-  words.forEach((word, idx) => {
-    // Décide si on tourne : les mots avec rotate:true ont 50% de chances d'être verticaux
-    const doRotate = word.rotate && Math.random() < 0.5;
-
-    const span = document.createElement('span');
-    span.textContent = word.text;
-    span.style.cssText = `
-      position:absolute; visibility:hidden;
-      font-size:${word.size}rem;
-      font-weight:${word.size >= 1.8 ? '700' : word.size >= 1.2 ? '600' : '500'};
-      font-family:'DM Sans',system-ui,sans-serif;
-      color:${word.color};
-      white-space:nowrap;
-      padding:1px 3px;
-      border-radius:3px;
-      cursor:default;
-      user-select:none;
-      opacity:0;
-      transition:opacity .5s ease, transform .2s;
-      ${doRotate ? 'transform-origin:top left;' : ''}
-    `;
-    container.appendChild(span);
-
-    // Mesure AVANT rotation
-    let sw = span.offsetWidth;
-    let sh = span.offsetHeight;
-    span.style.visibility = 'visible';
-
-    // Si rotation : les dimensions sont inversées pour la grille
-    let gw = doRotate ? sh : sw;
-    let gh = doRotate ? sw : sh;
-
-    const placed = tryPlace(span, gw, gh);
-
-    if (placed) {
-      if (doRotate) {
-        // Ajuster position pour que la rotation soit bien centrée
-        const tx = parseFloat(span.style.left);
-        const ty = parseFloat(span.style.top);
-        span.style.left = (tx + sh) + 'px'; // décaler de la hauteur car transform-origin top left
-        span.style.transform = 'rotate(90deg)';
-      }
-
-      span.addEventListener('mouseenter', () => {
-        const base = doRotate ? 'rotate(90deg)' : '';
-        span.style.transform = base + ' scale(1.15)';
-        span.style.zIndex = '10';
-      });
-      span.addEventListener('mouseleave', () => {
-        span.style.transform = doRotate ? 'rotate(90deg)' : '';
-        span.style.zIndex = '';
-      });
-
-      setTimeout(() => { span.style.opacity = '1'; }, idx * 18);
-    } else {
-      span.remove();
-    }
-  });
-})();
-</script>
-
-
-
-    <div style="margin-top:2rem">
-      <div class="slbl" style="margin-bottom:.4rem">Mots clés</div>
-      <p style="font-size:.78rem;color:var(--ink-muted);margin-bottom:.9rem;font-weight:300;max-width:520px">Concepts, outils et librairies rencontrés au fil de ma formation en science des données.</p>
-      <div style="display:flex;flex-wrap:wrap;gap:.5rem">
-        <span class="tag" style="font-size:.8rem;padding:.35rem .8rem">Pandas</span>
-        <span class="tag" style="font-size:.8rem;padding:.35rem .8rem">NumPy</span>
-        <span class="tag" style="font-size:.8rem;padding:.35rem .8rem">Matplotlib</span>
-        <span class="tag" style="font-size:.8rem;padding:.35rem .8rem">Seaborn</span>
-        <span class="tag" style="font-size:.8rem;padding:.35rem .8rem">scikit-learn</span>
-        <span class="tag" style="font-size:.8rem;padding:.35rem .8rem">SciPy</span>
-        <span class="tag" style="font-size:.8rem;padding:.35rem .8rem">Statsmodels</span>
-        <span class="tag" style="font-size:.8rem;padding:.35rem .8rem">Plotly</span>
-        <span class="tag" style="font-size:.8rem;padding:.35rem .8rem">ggplot2</span>
-        <span class="tag" style="font-size:.8rem;padding:.35rem .8rem">dplyr</span>
-        <span class="tag" style="font-size:.8rem;padding:.35rem .8rem">tidyr</span>
-        <span class="tag" style="font-size:.8rem;padding:.35rem .8rem">tidyverse</span>
-        <span class="tag" style="font-size:.8rem;padding:.35rem .8rem">tsibble</span>
-        <span class="tag" style="font-size:.8rem;padding:.35rem .8rem">fable</span>
-        <span class="tag" style="font-size:.8rem;padding:.35rem .8rem">tabulapdf</span>
-        <span class="tag" style="font-size:.8rem;padding:.35rem .8rem">openxlsx</span>
-        <span class="tag" style="font-size:.8rem;padding:.35rem .8rem">sf</span>
-        <span class="tag" style="font-size:.8rem;padding:.35rem .8rem">lubridate</span>
-        <span class="tag" style="font-size:.8rem;padding:.35rem .8rem">Talend Open Studio</span>
-        <span class="tag" style="font-size:.8rem;padding:.35rem .8rem">DAX</span>
-        <span class="tag" style="font-size:.8rem;padding:.35rem .8rem">tMap</span>
-        <span class="tag" style="font-size:.8rem;padding:.35rem .8rem">tFilterRow</span>
-        <span class="tag" style="font-size:.8rem;padding:.35rem .8rem">tAggregateRow</span>
-        <span class="tag" style="font-size:.8rem;padding:.35rem .8rem">ETL</span>
-        <span class="tag" style="font-size:.8rem;padding:.35rem .8rem">Datawarehouse</span>
-        <span class="tag" style="font-size:.8rem;padding:.35rem .8rem">SUMX</span>
-        <span class="tag" style="font-size:.8rem;padding:.35rem .8rem">Machine Learning</span>
-        <span class="tag" style="font-size:.8rem;padding:.35rem .8rem">Régression</span>
-        <span class="tag" style="font-size:.8rem;padding:.35rem .8rem">Classification</span>
-        <span class="tag" style="font-size:.8rem;padding:.35rem .8rem">Clustering</span>
-        <span class="tag" style="font-size:.8rem;padding:.35rem .8rem">Séries temporelles</span>
-        <span class="tag" style="font-size:.8rem;padding:.35rem .8rem">Saisonnalité</span>
-        <span class="tag" style="font-size:.8rem;padding:.35rem .8rem">Tendance</span>
-        <span class="tag" style="font-size:.8rem;padding:.35rem .8rem">Prévision</span>
-        <span class="tag" style="font-size:.8rem;padding:.35rem .8rem">TSLM</span>
-        <span class="tag" style="font-size:.8rem;padding:.35rem .8rem">Normalisation</span>
-        <span class="tag" style="font-size:.8rem;padding:.35rem .8rem">Standardisation</span>
-        <span class="tag" style="font-size:.8rem;padding:.35rem .8rem">Feature Engineering</span>
-        <span class="tag" style="font-size:.8rem;padding:.35rem .8rem">Valeurs manquantes</span>
-        <span class="tag" style="font-size:.8rem;padding:.35rem .8rem">Valeurs aberrantes</span>
-        <span class="tag" style="font-size:.8rem;padding:.35rem .8rem">ACP</span>
-        <span class="tag" style="font-size:.8rem;padding:.35rem .8rem">Corrélation</span>
-        <span class="tag" style="font-size:.8rem;padding:.35rem .8rem">Heatmap</span>
-        <span class="tag" style="font-size:.8rem;padding:.35rem .8rem">Box plot</span>
-        <span class="tag" style="font-size:.8rem;padding:.35rem .8rem">Scatter plot</span>
-        <span class="tag" style="font-size:.8rem;padding:.35rem .8rem">Sur-échantillonnage</span>
-        <span class="tag" style="font-size:.8rem;padding:.35rem .8rem">SMOTE</span>
-        <span class="tag" style="font-size:.8rem;padding:.35rem .8rem">Nettoyage de données</span>
-        <span class="tag" style="font-size:.8rem;padding:.35rem .8rem">Analyse exploratoire</span>
-        <span class="tag" style="font-size:.8rem;padding:.35rem .8rem">Statistiques descriptives</span>
-        <span class="tag" style="font-size:.8rem;padding:.35rem .8rem">Test d'hypothèse</span>
-        <span class="tag" style="font-size:.8rem;padding:.35rem .8rem">Cartographie</span>
-        <span class="tag" style="font-size:.8rem;padding:.35rem .8rem">Dashboard</span>
-        <span class="tag" style="font-size:.8rem;padding:.35rem .8rem">KPI</span>
-        <span class="tag" style="font-size:.8rem;padding:.35rem .8rem">Modélisation</span>
-        <span class="tag" style="font-size:.8rem;padding:.35rem .8rem">MCD / MLD</span>
-        <span class="tag" style="font-size:.8rem;padding:.35rem .8rem">Jointure</span>
-        <span class="tag" style="font-size:.8rem;padding:.35rem .8rem">Agrégation</span>
-        <span class="tag" style="font-size:.8rem;padding:.35rem .8rem">Pipeline</span>
-        <span class="tag" style="font-size:.8rem;padding:.35rem .8rem">Kaggle</span>
-        <span class="tag" style="font-size:.8rem;padding:.35rem .8rem">Open Data</span>
-        <span class="tag" style="font-size:.8rem;padding:.35rem .8rem">LaTeX</span>
-        <span class="tag" style="font-size:.8rem;padding:.35rem .8rem">Jupyter Notebook</span>
-        <span class="tag" style="font-size:.8rem;padding:.35rem .8rem">Git</span>
-        <span class="tag" style="font-size:.8rem;padding:.35rem .8rem">GitHub</span>
-        <span class="tag" style="font-size:.8rem;padding:.35rem .8rem">Power BI</span>
-        <span class="tag" style="font-size:.8rem;padding:.35rem .8rem">Tableau</span>
-        <span class="tag" style="font-size:.8rem;padding:.35rem .8rem">Qlik Sense</span>
-        <span class="tag" style="font-size:.8rem;padding:.35rem .8rem">RStudio</span>
-        <span class="tag" style="font-size:.8rem;padding:.35rem .8rem">VS Code</span>
-        <span class="tag" style="font-size:.8rem;padding:.35rem .8rem">Excel</span>
-        <span class="tag" style="font-size:.8rem;padding:.35rem .8rem">Google Looker Studio</span>
-        <span class="tag" style="font-size:.8rem;padding:.35rem .8rem">MySQL Workbench</span>
-      </div>
+    <div class="bloc-mots">
+      <h3 class="petit-titre">Mots clés</h3>
+      <p>Les notions, outils et librairies rencontrés pendant la formation.</p>
+      <ul class="mots">
+        <li class="tag">Pandas</li>
+        <li class="tag">NumPy</li>
+        <li class="tag">Matplotlib</li>
+        <li class="tag">Seaborn</li>
+        <li class="tag">scikit-learn</li>
+        <li class="tag">SciPy</li>
+        <li class="tag">Statsmodels</li>
+        <li class="tag">Plotly</li>
+        <li class="tag">ggplot2</li>
+        <li class="tag">dplyr</li>
+        <li class="tag">tidyr</li>
+        <li class="tag">tidyverse</li>
+        <li class="tag">tsibble</li>
+        <li class="tag">fable</li>
+        <li class="tag">tabulapdf</li>
+        <li class="tag">openxlsx</li>
+        <li class="tag">sf</li>
+        <li class="tag">lubridate</li>
+        <li class="tag">Talend Open Studio</li>
+        <li class="tag">DAX</li>
+        <li class="tag">tMap</li>
+        <li class="tag">tFilterRow</li>
+        <li class="tag">tAggregateRow</li>
+        <li class="tag">ETL</li>
+        <li class="tag">Datawarehouse</li>
+        <li class="tag">SUMX</li>
+        <li class="tag">Machine Learning</li>
+        <li class="tag">Régression</li>
+        <li class="tag">Classification</li>
+        <li class="tag">Clustering</li>
+        <li class="tag">Séries temporelles</li>
+        <li class="tag">Saisonnalité</li>
+        <li class="tag">Tendance</li>
+        <li class="tag">Prévision</li>
+        <li class="tag">TSLM</li>
+        <li class="tag">Normalisation</li>
+        <li class="tag">Standardisation</li>
+        <li class="tag">Feature Engineering</li>
+        <li class="tag">Valeurs manquantes</li>
+        <li class="tag">Valeurs aberrantes</li>
+        <li class="tag">ACP</li>
+        <li class="tag">Corrélation</li>
+        <li class="tag">Heatmap</li>
+        <li class="tag">Box plot</li>
+        <li class="tag">Scatter plot</li>
+        <li class="tag">Sur-échantillonnage</li>
+        <li class="tag">SMOTE</li>
+        <li class="tag">Nettoyage de données</li>
+        <li class="tag">Analyse exploratoire</li>
+        <li class="tag">Statistiques descriptives</li>
+        <li class="tag">Test d'hypothèse</li>
+        <li class="tag">Cartographie</li>
+        <li class="tag">Dashboard</li>
+        <li class="tag">KPI</li>
+        <li class="tag">Modélisation</li>
+        <li class="tag">MCD / MLD</li>
+        <li class="tag">Jointure</li>
+        <li class="tag">Agrégation</li>
+        <li class="tag">Pipeline</li>
+        <li class="tag">Kaggle</li>
+        <li class="tag">Open Data</li>
+        <li class="tag">LaTeX</li>
+        <li class="tag">Jupyter Notebook</li>
+        <li class="tag">Git</li>
+        <li class="tag">GitHub</li>
+        <li class="tag">Power BI</li>
+        <li class="tag">Tableau</li>
+        <li class="tag">Qlik Sense</li>
+        <li class="tag">RStudio</li>
+        <li class="tag">VS Code</li>
+        <li class="tag">Excel</li>
+        <li class="tag">Google Looker Studio</li>
+        <li class="tag">MySQL Workbench</li>
+      </ul>
     </div>
-
   </div>
 </section>
 
-<!-- PARCOURS / TIMELINE -->
+<!-- PARCOURS -->
 <section id="parcours">
   <div class="si">
     <div class="shd">
-      <div class="slbl">Mon parcours</div>
-      <h2 class="stitle">Timeline</h2>
-      <div class="divider"></div>
-      <p class="sdesc">De la découverte de la data science jusqu'à aujourd'hui.</p>
+      <h2 class="stitle">Parcours</h2>
     </div>
-    <div style="max-width:680px">
-      <div class="timeline">
-        <div class="tl-item">
-          <div class="tl-dot current"></div>
-          <div class="tl-date">2026 - 3ème année — Recherche active</div>
-          <div class="tl-title">Alternance — Chargé d'études statistiques</div>
-          <div class="tl-sub">Finalisation du BUT Science des Données. À la recherche d'une alternance pour septembre 2026.</div>
-          <span class="tl-tag">🟢 Disponible sept. 2026</span>
-        </div>
-        <div class="tl-item">
-          <div class="tl-dot"></div>
-          <div class="tl-date">2025 - 2ème année</div>
-          <div class="tl-title">Stage / projet entreprise (ANSD)</div>
-          <div class="tl-sub">Première expérience professionnelle appliquée à la data. Confrontation aux enjeux réels du terrain.</div>
-          <span class="tl-tag">Expérience terrain</span>
-        </div>
-        <div class="tl-item">
-          <div class="tl-dot"></div>
-          <div class="tl-date">2023 - 1ère année</div>
-          <div class="tl-title">Entrée en BUT Science des Données</div>
-          <div class="tl-sub">Intégration de l'IUT Grand Ouest Normandie. Découverte de Python, R, SQL, statistiques et machine learning.</div>
-          <span class="tl-tag">IUT Grand Ouest Normandie</span>
-        </div>
+    <div class="timeline">
+      <div class="tl-item">
+        <p class="tl-date">2026-2027</p>
+        <h3 class="tl-title">BUT 2 Technologies de l'information (passerelle)</h3>
+        <p class="tl-sub">IUT de Villetaneuse, Université Sorbonne Paris Nord. Une formation plus tournée vers l'informatique, que j'ajoute à ce que je sais faire en données.</p>
+      </div>
+      <div class="tl-item">
+        <p class="tl-date">2025</p>
+        <h3 class="tl-title">Stage de data analyst à l'ANSD</h3>
+        <p class="tl-sub">Agence nationale de la statistique et de la démographie du Sénégal. J'ai automatisé des flux d'information liés à la CENTIF : extraction, nettoyage et mise en forme des données, puis tableaux de bord qui se mettent à jour seuls.</p>
+      </div>
+      <div class="tl-item">
+        <p class="tl-date">2023-2026</p>
+        <h3 class="tl-title">BUT Science des Données</h3>
+        <p class="tl-sub">IUT Grand Ouest Normandie, parcours Visualisation et conception d'outils décisionnels. Python, R, SQL, statistiques et reporting. Tous les projets de ce site en viennent.</p>
       </div>
     </div>
   </div>
 </section>
-
-
-
-
 
 <!-- À PROPOS -->
 <section id="apropos">
   <div class="si">
     <div class="agrid">
-      <div>
-        <div class="aphoto glass">
-          <img src="pdp.png" alt="Sidy Babacar Diop"/>
-          <div class="achips">
-            <span class="chip">Data Science</span>
-            <span class="chip alt">Visualisation</span>
-          </div>
-        </div>
+      <div class="aphoto">
+        <img src="pdp.png" alt="Portrait de Sidy Babacar Diop" onerror="this.remove()">
       </div>
       <div class="atext">
-        <div class="slbl">À propos</div>
-        <h3>Passionné par la valeur<br>cachée dans les données.</h3>
-        <p>Je m'appelle Sidy Babacar, étudiant en 3ème année de BUT Science des Données à l'IUT Grand Ouest Normandie, spécialité Visualisation et Outils décisionnels.</p>
-        <p>Ce portfolio rassemble les projets réalisés au fil de ma formation : analyses statistiques, modèles prédictifs, dashboards interactifs et bien plus encore.</p>
-        <p>Actuellement à la recherche d'une <strong>alternance de Chargé d'études statistiques</strong> pour septembre 2026, je souhaite mettre mes compétences au service d'une organisation tout en poursuivant ma formation.</p>
-        <div class="fcard glass">
-          <div class="fdot"></div>
-          <div>
-            <h4>BUT Science des Données — 3ème année</h4>
-            <h4>Visualisation & Conception d'Outils décisionnels</h4>
-            <p>IUT Grand Ouest Normandie · 2023 – 2026</p>
-          </div>
+        <h2 class="stitle">À propos</h2>
+        <p>Je m'appelle Sidy Babacar. J'ai suivi le BUT Science des Données à l'IUT Grand Ouest Normandie, en parcours Visualisation et conception d'outils décisionnels, et je suis maintenant en BUT 2 Technologies de l'information à Villetaneuse.</p>
+        <p>Ce site rassemble les projets de ces années : des analyses statistiques en R, de la préparation de données en Python, des tableaux de bord sous Power BI et Qlik Sense. Chaque fiche renvoie au rapport ou au code, pour qu'on puisse vérifier.</p>
+        <p>Je cherche un <strong>stage de 2 mois à partir de juin 2027</strong>, en études statistiques ou en analyse de données.</p>
+        <div class="fcard boite">
+          <h3>BUT 2 Technologies de l'information</h3>
+          <p>IUT de Villetaneuse, Université Sorbonne Paris Nord, 2026-2027</p>
         </div>
-        <div class="fcard glass" style="margin-top:.8rem">
-          <div class="fdot" style="background:var(--green)"></div>
-          <div>
-            <h4 style="color:var(--green)">Recherche active — Alternance</h4>
-            <p>Chargé d'études statistiques · Disponible dès septembre 2026</p>
-          </div>
+        <div class="fcard boite" style="margin-top:.8rem">
+          <h3>BUT Science des Données</h3>
+          <p>IUT Grand Ouest Normandie, 2023-2026</p>
         </div>
       </div>
     </div>
@@ -813,150 +438,80 @@
 </section>
 
 <!-- MOBILITÉ -->
-<section id="mobilite" style="background:var(--bg-alt)">
+<section id="mobilite">
   <div class="si">
     <div class="shd">
-      <div class="slbl">Mobilité & Recherche</div>
-      <h2 class="stitle">Alternance — Chargé d'études statistiques</h2>
-      <div class="divider"></div>
-      <p class="sdesc">Disponible dès septembre 2026 — voici les villes où je suis mobile pour une alternance.</p>
+      <h2 class="stitle">Stage : Chargé d'études statistiques</h2>
+      <p class="sdesc">Disponible dès juin 2027, pour 2 mois. Voici les villes où je suis mobile.</p>
     </div>
-    <div style="display:grid;grid-template-columns:1fr 340px;gap:2.5rem;align-items:start">
+    <div class="mob-grid">
 
       <!-- Carte Leaflet -->
-      <div class="glass" style="padding:1.5rem">
-        <div style="font-size:.78rem;color:var(--ink-muted);margin-bottom:1rem;text-align:center">🗺️ Clique sur un marqueur pour voir les détails</div>
-        <div id="map" style="height:420px;border-radius:10px;overflow:hidden;z-index:1"></div>
+      <div class="boite carte-cadre">
+        <p class="carte-aide">🗺️ Clique sur un marqueur pour voir les détails</p>
+        <div id="map"></div>
       </div>
 
       <!-- Panneau infos -->
-      <div style="display:flex;flex-direction:column;gap:1.2rem;position:sticky;top:80px">
-        <div class="glass" style="padding:1.4rem">
-          <div style="font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);margin-bottom:.9rem">Ce que je recherche</div>
-          <div style="font-family:'Lora',serif;font-size:1.05rem;font-weight:600;color:var(--ink);margin-bottom:.6rem">Alternance — Chargé d'études statistiques</div>
-          <div style="font-size:.84rem;color:var(--ink-2);line-height:1.6;margin-bottom:1rem">Contrat d'apprentissage ou de professionnalisation dans le domaine de la data, des études statistiques ou de la Business Intelligence.</div>
-          <div style="display:flex;flex-direction:column;gap:.5rem">
-            <div style="display:flex;align-items:center;gap:.6rem;font-size:.82rem;color:var(--ink-2)"><span>📅</span> Disponible dès <strong>septembre 2026</strong></div>
-            <div style="display:flex;align-items:center;gap:.6rem;font-size:.82rem;color:var(--ink-2)"><span>🗓️</span> Rythme <strong>2 semaines / 2 semaine</strong></div>
-            <div style="display:flex;align-items:center;gap:.6rem;font-size:.82rem;color:var(--ink-2)"><span>🚗</span> Mobilité <strong>nationale</strong></div>
-            <div style="display:flex;align-items:center;gap:.6rem;font-size:.82rem;color:var(--ink-2)"><span>🎓</span> Formation <strong>BUT Science des Données</strong></div>
+      <div class="mob-panel">
+        <div class="boite">
+          <p class="petit-titre">Ce que je recherche</p>
+          <h3>Stage de 2 mois : Chargé d'études statistiques</h3>
+          <p>Stage conventionné dans le domaine de la data, des études statistiques ou de la Business Intelligence.</p>
+          <ul class="mob-infos">
+            <li><span>📅</span> Disponible dès <strong>juin 2027</strong></li>
+            <li><span>🗓️</span> Durée <strong>2 mois</strong></li>
+            <li><span>🚗</span> Mobilité <strong>nationale</strong></li>
+            <li><span>🎓</span> Formation <strong>BUT 2 Technologies de l'information</strong></li>
+          </ul>
+        </div>
+        <div class="boite">
+          <p class="petit-titre">Villes cibles</p>
+          <div class="villes-cibles">
+            <span class="tag">🏙️ Paris</span>
+            <span class="tag">🏛️ Caen</span>
+            <span class="tag">⚓ Le Havre</span>
+            <span class="tag">🦁 Lyon</span>
           </div>
         </div>
-        <div class="glass" style="padding:1.4rem">
-          <div style="font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);margin-bottom:.9rem">Villes cibles</div>
-          <div style="display:flex;flex-wrap:wrap;gap:.4rem">
-            <span class="tag" style="font-size:.78rem;padding:.25rem .65rem">🏙️ Paris</span>
-            <span class="tag" style="font-size:.78rem;padding:.25rem .65rem">🏛️ Caen</span>
-            <span class="tag" style="font-size:.78rem;padding:.25rem .65rem">⚓ Le Havre</span>
-            <span class="tag" style="font-size:.78rem;padding:.25rem .65rem">🦁 Lyon</span>
-          </div>
-        </div>
-        <a href="#contact" class="btn btn-primary" style="justify-content:center">Me contacter →</a>
+        <a href="#contact" class="btn btn-primary" style="text-align:center">Me contacter</a>
       </div>
 
     </div>
   </div>
 </section>
 
-<!-- Leaflet CSS & JS -->
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-<script>
-(function() {
-  const villes = [
-    { nom: 'Paris',    lat: 48.8566, lng:  2.3522, desc: 'Capitale · Très nombreuses opportunités data & statistiques' },
-    { nom: 'Caen',     lat: 49.1829, lng: -0.3707, desc: 'Ville de formation · IUT Grand Ouest Normandie · Région familière' },
-    { nom: 'Le Havre', lat: 49.4944, lng:  0.1079, desc: 'Grand port · Secteurs logistique, industrie & data' },
-    { nom: 'Lyon',     lat: 45.7640, lng:  4.8357, desc: '2ème métropole française · Fort tissu data, BI & statistiques' },
-  ];
-
-  const map = L.map('map', { zoomControl: true, scrollWheelZoom: false })
-    .setView([46.8, 2.3], 5);
-
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '© OpenStreetMap',
-    maxZoom: 10
-  }).addTo(map);
-
-  const icon = L.divIcon({
-    className: '',
-    html: `<div style="
-      width:36px;height:36px;border-radius:50%;
-      background:linear-gradient(135deg,#c4884f,#8b5e3c);
-      border:3px solid #fff;
-      box-shadow:0 4px 12px rgba(100,60,20,.35);
-      display:flex;align-items:center;justify-content:center;
-      font-size:14px;font-weight:700;color:#fff;
-      font-family:'DM Sans',sans-serif;
-    ">📍</div>`,
-    iconSize: [36, 36],
-    iconAnchor: [18, 18],
-    popupAnchor: [0, -20]
-  });
-
-  villes.forEach(v => {
-    L.marker([v.lat, v.lng], { icon })
-      .addTo(map)
-      .bindPopup(`
-        <div style="font-family:'DM Sans',sans-serif;min-width:160px">
-          <div style="font-weight:700;font-size:.95rem;margin-bottom:.3rem;color:#1a1208">${v.nom}</div>
-          <div style="font-size:.8rem;color:#7a6650">${v.desc}</div>
-        </div>
-      `, { maxWidth: 220 });
-  });
-})();
-</script>
-
 <!-- CV -->
 <section id="cv">
   <div class="si">
     <div class="shd">
-      <div class="slbl">Mon CV</div>
-      <h2 class="stitle">Curriculum Vitæ</h2>
-      <div class="divider"></div>
-      <p class="sdesc">Consultez mon CV directement ici ou télécharge-le en PDF.</p>
+      <h2 class="stitle">Curriculum vitæ</h2>
+      <p class="sdesc">À lire ici ou à télécharger en PDF.</p>
     </div>
     <div class="cv-layout">
-      <div class="cv-viewer-wrap">
-        <div class="cv-viewer-bar">
-          <div class="cv-viewer-bar-dots">
-            <span style="background:#f87171"></span>
-            <span style="background:#fbbf24"></span>
-            <span style="background:#4ade80"></span>
-          </div>
-          <span class="cv-filename">📄 DIOP_Sidy_CV.pdf</span>
-          <span style="font-size:.75rem;color:var(--ink-muted)">Viewer PDF</span>
+      <object class="cv-embed" data="DIOP_Sidy_CV.pdf" type="application/pdf" aria-label="CV de Sidy Babacar Diop">
+        <div class="cv-fallback">
+          <p>Ce navigateur n'affiche pas le PDF dans la page.</p>
+          <a href="DIOP_Sidy_CV.pdf" download class="btn btn-primary">Télécharger le CV</a>
         </div>
-        <object class="cv-embed" data="DIOP_Sidy_CV.pdf" type="application/pdf">
-          <div class="cv-fallback" style="display:block">
-            <div class="cv-fallback-icon">📄</div>
-            <p style="margin-bottom:1rem;color:var(--ink-2)">Le PDF ne s'affiche pas directement dans ce navigateur.</p>
-            <a href="DIOP_Sidy_CV.pdf" download class="btn btn-primary" style="display:inline-flex;margin:0 auto">📥 Télécharger le CV</a>
-          </div>
-        </object>
-      </div>
+      </object>
       <div class="cv-panel">
-        <div class="cv-action-card glass">
-          <div class="cv-action-title">Télécharger mon CV</div>
-          <div class="cv-action-desc">Disponible en PDF, prêt à être transmis à un recruteur. Dernière mise à jour : 2025.</div>
+        <div class="boite">
+          <h3>Télécharger mon CV</h3>
+          <p>Une page, au format PDF.</p>
           <div class="cv-btns">
-            <a href="DIOP_Sidy_CV.pdf" download class="btn btn-primary">📥 Télécharger le PDF</a>
-            <a href="DIOP_Sidy_CV.pdf" target="_blank" class="btn btn-glass">🔗 Ouvrir dans un nouvel onglet</a>
+            <a href="DIOP_Sidy_CV.pdf" download class="btn btn-primary">Télécharger le PDF</a>
+            <a href="DIOP_Sidy_CV.pdf" target="_blank" rel="noopener" class="btn btn-ligne">Ouvrir dans un nouvel onglet</a>
           </div>
         </div>
-        <div class="cv-info-card glass">
-          <div class="cv-info-title">Informations clés</div>
-          <div class="cv-info-item"><span class="cv-info-icon">📞</span> 07 82 12 14 43</div>
-          <div class="cv-info-item"><span class="cv-info-icon">📧</span> sidy2002@hotmail.fr</div>
-          <div class="cv-info-item"><span class="cv-info-icon">🎓</span> BUT Science des Données</div>
-          <div class="cv-info-item"><span class="cv-info-icon">📍</span> IUT Grand Ouest Normandie</div>
-          <div class="cv-info-item"><span class="cv-info-icon">🟢</span> Alternance dès sept. 2026</div>
-          <div class="cv-info-item"><span class="cv-info-icon">💼</span> Chargé d'études statistiques</div>
-        </div>
-        <div class="cv-info-card glass">
-          <div class="cv-info-title">Me retrouver</div>
-          <div class="cv-info-item"><span class="cv-info-icon">💼</span> <a href="https://linkedin.com/in/sidybdiop" target="_blank" style="color:var(--accent);text-decoration:none;font-size:.84rem">LinkedIn → /sidybdiop</a></div>
-          <div class="cv-info-item"><span class="cv-info-icon">🐙</span> <a href="https://github.com/sidyBD" target="_blank" style="color:var(--accent);text-decoration:none;font-size:.84rem">GitHub → sidyBD</a></div>
+        <div class="boite">
+          <h3>Coordonnées</h3>
+          <ul class="infos">
+            <li><span>Téléphone</span><a href="tel:+33782121443">07 82 12 14 43</a></li>
+            <li><span>E-mail</span><a href="mailto:sidy2002@hotmail.fr">sidy2002@hotmail.fr</a></li>
+            <li><span>LinkedIn</span><a href="https://linkedin.com/in/sidybdiop" target="_blank" rel="noopener">/sidybdiop</a></li>
+            <li><span>GitHub</span><a href="https://github.com/sidyBD" target="_blank" rel="noopener">sidyBD</a></li>
+          </ul>
         </div>
       </div>
     </div>
@@ -967,39 +522,27 @@
 <section id="contact">
   <div class="si">
     <div class="cwrap">
-      <div class="slbl" style="text-align:center">Contact</div>
-      <h2 class="stitle" style="text-align:center">Travaillons ensemble</h2>
-      <div class="divider" style="margin:.7rem auto 1rem"></div>
-      <p class="sdesc" style="margin:0 auto;text-align:center">Une opportunité ou un projet ? Écrivez-moi directement.</p>
-      
-      <div class="clinks" style="margin-top:1.5rem">
-        <a href="mailto:sidy2002@hotmail.fr" class="ccard glass"><span class="ci">✉️</span> sidy2002@hotmail.fr</a>
-        <a href="https://linkedin.com/in/sidybdiop" class="ccard glass" target="_blank"><span class="ci">💼</span> LinkedIn</a>
-        <a href="https://github.com/sidyBD" class="ccard glass" target="_blank"><span class="ci">🐙</span> GitHub</a>
+      <h2 class="stitle">Contact</h2>
+      <p class="sdesc">Pour une offre, une question sur un projet ou un rapport qui ne s'ouvre pas, le plus simple est de m'écrire.</p>
+      <div class="clinks">
+        <a href="mailto:sidy2002@hotmail.fr" class="btn btn-primary">sidy2002@hotmail.fr</a>
+        <a href="https://linkedin.com/in/sidybdiop" class="btn btn-ligne" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://github.com/sidyBD" class="btn btn-ligne" target="_blank" rel="noopener">GitHub</a>
       </div>
     </div>
   </div>
 </section>
 
-<button id="scrollTop" aria-label="Remonter en haut">
-  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M12 19V5M5 12l7-7 7 7"/>
-  </svg>
+<button id="scrollTop" type="button" aria-label="Remonter en haut">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
 </button>
 
 <footer>
-  <p>© 2026 <strong>Sidy Babacar Diop</strong> — Portfolio Science des Données</p>
+  <p>Sidy Babacar Diop, 2026.</p>
 </footer>
 
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="carte-fond.js"></script>
 <script src="script.js"></script>
-<script>
-function showVille(el, titre, desc) {
-  document.getElementById('villeName').textContent = titre;
-  document.getElementById('villeDesc').textContent = desc;
-  document.getElementById('villeTooltip').style.display = 'block';
-  document.querySelectorAll('.ville-pin circle:first-child').forEach(c => c.style.opacity = '.4');
-  el.querySelector('circle').style.opacity = '1';
-}
-</script>
 </body>
 </html>
