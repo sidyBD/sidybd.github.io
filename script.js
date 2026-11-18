@@ -325,8 +325,8 @@ if (document.fonts && document.fonts.ready) {
 
   const draw = (t) => {
     const w = c.clientWidth, h = c.clientHeight, s = t / 1000;
-    // Mode clair : même couleur, opacité divisée par deux
-    const f = document.documentElement.getAttribute('data-theme') === 'dark' ? 1 : 0.5;
+    // Mode clair : même couleur, un peu plus opaque pour rester visible sur le blanc
+    const f = document.documentElement.getAttribute('data-theme') === 'dark' ? 1 : 1.6;
     ctx.clearRect(0, 0, w, h);
     for (let i = 0; i < N; i++) {
       const k = i / (N - 1);
