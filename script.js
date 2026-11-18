@@ -314,3 +314,50 @@ if (document.fonts && document.fonts.ready) {
 } else {
   window.addEventListener('load', dessinerNuage);
 }
+
+/* Fond animé de courbes dans l'accueil */
+(() => {
+  const c = document.getElementById('hero-flux');
+  if (!c) return;
+  const ctx = c.getContext('2d');
+  const reduit = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const N = 14;
+
+  const draw = (t) => {
+    const w = c.clientWidth, h = c.clientHeight, s = t / 1000;
+    // Mode clair : même couleur, opacité divisée par deux
+    const f = document.documentElement.getAttribute('data-theme') === 'dark' ? 1 : 0.5;
+    ctx.clearRect(0, 0, w, h);
+    for (let i = 0; i < N; i++) {
+      const k = i / (N - 1);
+      ctx.beginPath();
+      for (let x = 0; x <= w; x += 8) {
+        const y = h * (0.25 + k * 0.6)
+          + Math.sin(x * 0.004 + s * 0.6 + i * 0.4) * 40
+          + Math.sin(x * 0.011 - s * 0.9 + i) * 14;
+        x ? ctx.lineTo(x, y) : ctx.moveTo(x, y);
+      }
+      ctx.strokeStyle = `rgba(212,149,90,${(0.06 + 0.22 * Math.sin(k * Math.PI)) * f})`;
+      ctx.lineWidth = 1.2;
+      ctx.stroke();
+    }
+    if (!reduit) requestAnimationFrame(draw);
+  };
+
+  const fit = () => {
+    const r = c.getBoundingClientRect(), d = window.devicePixelRatio || 1;
+    c.width = r.width * d; c.height = r.height * d;
+    ctx.setTransform(d, 0, 0, d, 0, 0);
+    if (reduit) draw(0);
+  };
+  addEventListener('resize', fit);
+  fit();
+
+  if (reduit) {
+    // Image fixe : on la redessine seulement quand le thème change
+    new MutationObserver(() => draw(0))
+      .observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+  } else {
+    requestAnimationFrame(draw);
+  }
+})();

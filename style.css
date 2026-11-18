@@ -99,13 +99,16 @@ section { padding: 4.5rem 5vw; }
 .petit-titre { font-family: 'DM Sans', sans-serif; font-size: .95rem; font-weight: 600; color: var(--accent); margin-bottom: .8rem; }
 
 /* Accueil */
-#hero { padding-top: 4rem; padding-bottom: 4rem; }
+#hero { position: relative; overflow: hidden; padding-top: 4rem; padding-bottom: 4rem; }
+[data-theme="dark"] #hero { background: #120d0a; }
+.hero-grid { position: relative; z-index: 1; }
 .hero-grid { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 3.5rem; align-items: start; }
 h1 { font-size: clamp(2.3rem, 4.6vw, 3.4rem); font-weight: 700; line-height: 1.1; margin-bottom: 1.1rem; }
 .chapo { font-family: 'Lora', Georgia, serif; font-size: 1.25rem; line-height: 1.5; color: var(--ink); margin-bottom: 1rem; max-width: 560px; }
 .hero-sub { color: var(--ink-2); max-width: 540px; margin-bottom: 1.8rem; }
 .hero-ctas { display: flex; gap: .8rem; flex-wrap: wrap; }
-.bref { padding: 1.4rem 1.5rem; background: var(--bg-alt); }
+.bref { padding: 1.4rem 1.5rem; background: rgba(250, 248, 245, 0.85); }
+[data-theme="dark"] .bref { background: rgba(18, 13, 10, 0.8); }
 .bref dt { font-size: .82rem; color: var(--ink-3); margin-top: .9rem; }
 .bref dt:first-of-type { margin-top: 0; }
 .bref dd { font-weight: 500; line-height: 1.45; }

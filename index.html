@@ -12,7 +12,7 @@
   <meta property="og:type" content="website">
   <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
-  <link rel="stylesheet" href="style.css?v=3">
+  <link rel="stylesheet" href="style.css?v=5">
   <script>
     try {
       var t = localStorage.getItem('theme');
@@ -50,6 +50,8 @@
 
 <!-- ACCUEIL -->
 <section id="hero">
+  <canvas id="hero-flux" aria-hidden="true"
+    style="position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none"></canvas>
   <div class="hero-grid">
     <div>
       <h1>Sidy Babacar Diop</h1>
@@ -541,6 +543,6 @@
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script src="carte-fond.js?v=4"></script>
-<script src="script.js?v=4"></script>
+<script src="script.js?v=5"></script>
 </body>
 </html>
