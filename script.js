@@ -71,8 +71,6 @@
 
   var villes = [
     { nom: 'Paris',    lat: 48.8566, lng:  2.3522, desc: 'Capitale · Très nombreuses opportunités data & statistiques' },
-    { nom: 'Caen',     lat: 49.1829, lng: -0.3707, desc: 'Ville de formation · IUT Grand Ouest Normandie · Région familière' },
-    { nom: 'Le Havre', lat: 49.4944, lng:  0.1079, desc: 'Grand port · Secteurs logistique, industrie & data' },
     { nom: 'Lyon',     lat: 45.7640, lng:  4.8357, desc: '2ème métropole française · Fort tissu data, BI & statistiques' }
   ];
 
